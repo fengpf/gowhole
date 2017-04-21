@@ -5,9 +5,12 @@ import (
 	"image"
 	"image/color"
 	"image/draw"
+	"image/png"
 	"io/ioutil"
 	"log"
+	"net/http"
 	"runtime/debug"
+	"time"
 
 	"github.com/golang/freetype"
 )
@@ -28,28 +31,23 @@ var (
 	wonb      = flag.Bool("whiteonblack", false, "white text on a black background")
 )
 
-func isTooBright(img image.Image) bool {
-	var (
-		pixCount, totalBrightness float64
-	)
-	pixCount = 0
-	totalBrightness = 0
-	AdjustFunc(img, func(c color.NRGBA) color.NRGBA {
-		brightness := 0.2126*float64(c.R) + 0.7152*float64(c.G) + 0.0722*float64(c.B)
-		totalBrightness += brightness
-		pixCount++
-		return c
-	})
-	averBrightness := totalBrightness / pixCount
-	// assume that average brightness higher than 100 is too bright.
-	return averBrightness > 100
+func createWaterMark(characters string) (finalRgba *image.NRGBA, err error) {
+	// new rgb.
+	rgba := New(300, 50, color.RGBA{255, 0, 0, 0})
+	draw.Draw(rgba, rgba.Bounds(), rgba, image.ZP, draw.Src)
+	setfont(characters, rgba, &image.Uniform{color.NRGBA{0, 0, 0, 125}})
+	// blur rgb.
+	blurRgba := Blur(rgba, 6, 3.5)
+	finalRgba = blurRgba
+	if IsTooBright(blurRgba) {
+		finalRgba = AdjustBrightness(blurRgba, -10)
+	}
+	//Save(finalRgba, *wmblur) // save blur rgb
+	setfont(characters, blurRgba, &image.Uniform{color.NRGBA{255, 255, 255, 180}})
+	return
 }
 
-// DrawWaterMark deal font&img.
-func DrawWaterMark(uname string) (err error) {
-	var (
-		finalRgba *image.NRGBA
-	)
+func setfont(characters string, rgba *image.NRGBA, fillColor image.Image) (err error) {
 	// 读字体数据
 	fbs, err := ioutil.ReadFile(*fontfile)
 	if err != nil {
@@ -59,52 +57,31 @@ func DrawWaterMark(uname string) (err error) {
 	if err != nil {
 		return
 	}
-	// 新建一个指定大小的 RGBA位图
-	rgba := New(300, 50, color.RGBA{255, 0, 0, 0})
-	draw.Draw(rgba, rgba.Bounds(), rgba, image.ZP, draw.Src)
-	// 填充模糊本体文字.
 	c := freetype.NewContext()
 	//c.SetDPI(*dpi)
 	c.SetFont(f)
 	c.SetFontSize(*size)
 	c.SetClip(rgba.Bounds())
 	c.SetDst(rgba)
-	fillColor := &image.Uniform{color.NRGBA{0, 0, 0, 125}}
-	//println(fillColor.Opaque())//检查不透明度
+	//println(fillColor.Opaque())// 检查不透明度
 	c.SetSrc(fillColor)
 	pt := freetype.Pt(3, 5+int(c.PointToFixed(*size)>>6)) // 字出现的位置
 	//fmt.Printf("%v\n", pt)
-	_, err = c.DrawString(uname, pt)
+	_, err = c.DrawString(characters, pt)
 	if err != nil {
 		log.Println(err)
 		return
 	}
-	// blur rgb
-	blurRgba := Blur(rgba, 6, 3.5)
-	finalRgba = blurRgba
-	if isTooBright(blurRgba) {
-		println("isTooBright")
-		finalRgba = AdjustBrightness(blurRgba, -10)
-	}
-	//Save(finalRgba, *wmblur) //保存模糊图片
-	// 重新画本体文字.
-	c.SetFont(f)
-	c.SetFontSize(*size)
-	c.SetClip(blurRgba.Bounds())
-	c.SetDst(blurRgba)
-	fillColor2 := &image.Uniform{color.NRGBA{255, 255, 255, 180}}
-	c.SetSrc(fillColor2)
-	_, err = c.DrawString(uname, pt)
-	if err != nil {
-		log.Println(err)
-		return
-	}
-	composite(finalRgba, *wmimg)
 	return
 }
 
-// composite  composite  logo & wmimg.
-func composite(rga *image.NRGBA, dest string) (err error) {
+// WaterMark get the img.
+func WaterMark(uname string) (err error) {
+	rga, err := createWaterMark(uname)
+	if err != nil {
+		log.Println(err)
+		return
+	}
 	dx := rga.Bounds().Dx()
 	dy := rga.Bounds().Dy()
 	px := -185
@@ -115,7 +92,29 @@ func composite(rga *image.NRGBA, dest string) (err error) {
 	}
 	defer debug.FreeOSMemory()
 	draw.Draw(rga, image.Rect(0, 0, dx, dy), logo, image.Point{px, py}, draw.Over)
-	Save(rga, dest)
+	Save(rga, *wmimg)
 	println("composite ...")
 	return
+}
+
+func printImg(w http.ResponseWriter, req *http.Request) {
+	w.Header().Set("Content-Type", "image/png")
+	rga, err := createWaterMark("图片流输出")
+	if err != nil {
+		log.Println(err)
+		return
+	}
+	png.Encode(w, rga)
+}
+
+// HTTPPrint print image stream.
+func HTTPPrint() {
+	http.HandleFunc("/", printImg)
+	s := &http.Server{
+		Addr:           ":88",
+		ReadTimeout:    30 * time.Second,
+		WriteTimeout:   30 * time.Second,
+		MaxHeaderBytes: 1 << 20,
+	}
+	s.ListenAndServe()
 }

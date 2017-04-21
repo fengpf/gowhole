@@ -2,6 +2,7 @@ package imgprocessing
 
 import (
 	"image"
+	"image/color"
 	"math"
 )
 
@@ -137,4 +138,21 @@ func Blur(img image.Image, radius int, sigma float64) *image.NRGBA {
 	dst = blurHorizontal(src, kernel)
 	dst = blurVertical(dst, kernel)
 	return dst
+}
+
+// IsTooBright assume that average brightness higher than 100 is too bright.
+func IsTooBright(img image.Image) bool {
+	var (
+		pixCount, totalBrightness float64
+	)
+	pixCount = 0
+	totalBrightness = 0
+	AdjustFunc(img, func(c color.NRGBA) color.NRGBA {
+		brightness := 0.2126*float64(c.R) + 0.7152*float64(c.G) + 0.0722*float64(c.B)
+		totalBrightness += brightness
+		pixCount++
+		return c
+	})
+	averBrightness := totalBrightness / pixCount
+	return averBrightness > 100
 }
