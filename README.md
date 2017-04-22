@@ -11,3 +11,4 @@ https://github.com/disintegration/imaging
 #font
 https://github.com/golang/freetype
 
+注意：资源文件需要放到和项目同级目录

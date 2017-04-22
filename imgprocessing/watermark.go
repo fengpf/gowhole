@@ -21,12 +21,13 @@ const (
 )
 
 var (
-	unamemark = flag.String("unamemark", "/Users/fpf/gowork/src/gostudy/img/mark.png", "用户名图片")
-	wmblur    = flag.String("wmblur", "/Users/fpf/gowork/src/gostudy/img/wmblur.png", "模糊图片")
-	wmimg     = flag.String("wmimg", "/Users/fpf/gowork/src/gostudy/img/wmimg.png", "最终效果图片")
+	unamemark = flag.String("unamemark", "./img/mark.png", "用户名图片")
+	wmblur    = flag.String("wmblur", "./img/wmblur.png", "模糊图片")
+	wmimg     = flag.String("wmimg", "./img/wmimg.png", "最终效果图片")
+	testimg   = flag.String("testimg", "./img/testimg.png", "最终效果图片")
 	size      = flag.Float64("size", 32, "font size in points")
 	dpi       = flag.Float64("dpi", 72, "screen resolution in Dots Per Inch") // 屏幕每英寸的分辨率 DPI是Dots Per Inch（每英寸所打印的点数）
-	fontfile  = flag.String("fontfile", "/Users/fpf/gowork/src/gostudy/img/msyhb.ttf", "filename of the ttf font")
+	fontfile  = flag.String("fontfile", "./img/msyhb.ttf", "filename of the ttf font")
 	spacing   = flag.Float64("spacing", 1.5, "line spacing (e.g. 2 means double spaced)")
 	wonb      = flag.Bool("whiteonblack", false, "white text on a black background")
 )
@@ -98,22 +99,24 @@ func WaterMark(uname string) (err error) {
 }
 
 func printImg(w http.ResponseWriter, req *http.Request) {
-	w.Header().Set("Content-Type", "image/png")
-	rga, err := createWaterMark("图片流输出")
+	logo, err := Open(*wmimg)
 	if err != nil {
-		log.Println(err)
 		return
 	}
-	png.Encode(w, rga)
+	bounds := logo.Bounds()
+	rgb := image.NewRGBA(bounds)
+	draw.Draw(rgb, bounds, logo, image.ZP, draw.Over)
+	w.Header().Set("Content-Type", "image/png")
+	png.Encode(w, rgb)
 }
 
 // HTTPPrint print image stream.
 func HTTPPrint() {
 	http.HandleFunc("/", printImg)
 	s := &http.Server{
-		Addr:           ":88",
-		ReadTimeout:    30 * time.Second,
-		WriteTimeout:   30 * time.Second,
+		Addr:           ":9000",
+		ReadTimeout:    5 * time.Second,
+		WriteTimeout:   5 * time.Second,
 		MaxHeaderBytes: 1 << 20,
 	}
 	s.ListenAndServe()

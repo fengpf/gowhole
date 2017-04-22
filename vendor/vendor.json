@@ -1,0 +1,37 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "w01kP96jx5UAf+uWB8m0w8Xghas=",
+			"path": "github.com/golang/freetype",
+			"revision": "b12e98108289d6367ecd1a819deee597b2c3fa57",
+			"revisionTime": "2017-04-20T01:23:31Z"
+		},
+		{
+			"checksumSHA1": "aJ/kX/eCUlrCJBZ26Hwh/RXzAIw=",
+			"path": "github.com/golang/freetype/raster",
+			"revision": "b12e98108289d6367ecd1a819deee597b2c3fa57",
+			"revisionTime": "2017-04-20T01:23:31Z"
+		},
+		{
+			"checksumSHA1": "xyFKcgedX65odHWPYQJq/VkwTw0=",
+			"path": "github.com/golang/freetype/truetype",
+			"revision": "b12e98108289d6367ecd1a819deee597b2c3fa57",
+			"revisionTime": "2017-04-20T01:23:31Z"
+		},
+		{
+			"checksumSHA1": "+U1IB5N4LDS74y4fXjARb4/S4IE=",
+			"path": "golang.org/x/image/font",
+			"revision": "3210c0296b49a552ad9668ede9c61008df821b94",
+			"revisionTime": "2017-04-17T04:12:48Z"
+		},
+		{
+			"checksumSHA1": "euzvwlMLxyD0hwc+raoVsDLv6j4=",
+			"path": "golang.org/x/image/math/fixed",
+			"revision": "3210c0296b49a552ad9668ede9c61008df821b94",
+			"revisionTime": "2017-04-17T04:12:48Z"
+		}
+	],
+	"rootPath": "gostudy"
+}

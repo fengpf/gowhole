@@ -1,8 +1,6 @@
 package main
 
-import (
-	"gostudy/imgprocessing"
-)
+import "gostudy/imgprocessing"
 
 func main() {
 	// err := imgprocessing.WaterMark("golang水印")
