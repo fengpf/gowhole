@@ -1,11 +1,12 @@
 package main
 
 import (
-	"gostudy/imgprocessing"
 	"os"
 	"os/signal"
 	"syscall"
 	"time"
+
+	"gostudy/rpcx"
 )
 
 func main() {
@@ -14,8 +15,13 @@ func main() {
 	// 	fmt.Printf("%v\n", err)
 	// 	return
 	// }
-	imgprocessing.HTTPPrint()
+	//imgprocessing.HTTPPrint()
 	//fmt.Printf("%s\n", "create watermark success ...")
+	rpcx.Start()
+	signalHandler()
+}
+
+func signalHandler() {
 	// signal handler
 	c := make(chan os.Signal, 1)
 	signal.Notify(c, syscall.SIGHUP, syscall.SIGQUIT, syscall.SIGTERM, syscall.SIGINT, syscall.SIGSTOP)
