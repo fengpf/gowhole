@@ -27,10 +27,10 @@ func AsynchronousCall() {
 	if err != nil {
 		log.Fatal("dialing:", err)
 	}
-	args := &Args{7, 8}
+	args := &Args{16, 8}
 	quotient := new(Quotient)
 	divCall := client.Go("Arith.Divide", args, quotient, nil)
 	replyCall := <-divCall.Done // will be equal to divCall
 	// check errors, print, etc.
-	fmt.Printf("异步调用Divide: %v\n", replyCall)
+	fmt.Printf("异步调用Divide: %v\n", replyCall.Reply)
 }

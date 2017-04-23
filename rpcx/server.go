@@ -15,7 +15,7 @@ type Args struct {
 
 // Quotient Quo,Rem.
 type Quotient struct {
-	Quo, Rem int
+	Quo int
 }
 
 // Arith type.

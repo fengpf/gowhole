@@ -13,5 +13,6 @@ https://github.com/golang/freetype
 
 #rpc
 http://docscn.studygolang.com/pkg/net/rpc/#NewServer  
-
+#go-zookeeper
+https://github.com/samuel/go-zookeeper  
 注意：资源文件需要放到和项目同级目录
