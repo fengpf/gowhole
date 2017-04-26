@@ -33,8 +33,8 @@ func wrrNgx(s []*Server, weights []int, size int) {
 
 // PrintWrrNgx test ngx wrr.
 func PrintWrrNgx() {
-	weights := []int{4, 2, 1}
-	names := []string{"a", "b", "c"}
+	weights := []int{4, 2, 1, 3}
+	names := []string{"a", "b", "c", "d"}
 	size := len(weights)
 	s := initServers(names, weights, size)
 	for i := 0; i < size; i++ {
