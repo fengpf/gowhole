@@ -43,10 +43,11 @@ func Start() {
 	arith := new(Arith)
 	rpc.Register(arith)
 	rpc.HandleHTTP()
-	l, e := net.Listen("tcp", ":9001")
+	l, e := net.Listen("tcp", ":9002")
 	if e != nil {
 		log.Fatal("listen error:", e)
 	}
-	http.Serve(l, nil)
-	//go http.Serve(l, nil)
+	println("服务端开始监听...")
+	//http.Serve(l, nil)
+	go http.Serve(l, nil)
 }

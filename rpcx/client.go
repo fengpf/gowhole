@@ -9,7 +9,7 @@ import (
 // SynchronousCall 同步调用.
 func SynchronousCall() {
 	var reply int
-	client, err := rpc.DialHTTP("tcp", "127.0.0.1:9001")
+	client, err := rpc.DialHTTP("tcp", "127.0.0.1:9002")
 	if err != nil {
 		log.Fatal("dialing:", err)
 	}
@@ -23,7 +23,7 @@ func SynchronousCall() {
 
 // AsynchronousCall 异步调用.
 func AsynchronousCall() {
-	client, err := rpc.DialHTTP("tcp", "127.0.0.1:9001")
+	client, err := rpc.DialHTTP("tcp", "127.0.0.1:9002")
 	if err != nil {
 		log.Fatal("dialing:", err)
 	}
