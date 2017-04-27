@@ -1,4 +1,4 @@
-package main
+package heartbeat
 
 // golang实现带有心跳检测的tcp长连接
 // client
@@ -16,21 +16,6 @@ var Rch chan []byte
 
 // Wch write chan.
 var Wch chan []byte
-
-var (
-	// ReqREGISTER client register cid.
-	ReqREGISTER byte = 1
-	// ResREGISTER server response.
-	ResREGISTER byte = 2
-	// ReqHEARTBEAT send heartbeat req.
-	ReqHEARTBEAT byte = 3
-	// ResHEARTBEAT send heartbeat res.
-	ResHEARTBEAT byte = 4
-	// Req cs send data.
-	Req byte = 5
-	// Res cs send ack.
-	Res byte = 6
-)
 
 // ClientHandler client.
 func ClientHandler(conn *net.TCPConn) {
@@ -93,26 +78,5 @@ func ClinetWork() {
 			fmt.Println("work recv " + string(msg))
 			Wch <- []byte{Req, '#', 'x', 'x', 'x', 'x', 'x'}
 		}
-	}
-}
-
-func main() {
-	Dch = make(chan bool)
-	Rch = make(chan []byte)
-	Wch = make(chan []byte)
-	addr, err := net.ResolveTCPAddr("tcp", "127.0.0.1:6666")
-	println(addr.IP.String())
-	conn, err := net.DialTCP("tcp", nil, addr)
-	//	conn, err := net.Dial("tcp", "127.0.0.1:6666")
-	if err != nil {
-		fmt.Println("连接服务端失败:", err.Error())
-		return
-	}
-	fmt.Println("已连接服务器")
-	defer conn.Close()
-	go ClientHandler(conn)
-	select {
-	case <-Dch:
-		fmt.Println("关闭连接")
 	}
 }

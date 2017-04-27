@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gostudy/rpcx"
+	"gostudy/net/rpcx"
 )
 
 func main() {

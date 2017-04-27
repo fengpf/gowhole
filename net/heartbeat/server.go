@@ -1,4 +1,4 @@
-package main
+package heartbeat
 
 import (
 	"fmt"
@@ -171,15 +171,3 @@ func ServerWork(C *CS) {
 	*/ // 往写ch写信息
 }
 
-func main() {
-	CMap = make(map[string]*CS)
-	listen, err := net.ListenTCP("tcp", &net.TCPAddr{net.ParseIP("127.0.0.1"), 6666, ""})
-	if err != nil {
-		fmt.Println("监听端口失败:", err.Error())
-		return
-	}
-	fmt.Println("已初始化连接，等待客户端连接...")
-	go PushGRT()
-	Server(listen)
-	select {}
-}
