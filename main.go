@@ -1,29 +1,41 @@
 package main
 
 import (
-	"gostudy/rpcx"
+	"fmt"
+	"gostudy/watermark"
 	"os"
 	"os/signal"
+	"strconv"
 	"syscall"
 	"time"
 )
 
 func main() {
-	// var err error
-	// err = imgprocessing.CreateByUname("golang水印大多数都是方式")
-	// if err != nil {
+	defer timeCost(time.Now())
+	var err error
+	txt := strconv.FormatInt(222222, 10)
+	wm := watermark.NewWatermark("./img/uid_mark.png", txt, 32)
+	if wm.Draw(false) != nil {
+		fmt.Printf("%v\n", err)
+		return
+	}
+
+	// txt := "golang水印大多数"
+	// wm := watermark.NewWatermark("./img/mark.png", txt, 32)
+	// if wm.Draw(true) != nil {
 	// 	fmt.Printf("%v\n", err)
 	// 	return
 	// }
-	// err = imgprocessing.CreateByMid(27535547)
-	// if err != nil {
-	// 	fmt.Printf("%v\n", err)
-	// 	return
-	// }
+	println("create watermark success ...")
 	//imgprocessing.HTTPPrint()
 	//fmt.Printf("%s\n", "create watermark success ...")
-	rpcx.Start()
-	signalHandler()
+	//rpcx.Start()
+	//signalHandler()
+}
+
+func timeCost(start time.Time) {
+	terminal := time.Since(start)
+	fmt.Println(terminal)
 }
 
 func signalHandler() {

@@ -1,4 +1,4 @@
-package imgprocessing
+package watermark
 
 import (
 	"errors"
