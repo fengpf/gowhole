@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"gostudy/watermark"
+	"gostudy/lib/watermark"
 	"os"
 	"os/signal"
 	"strconv"

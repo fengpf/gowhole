@@ -1,0 +1,183 @@
+Wireshark过滤语句中常用的操作符
+
+关键字有：
+
+eq,== 等于
+ne,!= 不等于
+gt,> 比…大
+lt,< 比…小 ge,>= 大于等于
+le,<= 小于等于 and,|| 且 or,&& 或 not,! 取反
+
+另外还有contains和matches两个不常用的关键字，过滤效果不错。
+
+“contains”过滤包含指定字符串的数据包。例如：
+
+http.request.uri contains “/dll/test.htm?”
+//过滤http请求的uri中含有/dll/test.htm?字段的请求信息
+
+udp contains 81:60:03
+//过滤包含81:60:03的udp数据包
+
+http.request.uri matches “V4=..1″
+//matches 匹配过滤条件中给定的正则表达式，支持与Perl兼容的正则表达式（PCRE）。
+
+
+http.host==magentonotes.com
+http.host contains magentonotes.com
+//过滤经过指定域名的http数据包，这里的host值不一定是请求中的域名
+
+http.response.code==302
+//过滤http响应状态码为302的数据包
+
+http.response==1
+//过滤所有的http响应包
+
+http.request==1
+//过滤所有的http请求，貌似也可以使用http.request
+
+http.request.method==POST
+//wireshark过滤所有请求方式为POST的http请求包，注意POST为大写
+
+http.cookie contains guid
+//过滤含有指定cookie的http数据包
+
+http.request.uri==”/online/setpoint”
+//过滤请求的uri，取值是域名后的部分
+
+http.request.full_uri==” http://task.browser.360.cn/online/setpoint”
+//过滤含域名的整个url则需要使用http.request.full_uri
+
+http.server contains “nginx”
+//过滤http头中server字段含有nginx字符的数据包
+
+http.content_type == “text/html”
+//过滤content_type是text/html的http响应、post包，即根据文件类型过滤http数据包
+
+http.content_encoding == “gzip”
+//过滤content_encoding是gzip的http包
+
+http.transfer_encoding == “chunked”
+//根据transfer_encoding过滤
+
+http.content_length == 279
+http.content_length_header == “279″
+//根据content_length的数值过滤
+
+http.server
+//过滤所有含有http头中含有server字段的数据包
+
+http.request.version == “HTTP/1.1″
+//过滤HTTP/1.1版本的http包，包括请求和响应
+
+http.response.phrase == “OK”
+//过滤http响应中的phrase
+
+
+Wireshark捕获UDP数据包
+
+UDP协议分析常用过滤条件
+ip.addr==192.168.0.1 //过滤ip地址
+data.len==8 //过滤data部分长度为8的数据包
+data.data == 00:08:30:03:00:00:00:00 //过滤指定内容的数据包
+
+udp.srcport == 10092 //过滤经过本机10092端口的udp数据包
+udp.dstport == 80 //过滤目标机器10092端口的udp数据包
+udp.port==10092 //过滤本机或目标机器10092端口的数据包
+udp.length == 20 //过滤指定长度的UDP数据包
+
+UDP校验和过滤条件
+udp.checksum == 0x250f
+udp.checksum_good == 0 //Boolean类型
+udp.checksum_bad == 0
+
+进程相关的过滤条件
+
+以下过滤条件不支持Windows，因为需要特殊的驱动。
+
+udp.proc.dstcmd //过滤目标进程名
+udp.proc.dstpid //过滤目标进程PID
+udp.proc.dstuid //过滤目标进程的用户ID
+udp.proc.dstuname //过滤目标进程的用户名
+udp.proc.srccmd //过滤源进程名
+udp.proc.srcpid //过滤源进程PID
+udp.proc.srcuid //过滤源进程的用户ID
+udp.proc.srcuname //过滤源进程的用户名
+
+Wireshark中根据MAC地址/物理地址过滤数据包
+
+Wireshark捕获过滤中过滤MAC地址/物理地址
+
+ether host 00:11:22:33:44:55 //过滤目标或源地址是00:11:22:33:44:55的数据包
+
+ether dst host 00:11:22:33:44:55 //过滤目标地址是00:11:22:33:44:55的数据包
+
+ether src host 00:11:22:33:44:55 //过滤源地址是00:11:22:33:44:55的数据包
+
+Wireshark显示过滤中过滤MAC地址/物理地址
+
+eth.addr== 00:11:22:33:44:55 //过滤目标或源地址是00:11:22:33:44:55的数据包
+
+eth.src== 00:11:22:33:44:55 //过滤源地址是00:11:22:33:44:55的数据包
+
+eth.dst== 00:11:22:33:44:55 //过滤目标地址是00:11:22:33:44:55的数据包
+
+Wireshark捕获经过指定ip的数据包
+
+捕捉过滤抓包前在capture option中设置，仅捕获符合条件的包，可以避免产生较大的捕获文件和内存占用，但不能完整的复现测试时的网络环境。
+
+host 192.168.0.1 //抓取192.168.0.1 收到和发出的所有数据包
+src host 192.168.0.1 //源地址，192.168.0.1发出的所有数据包
+dst host 192.168.0.1 //目标地址，192.168.0.1收到的所有数据包
+
+src host hostname //根据主机名过滤
+
+ether host 80:05:09:03:E4:35 //根据MAC地址过滤
+
+net 192.168.0 //网络过滤，过滤整个网段
+src net 192.168
+dst net 192
+
+使用“非/且/或”建立组合过滤条件可以获得更精确的捕获
+
+非: ! or “not” (去掉双引号)
+且: && or “and”
+或: || or “or”
+
+wirershark过滤指定ip收发数据包示例：
+
+抓取所有目的地址是192.168.0.2 或192.168.0.3 端口是80 的TCP 数据
+
+(tcp port 80) and ((dst host 192.168.0.2) or (dst host
+192.168.0.3)) //捕获过滤
+
+tcp.port==80&&(ip.dst==192.168.0.2||ip.dst==192.168.0.3) //显示过滤
+
+抓取所有目标MAC 地址是80:05:09:03:E4:35 的ICMP 数据
+
+(icmp) and ((ether dst host 80:05:09:03:E4:35))
+
+icmp && eth.dst==80:05:09:03:E4:35
+
+抓取所有目的网络是192.168，但目的主机不是192.168.0.2 的TCP 数据
+
+(tcp) and ((dst net 192.168) and (not dst host 192.168.0.2))
+
+tcp&&ip.src==192.168.0.0/16&&!(ip.src==192.168.0.2)
+
+捕获主机192.168.0.1 和主机192.168.0.2 或192.168.0.3的通信
+
+host 192.168.0.1 and (192.168.0.2 or 192.168.0.3 )
+
+ip.addr==192.168.0.1&&(ip.addr==192.168.0.2||ip.addr==192.168.0.3)
+
+获取主机192.168.0.1除了和主机192.168.0.2之外所有主机通信的数据包
+
+host 192.168.0.1 and ! 192.168.0.2
+
+ip.addr==192.168.0.1&&!ip.addr==192.168.0.2
+
+获取主机192.168.0.1接收或发出的telnet包，telnet使用tcp 23端口
+
+tcp port 23 and host 192.168.0.1
+
+tcp.port==23&&ip.addr==192.168.0.1
