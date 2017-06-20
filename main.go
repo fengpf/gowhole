@@ -42,6 +42,7 @@ func main() {
 	//signalHandler()
 	ss := "   "
 	checkTitle(ss)
+	fmt.Printf("%v\n", 2*time.Second)
 }
 
 func timeCost(start time.Time) {
