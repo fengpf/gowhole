@@ -2,23 +2,33 @@ package main
 
 import (
 	"fmt"
-	"gostudy/lib/watermark"
 	"os"
 	"os/signal"
-	"strconv"
+	"regexp"
+	"strings"
 	"syscall"
 	"time"
+	"unicode/utf8"
+)
+
+var (
+	_zeroWidthReg = regexp.MustCompile(`[\x{200b}]+`)
+	_nocharReg    = []*regexp.Regexp{
+		regexp.MustCompile(`[\p{Hangul}]+`),  // kr
+		regexp.MustCompile(`[\p{Tibetan}]+`), // tibe
+		regexp.MustCompile(`[\p{Arabic}]+`),  // arabic
+	}
 )
 
 func main() {
 	defer timeCost(time.Now())
-	var err error
-	txt := strconv.FormatInt(222222, 10)
-	wm := watermark.NewWatermark("./img/uid_mark.png", txt, 32)
-	if wm.Draw(false) != nil {
-		fmt.Printf("%v\n", err)
-		return
-	}
+	// var err error
+	// txt := strconv.FormatInt(222222, 10)
+	// wm := watermark.NewWatermark("./img/uid_mark.png", txt, 32)
+	// if wm.Draw(false) != nil {
+	// 	fmt.Printf("%v\n", err)
+	// 	return
+	// }
 
 	// txt := "golang水印大多数"
 	// wm := watermark.NewWatermark("./img/mark.png", txt, 32)
@@ -26,11 +36,12 @@ func main() {
 	// 	fmt.Printf("%v\n", err)
 	// 	return
 	// }
-	println("create watermark success ...")
 	//imgprocessing.HTTPPrint()
 	//fmt.Printf("%s\n", "create watermark success ...")
 	//rpcx.Start()
 	//signalHandler()
+	ss := "   "
+	checkTitle(ss)
 }
 
 func timeCost(start time.Time) {
@@ -56,4 +67,20 @@ func signalHandler() {
 			return
 		}
 	}
+}
+
+func checkTitle(title string) (ct string, ok bool) {
+	title = strings.TrimSpace(title)
+	println(utf8.RuneCountInString(title))
+	if utf8.RuneCountInString(title) > 80 {
+		return
+	}
+	for _, reg := range _nocharReg {
+		if reg.MatchString(title) {
+			return
+		}
+	}
+	ct = _zeroWidthReg.ReplaceAllString(title, "")
+	ok = true
+	return
 }
