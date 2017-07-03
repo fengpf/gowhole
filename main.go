@@ -42,12 +42,25 @@ func main() {
 	//signalHandler()
 	ss := "   "
 	checkTitle(ss)
+	sum(1, 2)
+	sum(1, 2, 3)
+	nums := []int{1, 2, 3, 4, 5}
+	sum(nums...)
 	fmt.Printf("%v\n", 2*time.Second)
 }
 
 func timeCost(start time.Time) {
 	terminal := time.Since(start)
 	fmt.Println(terminal)
+}
+
+func sum(nums ...int) {
+	fmt.Print(nums, " ")
+	total := 0
+	for _, num := range nums {
+		total += num
+	}
+	fmt.Println(total)
 }
 
 func signalHandler() {
