@@ -40,13 +40,15 @@ func main() {
 	//fmt.Printf("%s\n", "create watermark success ...")
 	//rpcx.Start()
 	//signalHandler()
-	ss := "   "
-	checkTitle(ss)
-	sum(1, 2)
-	sum(1, 2, 3)
-	nums := []int{1, 2, 3, 4, 5}
-	sum(nums...)
-	fmt.Printf("%v\n", 2*time.Second)
+	// ss := "   "
+	// checkTitle(ss)
+	// sum(1, 2)
+	// sum(1, 2, 3)
+	// nums := []int{1, 2, 3, 4, 5}
+	// sum(nums...)
+	// fmt.Printf("%v\n", 2*time.Second)
+	testGorun()
+	testGorun1()
 }
 
 func timeCost(start time.Time) {
@@ -97,4 +99,40 @@ func checkTitle(title string) (ct string, ok bool) {
 	ct = _zeroWidthReg.ReplaceAllString(title, "")
 	ok = true
 	return
+}
+
+func testGorun() {
+	slic := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 0}
+	ch := make([]chan int, 10)
+	for i := 0; i < 10; i++ {
+		ch[i] = make(chan int)
+		go func(c []chan int, s []int, j int) {
+			fmt.Printf("input %v\n", s[j])
+			c[j] <- j
+		}(ch, slic, i)
+	}
+	for k := range ch {
+		fmt.Printf("output %v\n", <-ch[k])
+	}
+}
+
+func testGorun1() {
+	slic := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 0}
+	ch := make([]chan int, 10)
+	for i := 0; i < 10; i++ {
+		ch[i] = make(chan int)
+		go func(c []chan int, s []int, j int) {
+			fmt.Printf("input %v\n", s[j])
+			c[j] <- j
+		}(ch, slic, i)
+	}
+	m := 0
+	// 带缓冲的channel需要关闭，要不然会死锁
+	for k := range ch {
+		m++
+		fmt.Printf("output %v\n", <-ch[k])
+		// if m >= 10 {
+		// 	close(ch)
+		// }
+	}
 }
