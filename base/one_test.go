@@ -1,9 +1,7 @@
 package base
 
 import (
-	"crypto/md5"
 	"fmt"
-	"io/ioutil"
 	"testing"
 	"unsafe"
 )
