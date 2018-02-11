@@ -207,6 +207,16 @@
 			"revisionTime": "2016-08-04T10:47:26Z"
 		},
 		{
+			"checksumSHA1": "e5ZJ3JHNexZYwJNHA589byMEFBo=",
+			"path": "github.com/chanxuehong/wechat",
+			"revision": "105a3b1f6e39c305337ab374fdec8fd46c0069ec",
+			"revisionTime": "2014-05-21T10:28:30Z"
+		},
+		{
+			"path": "github.com/chanxuehong/wechat/tree/v2",
+			"revision": ""
+		},
+		{
 			"checksumSHA1": "gZSkXrkqUr2YeNM8kr21D6rTx4s=",
 			"path": "github.com/coreos/bbolt",
 			"revision": "ee30b748bcfbd74ec1d8439ae8fd4f9123a5c94e",
@@ -907,6 +917,12 @@
 			"path": "gopkg.in/appleboy/gin-status-api.v1",
 			"revision": "d41a075a5a6883245b7fdefbefd4fa4d1462e1f1",
 			"revisionTime": "2016-06-21T05:57:10Z"
+		},
+		{
+			"checksumSHA1": "2dzczKtnenotlqWCcD2CUQhg5p0=",
+			"path": "gopkg.in/chanxuehong/wechat.v2",
+			"revision": "f77f6157f681fd1c6d55a9263813ddbece83d60f",
+			"revisionTime": "2018-02-04T04:43:37Z"
 		},
 		{
 			"checksumSHA1": "+bXcif7ODrtZWpPXswZ7YANpFH0=",
