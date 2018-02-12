@@ -1,5 +1,12 @@
 package model
 
+import "fmt"
+
+const (
+	// ErrCodeOK for bad.
+	ErrCodeOK = 0
+)
+
 //AccessToken for oauth2.0.
 type AccessToken struct {
 	AccessToken  string `json:"access_token"`
@@ -8,10 +15,14 @@ type AccessToken struct {
 	ExpiresIn    int64  `json:"expires_in"`
 }
 
-//ErrorResponse for wx.
-type ErrorResponse struct {
+//Error for wx.
+type Error struct {
 	ErrCode int    `json:"errcode"`
 	ErrMsg  string `json:"errmsg"`
+}
+
+func (err *Error) Error() string {
+	return fmt.Sprintf("errcode: %d, errmsg: %s", err.ErrCode, err.ErrMsg)
 }
 
 //UserInfo for wx.

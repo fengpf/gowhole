@@ -3,7 +3,7 @@ package main
 import (
 	"net/http"
 
-	"gowhole/aframe/ginweb/model"
+	"gowhole/project/ginweb/model"
 
 	"github.com/gin-gonic/gin"
 )
