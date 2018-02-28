@@ -3,6 +3,12 @@
 	"ignore": "test",
 	"package": [
 		{
+			"checksumSHA1": "nJrp/CKnvpO+vzTfOeR8qmzRZ4c=",
+			"path": "github.com/PuerkitoBio/purell",
+			"revision": "1c4bec281e4bbc75b4f4a1bd923bdf1bd989a969",
+			"revisionTime": "2017-11-17T21:41:51Z"
+		},
+		{
 			"checksumSHA1": "sx2G1sFSFJ5+FFphlHsJK9UnRDI=",
 			"path": "github.com/apex/gateway",
 			"revision": "3794accefb9dcc4cbb7c3b2fb5b80f970d1711bb",
@@ -229,6 +235,12 @@
 			"revisionTime": "2018-01-18T18:15:22Z"
 		},
 		{
+			"checksumSHA1": "CSPbwbyzqA6sfORicn4HFtIhF/c=",
+			"path": "github.com/davecgh/go-spew/spew",
+			"revision": "8991bc29aa16c548c550c7ff78260e27b9ab7c73",
+			"revisionTime": "2018-02-21T22:46:20Z"
+		},
+		{
 			"checksumSHA1": "+TKtBzv23ywvmmqRiGEjUba4YmI=",
 			"path": "github.com/dgrijalva/jwt-go",
 			"revision": "dbeaa9332f19a944acb5736b4456cfcc02140e29",
@@ -447,6 +459,12 @@
 			"path": "github.com/mitchellh/mapstructure",
 			"revision": "a4e142e9c047c904fa2f1e144d9a84e6133024bc",
 			"revisionTime": "2018-02-03T10:28:30Z"
+		},
+		{
+			"checksumSHA1": "omplhuY7lM3oT4BFfoWh4uegLS0=",
+			"path": "github.com/opentracing/opentracing-go",
+			"revision": "3999fca714c888484b78cb78d68cd49afc9eca7d",
+			"revisionTime": "2018-02-12T00:34:21Z"
 		},
 		{
 			"checksumSHA1": "+qobk0BQiCfqdrhKeoZnwz6hFnE=",
