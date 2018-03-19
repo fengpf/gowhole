@@ -1685,7 +1685,8 @@
 		},
 		{
 			"path": "golang.org/x/time/rate",
-			"revision": ""
+			"revision": "",
+			"tree": true
 		},
 		{
 			"path": "golang.org/x/tools/godoc/vfs/mapfs",
@@ -1701,7 +1702,8 @@
 		},
 		{
 			"path": "google.golang.org/grpc",
-			"revision": ""
+			"revision": "",
+			"tree": true
 		},
 		{
 			"path": "google.golang.org/grpc/codes",
