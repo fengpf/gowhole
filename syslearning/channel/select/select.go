@@ -31,6 +31,7 @@ func createWorker(id int) chan<- int {
 	go worker(id, c)
 	return c
 }
+
 func main() {
 	var c1, c2 = gen(), gen()
 	var worker = createWorker(0)

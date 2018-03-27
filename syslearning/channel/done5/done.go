@@ -35,13 +35,13 @@ func chanDemo() {
 		workers[i] = createWorker(i, &wg)
 	}
 
-	wg.Add(20)
+	wg.Add(10)
 	for i, worker := range workers {
 		worker.in <- 'a' + i
 	}
-	for i, worker := range workers {
-		worker.in <- 'A' + i
-	}
+	// for i, worker := range workers {
+	// 	worker.in <- 'A' + i
+	// }
 	wg.Wait()
 }
 
