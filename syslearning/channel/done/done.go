@@ -34,10 +34,10 @@ func chanDemo() {
 		workers[i].in <- 'a' + i
 		<-workers[i].done
 	}
-	// for i := 0; i < 10; i++ {
-	// 	workers[i].in <- 'A' + i
-	// 	<-workers[i].done
-	// }
+	for i := 0; i < 10; i++ {
+		workers[i].in <- 'A' + i
+		<-workers[i].done
+	}
 }
 
 func main() {

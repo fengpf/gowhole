@@ -3,16 +3,474 @@
 	"ignore": "test",
 	"package": [
 		{
+			"path": "../protocol",
+			"revision": ""
+		},
+		{
+			"path": "./tcp",
+			"revision": ""
+		},
+		{
+			"path": "C",
+			"revision": ""
+		},
+		{
+			"path": "archive/tar",
+			"revision": ""
+		},
+		{
+			"path": "archive/zip",
+			"revision": ""
+		},
+		{
+			"path": "bufio",
+			"revision": ""
+		},
+		{
+			"path": "bytes",
+			"revision": ""
+		},
+		{
+			"path": "cmd/asm/internal/arch",
+			"revision": ""
+		},
+		{
+			"path": "cmd/asm/internal/asm",
+			"revision": ""
+		},
+		{
+			"path": "cmd/asm/internal/flags",
+			"revision": ""
+		},
+		{
+			"path": "cmd/asm/internal/lex",
+			"revision": ""
+		},
+		{
+			"path": "cmd/compile/internal/amd64",
+			"revision": ""
+		},
+		{
+			"path": "cmd/compile/internal/arm",
+			"revision": ""
+		},
+		{
+			"path": "cmd/compile/internal/arm64",
+			"revision": ""
+		},
+		{
+			"path": "cmd/compile/internal/gc",
+			"revision": ""
+		},
+		{
+			"path": "cmd/compile/internal/mips",
+			"revision": ""
+		},
+		{
+			"path": "cmd/compile/internal/mips64",
+			"revision": ""
+		},
+		{
+			"path": "cmd/compile/internal/ppc64",
+			"revision": ""
+		},
+		{
+			"path": "cmd/compile/internal/s390x",
+			"revision": ""
+		},
+		{
+			"path": "cmd/compile/internal/ssa",
+			"revision": ""
+		},
+		{
+			"path": "cmd/compile/internal/syntax",
+			"revision": ""
+		},
+		{
+			"path": "cmd/compile/internal/x86",
+			"revision": ""
+		},
+		{
+			"path": "cmd/go",
+			"revision": ""
+		},
+		{
+			"path": "cmd/internal/bio",
+			"revision": ""
+		},
+		{
+			"path": "cmd/internal/browser",
+			"revision": ""
+		},
+		{
+			"path": "cmd/internal/dwarf",
+			"revision": ""
+		},
+		{
+			"path": "cmd/internal/gcprog",
+			"revision": ""
+		},
+		{
+			"path": "cmd/internal/goobj",
+			"revision": ""
+		},
+		{
+			"path": "cmd/internal/obj",
+			"revision": ""
+		},
+		{
+			"path": "cmd/internal/obj/arm",
+			"revision": ""
+		},
+		{
+			"path": "cmd/internal/obj/arm64",
+			"revision": ""
+		},
+		{
+			"path": "cmd/internal/obj/mips",
+			"revision": ""
+		},
+		{
+			"path": "cmd/internal/obj/ppc64",
+			"revision": ""
+		},
+		{
+			"path": "cmd/internal/obj/s390x",
+			"revision": ""
+		},
+		{
+			"path": "cmd/internal/obj/x86",
+			"revision": ""
+		},
+		{
+			"path": "cmd/internal/objfile",
+			"revision": ""
+		},
+		{
+			"path": "cmd/internal/sys",
+			"revision": ""
+		},
+		{
+			"path": "cmd/link/internal/amd64",
+			"revision": ""
+		},
+		{
+			"path": "cmd/link/internal/arm",
+			"revision": ""
+		},
+		{
+			"path": "cmd/link/internal/arm64",
+			"revision": ""
+		},
+		{
+			"path": "cmd/link/internal/ld",
+			"revision": ""
+		},
+		{
+			"path": "cmd/link/internal/mips",
+			"revision": ""
+		},
+		{
+			"path": "cmd/link/internal/mips64",
+			"revision": ""
+		},
+		{
+			"path": "cmd/link/internal/ppc64",
+			"revision": ""
+		},
+		{
+			"path": "cmd/link/internal/s390x",
+			"revision": ""
+		},
+		{
+			"path": "cmd/link/internal/x86",
+			"revision": ""
+		},
+		{
+			"path": "cmd/pprof/internal/commands",
+			"revision": ""
+		},
+		{
+			"path": "cmd/pprof/internal/driver",
+			"revision": ""
+		},
+		{
+			"path": "cmd/pprof/internal/fetch",
+			"revision": ""
+		},
+		{
+			"path": "cmd/pprof/internal/plugin",
+			"revision": ""
+		},
+		{
+			"path": "cmd/pprof/internal/report",
+			"revision": ""
+		},
+		{
+			"path": "cmd/pprof/internal/svg",
+			"revision": ""
+		},
+		{
+			"path": "cmd/pprof/internal/symbolizer",
+			"revision": ""
+		},
+		{
+			"path": "cmd/pprof/internal/symbolz",
+			"revision": ""
+		},
+		{
+			"path": "cmd/pprof/internal/tempfile",
+			"revision": ""
+		},
+		{
+			"path": "cmd/vet/internal/cfg",
+			"revision": ""
+		},
+		{
+			"path": "cmd/vet/internal/whitelist",
+			"revision": ""
+		},
+		{
+			"path": "compress/bzip2",
+			"revision": ""
+		},
+		{
+			"path": "compress/flate",
+			"revision": ""
+		},
+		{
+			"path": "compress/gzip",
+			"revision": ""
+		},
+		{
+			"path": "compress/lzw",
+			"revision": ""
+		},
+		{
+			"path": "compress/zlib",
+			"revision": ""
+		},
+		{
+			"path": "container/heap",
+			"revision": ""
+		},
+		{
+			"path": "container/list",
+			"revision": ""
+		},
+		{
+			"path": "container/ring",
+			"revision": ""
+		},
+		{
+			"path": "context",
+			"revision": ""
+		},
+		{
+			"path": "crypto",
+			"revision": ""
+		},
+		{
+			"path": "crypto/aes",
+			"revision": ""
+		},
+		{
+			"path": "crypto/cipher",
+			"revision": ""
+		},
+		{
+			"path": "crypto/des",
+			"revision": ""
+		},
+		{
+			"path": "crypto/dsa",
+			"revision": ""
+		},
+		{
+			"path": "crypto/ecdsa",
+			"revision": ""
+		},
+		{
+			"path": "crypto/elliptic",
+			"revision": ""
+		},
+		{
+			"path": "crypto/hmac",
+			"revision": ""
+		},
+		{
+			"path": "crypto/internal/cipherhw",
+			"revision": ""
+		},
+		{
+			"path": "crypto/md5",
+			"revision": ""
+		},
+		{
+			"path": "crypto/rand",
+			"revision": ""
+		},
+		{
+			"path": "crypto/rc4",
+			"revision": ""
+		},
+		{
+			"path": "crypto/rsa",
+			"revision": ""
+		},
+		{
+			"path": "crypto/sha1",
+			"revision": ""
+		},
+		{
+			"path": "crypto/sha256",
+			"revision": ""
+		},
+		{
+			"path": "crypto/sha512",
+			"revision": ""
+		},
+		{
+			"path": "crypto/subtle",
+			"revision": ""
+		},
+		{
+			"path": "crypto/tls",
+			"revision": ""
+		},
+		{
+			"path": "crypto/x509",
+			"revision": ""
+		},
+		{
+			"path": "crypto/x509/pkix",
+			"revision": ""
+		},
+		{
+			"path": "database/sql",
+			"revision": ""
+		},
+		{
+			"path": "database/sql/driver",
+			"revision": ""
+		},
+		{
+			"path": "debug/dwarf",
+			"revision": ""
+		},
+		{
+			"path": "debug/elf",
+			"revision": ""
+		},
+		{
+			"path": "debug/gosym",
+			"revision": ""
+		},
+		{
+			"path": "debug/macho",
+			"revision": ""
+		},
+		{
+			"path": "debug/pe",
+			"revision": ""
+		},
+		{
+			"path": "debug/plan9obj",
+			"revision": ""
+		},
+		{
+			"path": "encoding",
+			"revision": ""
+		},
+		{
+			"path": "encoding/asn1",
+			"revision": ""
+		},
+		{
+			"path": "encoding/base32",
+			"revision": ""
+		},
+		{
+			"path": "encoding/base64",
+			"revision": ""
+		},
+		{
+			"path": "encoding/binary",
+			"revision": ""
+		},
+		{
+			"path": "encoding/csv",
+			"revision": ""
+		},
+		{
+			"path": "encoding/gob",
+			"revision": ""
+		},
+		{
+			"path": "encoding/hex",
+			"revision": ""
+		},
+		{
+			"path": "encoding/json",
+			"revision": ""
+		},
+		{
+			"path": "encoding/pem",
+			"revision": ""
+		},
+		{
+			"path": "encoding/xml",
+			"revision": ""
+		},
+		{
+			"path": "errors",
+			"revision": ""
+		},
+		{
+			"path": "expvar",
+			"revision": ""
+		},
+		{
+			"path": "flag",
+			"revision": ""
+		},
+		{
+			"path": "fmt",
+			"revision": ""
+		},
+		{
+			"path": "github.com/AndreasBriese/bbloom",
+			"revision": ""
+		},
+		{
+			"path": "github.com/BurntSushi/toml",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "uvutHOxcwOHqLNLbHcTz5cI3fEA=",
+			"path": "github.com/PuerkitoBio/goquery",
+			"revision": "ea1bc64a63088ac2bbf1a2edcae38413794a7710",
+			"revisionTime": "2018-03-24T16:22:12Z"
+		},
+		{
 			"checksumSHA1": "nJrp/CKnvpO+vzTfOeR8qmzRZ4c=",
 			"path": "github.com/PuerkitoBio/purell",
 			"revision": "1c4bec281e4bbc75b4f4a1bd923bdf1bd989a969",
 			"revisionTime": "2017-11-17T21:41:51Z"
 		},
 		{
+			"path": "github.com/PuerkitoBio/urlesc",
+			"revision": ""
+		},
+		{
 			"checksumSHA1": "KmJ+GiuioSqHeVFfw92ikv+1NsM=",
 			"path": "github.com/Shopify/sarama",
 			"revision": "eae91468c24263f06ae73dce45eb26252c73b1d6",
 			"revisionTime": "2018-02-26T14:32:53Z"
+		},
+		{
+			"path": "github.com/StackExchange/wmi",
+			"revision": ""
 		},
 		{
 			"checksumSHA1": "dE1TAdRkHqFphHxTyhU8QqZwlYM=",
@@ -37,6 +495,16 @@
 			"path": "github.com/afex/hystrix-go/hystrix/rolling",
 			"revision": "27fae8d30f1a3cbcab6618d2ee55a4cb43064376",
 			"revisionTime": "2018-02-09T01:38:31Z"
+		},
+		{
+			"checksumSHA1": "Q/2QpI7E35SsNYfaxLsWHFry9k4=",
+			"path": "github.com/andybalholm/cascadia",
+			"revision": "901648c87902174f774fac311d7f176f8647bdaa",
+			"revisionTime": "2018-02-20T18:43:36Z"
+		},
+		{
+			"path": "github.com/apache/thrift/lib/go/thrift",
+			"revision": ""
 		},
 		{
 			"checksumSHA1": "sx2G1sFSFJ5+FFphlHsJK9UnRDI=",
@@ -201,6 +669,10 @@
 			"revisionTime": "2017-05-02T04:47:15Z"
 		},
 		{
+			"path": "github.com/astaxie/beego/swagger",
+			"revision": ""
+		},
+		{
 			"checksumSHA1": "EOoY9qbCsWnu5FlZZnMKUKkLcMk=",
 			"path": "github.com/astaxie/beego/toolbox",
 			"revision": "83814a76cc77279d5d979780e82f4464b33677c3",
@@ -339,10 +811,34 @@
 			"revisionTime": "2018-03-06T21:13:19Z"
 		},
 		{
+			"path": "github.com/aws/aws-sdk-go/aws/corehandlers",
+			"revision": ""
+		},
+		{
 			"checksumSHA1": "Y+cPwQL0dZMyqp3wI+KJWmA9KQ8=",
 			"path": "github.com/aws/aws-sdk-go/aws/credentials",
 			"revision": "628f99e2cda77dd323992ede8b05961b41f4352f",
 			"revisionTime": "2018-03-06T21:13:19Z"
+		},
+		{
+			"path": "github.com/aws/aws-sdk-go/aws/credentials/ec2rolecreds",
+			"revision": ""
+		},
+		{
+			"path": "github.com/aws/aws-sdk-go/aws/credentials/endpointcreds",
+			"revision": ""
+		},
+		{
+			"path": "github.com/aws/aws-sdk-go/aws/credentials/stscreds",
+			"revision": ""
+		},
+		{
+			"path": "github.com/aws/aws-sdk-go/aws/defaults",
+			"revision": ""
+		},
+		{
+			"path": "github.com/aws/aws-sdk-go/aws/ec2metadata",
+			"revision": ""
 		},
 		{
 			"checksumSHA1": "5qQbk5I9+OAYNsVxlTrgeBpRP50=",
@@ -355,6 +851,10 @@
 			"path": "github.com/aws/aws-sdk-go/aws/request",
 			"revision": "628f99e2cda77dd323992ede8b05961b41f4352f",
 			"revisionTime": "2018-03-06T21:13:19Z"
+		},
+		{
+			"path": "github.com/aws/aws-sdk-go/aws/session",
+			"revision": ""
 		},
 		{
 			"checksumSHA1": "4gwCpxPnVQISJGF/skyWpzzxFAc=",
@@ -379,6 +879,14 @@
 			"path": "github.com/aws/aws-sdk-go/private/protocol",
 			"revision": "628f99e2cda77dd323992ede8b05961b41f4352f",
 			"revisionTime": "2018-03-06T21:13:19Z"
+		},
+		{
+			"path": "github.com/aws/aws-sdk-go/private/protocol/json/jsonutil",
+			"revision": ""
+		},
+		{
+			"path": "github.com/aws/aws-sdk-go/private/protocol/jsonrpc",
+			"revision": ""
 		},
 		{
 			"checksumSHA1": "ZqY5RWavBLWTo6j9xqdyBEaNFRk=",
@@ -417,10 +925,102 @@
 			"revisionTime": "2018-03-06T21:13:19Z"
 		},
 		{
+			"path": "github.com/aws/aws-sdk-go/service/dynamodb",
+			"revision": ""
+		},
+		{
+			"path": "github.com/aws/aws-sdk-go/service/sts",
+			"revision": ""
+		},
+		{
 			"checksumSHA1": "uQ45zJk9KjLPXDV71EVUbRog6sE=",
 			"path": "github.com/beego/bee",
 			"revision": "1a79d6dcca0cfa714895f86f62ed9061e55e4914",
 			"revisionTime": "2017-04-24T14:00:49Z"
+		},
+		{
+			"path": "github.com/beego/bee/cmd",
+			"revision": ""
+		},
+		{
+			"path": "github.com/beego/bee/cmd/commands",
+			"revision": ""
+		},
+		{
+			"path": "github.com/beego/bee/cmd/commands/api",
+			"revision": ""
+		},
+		{
+			"path": "github.com/beego/bee/cmd/commands/bale",
+			"revision": ""
+		},
+		{
+			"path": "github.com/beego/bee/cmd/commands/beefix",
+			"revision": ""
+		},
+		{
+			"path": "github.com/beego/bee/cmd/commands/dlv",
+			"revision": ""
+		},
+		{
+			"path": "github.com/beego/bee/cmd/commands/dockerize",
+			"revision": ""
+		},
+		{
+			"path": "github.com/beego/bee/cmd/commands/generate",
+			"revision": ""
+		},
+		{
+			"path": "github.com/beego/bee/cmd/commands/hprose",
+			"revision": ""
+		},
+		{
+			"path": "github.com/beego/bee/cmd/commands/migrate",
+			"revision": ""
+		},
+		{
+			"path": "github.com/beego/bee/cmd/commands/new",
+			"revision": ""
+		},
+		{
+			"path": "github.com/beego/bee/cmd/commands/pack",
+			"revision": ""
+		},
+		{
+			"path": "github.com/beego/bee/cmd/commands/rs",
+			"revision": ""
+		},
+		{
+			"path": "github.com/beego/bee/cmd/commands/run",
+			"revision": ""
+		},
+		{
+			"path": "github.com/beego/bee/cmd/commands/version",
+			"revision": ""
+		},
+		{
+			"path": "github.com/beego/bee/config",
+			"revision": ""
+		},
+		{
+			"path": "github.com/beego/bee/generate",
+			"revision": ""
+		},
+		{
+			"path": "github.com/beego/bee/generate/swaggergen",
+			"revision": ""
+		},
+		{
+			"path": "github.com/beego/bee/logger",
+			"revision": ""
+		},
+		{
+			"path": "github.com/beego/bee/logger/colors",
+			"revision": ""
+		},
+		{
+			"path": "github.com/beego/bee/utils",
+			"revision": ""
 		},
 		{
 			"checksumSHA1": "spyv5/YFBjYyZLZa1U2LBfDR8PM=",
@@ -429,10 +1029,154 @@
 			"revisionTime": "2016-08-04T10:47:26Z"
 		},
 		{
+			"path": "github.com/boltdb/bolt",
+			"revision": ""
+		},
+		{
 			"checksumSHA1": "fvVoeETRxg13N2GlxydO+5slZdM=",
 			"path": "github.com/bradfitz/gomemcache/memcache",
 			"revision": "1952afaa557dc08e8e0d89eafab110fb501c1a2b",
 			"revisionTime": "2017-02-08T21:30:04Z"
+		},
+		{
+			"path": "github.com/caicloud/nirvana",
+			"revision": ""
+		},
+		{
+			"path": "github.com/caicloud/nirvana/cmd/openapi-gen",
+			"revision": ""
+		},
+		{
+			"path": "github.com/caicloud/nirvana/cmd/openapi-gen/builder",
+			"revision": ""
+		},
+		{
+			"path": "github.com/caicloud/nirvana/cmd/openapi-gen/generators",
+			"revision": ""
+		},
+		{
+			"path": "github.com/caicloud/nirvana/config",
+			"revision": ""
+		},
+		{
+			"path": "github.com/caicloud/nirvana/definition",
+			"revision": ""
+		},
+		{
+			"path": "github.com/caicloud/nirvana/errors",
+			"revision": ""
+		},
+		{
+			"path": "github.com/caicloud/nirvana/examples/api-basic",
+			"revision": ""
+		},
+		{
+			"path": "github.com/caicloud/nirvana/examples/api-basic/api/v1",
+			"revision": ""
+		},
+		{
+			"path": "github.com/caicloud/nirvana/examples/api-basic/api/v1/converters",
+			"revision": ""
+		},
+		{
+			"path": "github.com/caicloud/nirvana/examples/api-basic/api/v2",
+			"revision": ""
+		},
+		{
+			"path": "github.com/caicloud/nirvana/examples/api-basic/application",
+			"revision": ""
+		},
+		{
+			"path": "github.com/caicloud/nirvana/examples/getting-started/basics",
+			"revision": ""
+		},
+		{
+			"path": "github.com/caicloud/nirvana/examples/getting-started/metrics",
+			"revision": ""
+		},
+		{
+			"path": "github.com/caicloud/nirvana/examples/getting-started/openapi",
+			"revision": ""
+		},
+		{
+			"path": "github.com/caicloud/nirvana/examples/getting-started/openapi/pkg/api",
+			"revision": ""
+		},
+		{
+			"path": "github.com/caicloud/nirvana/examples/getting-started/validator",
+			"revision": ""
+		},
+		{
+			"path": "github.com/caicloud/nirvana/examples/instrumentation",
+			"revision": ""
+		},
+		{
+			"path": "github.com/caicloud/nirvana/examples/openapi",
+			"revision": ""
+		},
+		{
+			"path": "github.com/caicloud/nirvana/examples/openapi/api",
+			"revision": ""
+		},
+		{
+			"path": "github.com/caicloud/nirvana/examples/openapi/pkg/api/v1",
+			"revision": ""
+		},
+		{
+			"path": "github.com/caicloud/nirvana/examples/stream",
+			"revision": ""
+		},
+		{
+			"path": "github.com/caicloud/nirvana/examples/stream/api/v1",
+			"revision": ""
+		},
+		{
+			"path": "github.com/caicloud/nirvana/examples/stream/stream",
+			"revision": ""
+		},
+		{
+			"path": "github.com/caicloud/nirvana/examples/tracing",
+			"revision": ""
+		},
+		{
+			"path": "github.com/caicloud/nirvana/hack/license",
+			"revision": ""
+		},
+		{
+			"path": "github.com/caicloud/nirvana/log",
+			"revision": ""
+		},
+		{
+			"path": "github.com/caicloud/nirvana/operators/converter",
+			"revision": ""
+		},
+		{
+			"path": "github.com/caicloud/nirvana/operators/validator",
+			"revision": ""
+		},
+		{
+			"path": "github.com/caicloud/nirvana/plugins/metrics",
+			"revision": ""
+		},
+		{
+			"path": "github.com/caicloud/nirvana/plugins/profiling",
+			"revision": ""
+		},
+		{
+			"path": "github.com/caicloud/nirvana/plugins/tracing",
+			"revision": ""
+		},
+		{
+			"path": "github.com/caicloud/nirvana/service",
+			"revision": ""
+		},
+		{
+			"path": "github.com/caicloud/nirvana/service/router",
+			"revision": ""
+		},
+		{
+			"path": "github.com/caicloud/nirvana/utils/openapi/common",
+			"revision": ""
 		},
 		{
 			"checksumSHA1": "Zlk5zPiw+3u9pyy4kNThpKDaYmE=",
@@ -455,6 +1199,22 @@
 			"path": "github.com/clbanning/x2j",
 			"revision": "140ca6c98b7972aa3794a97d31bdb763ec66be70",
 			"revisionTime": "2018-01-25T17:50:00Z"
+		},
+		{
+			"path": "github.com/codahale/hdrhistogram",
+			"revision": ""
+		},
+		{
+			"path": "github.com/codeskyblue/gosuv/gops",
+			"revision": ""
+		},
+		{
+			"path": "github.com/codeskyblue/gosuv/pushover",
+			"revision": ""
+		},
+		{
+			"path": "github.com/codeskyblue/kexec",
+			"revision": ""
 		},
 		{
 			"checksumSHA1": "gZSkXrkqUr2YeNM8kr21D6rTx4s=",
@@ -565,10 +1325,54 @@
 			"revisionTime": "2018-02-21T22:46:20Z"
 		},
 		{
+			"path": "github.com/derekparker/delve/service",
+			"revision": ""
+		},
+		{
+			"path": "github.com/derekparker/delve/service/rpc2",
+			"revision": ""
+		},
+		{
+			"path": "github.com/derekparker/delve/service/rpccommon",
+			"revision": ""
+		},
+		{
+			"path": "github.com/derekparker/delve/terminal",
+			"revision": ""
+		},
+		{
+			"path": "github.com/dgraph-io/badger",
+			"revision": ""
+		},
+		{
+			"path": "github.com/dgraph-io/badger/options",
+			"revision": ""
+		},
+		{
+			"path": "github.com/dgraph-io/badger/protos",
+			"revision": ""
+		},
+		{
+			"path": "github.com/dgraph-io/badger/skl",
+			"revision": ""
+		},
+		{
+			"path": "github.com/dgraph-io/badger/table",
+			"revision": ""
+		},
+		{
+			"path": "github.com/dgraph-io/badger/y",
+			"revision": ""
+		},
+		{
 			"checksumSHA1": "+TKtBzv23ywvmmqRiGEjUba4YmI=",
 			"path": "github.com/dgrijalva/jwt-go",
 			"revision": "dbeaa9332f19a944acb5736b4456cfcc02140e29",
 			"revisionTime": "2017-10-19T21:57:19Z"
+		},
+		{
+			"path": "github.com/dgryski/go-farm",
+			"revision": ""
 		},
 		{
 			"checksumSHA1": "0IloQncJWv4xBNT8+nDKpvOZFJM=",
@@ -605,6 +1409,30 @@
 			"path": "github.com/edsrzf/mmap-go",
 			"revision": "0bce6a6887123b67a60366d2c9fe2dfb74289d2e",
 			"revisionTime": "2017-03-18T15:58:57Z"
+		},
+		{
+			"path": "github.com/equinox-io/equinox",
+			"revision": ""
+		},
+		{
+			"path": "github.com/equinox-io/equinox/internal/go-update",
+			"revision": ""
+		},
+		{
+			"path": "github.com/equinox-io/equinox/internal/go-update/internal/binarydist",
+			"revision": ""
+		},
+		{
+			"path": "github.com/equinox-io/equinox/internal/go-update/internal/osext",
+			"revision": ""
+		},
+		{
+			"path": "github.com/equinox-io/equinox/internal/osext",
+			"revision": ""
+		},
+		{
+			"path": "github.com/equinox-io/equinox/proto",
+			"revision": ""
 		},
 		{
 			"checksumSHA1": "imR2wF388/0fBU6RRWx8RvTi8Q8=",
@@ -691,9 +1519,65 @@
 			"versionExact": "v1.2"
 		},
 		{
+			"path": "github.com/glycerine/rbuf",
+			"revision": ""
+		},
+		{
+			"path": "github.com/go-ego/cedar",
+			"revision": ""
+		},
+		{
+			"path": "github.com/go-ego/gpy",
+			"revision": ""
+		},
+		{
+			"path": "github.com/go-ego/gse",
+			"revision": ""
+		},
+		{
+			"path": "github.com/go-ego/murmur",
+			"revision": ""
+		},
+		{
 			"path": "github.com/go-ego/riot",
 			"revision": "v0.10.",
 			"version": "v0.10.0"
+		},
+		{
+			"path": "github.com/go-ego/riot/core",
+			"revision": ""
+		},
+		{
+			"path": "github.com/go-ego/riot/net/com",
+			"revision": ""
+		},
+		{
+			"path": "github.com/go-ego/riot/net/grpc",
+			"revision": ""
+		},
+		{
+			"path": "github.com/go-ego/riot/net/grpc/riot-pb",
+			"revision": ""
+		},
+		{
+			"path": "github.com/go-ego/riot/net/heartb",
+			"revision": ""
+		},
+		{
+			"path": "github.com/go-ego/riot/net/http",
+			"revision": ""
+		},
+		{
+			"path": "github.com/go-ego/riot/storage",
+			"revision": ""
+		},
+		{
+			"path": "github.com/go-ego/riot/types",
+			"revision": ""
+		},
+		{
+			"path": "github.com/go-ego/riot/utils",
+			"revision": ""
 		},
 		{
 			"checksumSHA1": "f1tA0EjNNrmNOwlzGr2l9zvSVqs=",
@@ -715,10 +1599,70 @@
 			"revisionTime": "2016-11-15T14:25:13Z"
 		},
 		{
+			"path": "github.com/go-ole/go-ole",
+			"revision": ""
+		},
+		{
+			"path": "github.com/go-ole/go-ole/oleutil",
+			"revision": ""
+		},
+		{
+			"path": "github.com/go-openapi/jsonpointer",
+			"revision": ""
+		},
+		{
+			"path": "github.com/go-openapi/jsonreference",
+			"revision": ""
+		},
+		{
+			"path": "github.com/go-openapi/spec",
+			"revision": ""
+		},
+		{
+			"path": "github.com/go-openapi/swag",
+			"revision": ""
+		},
+		{
+			"path": "github.com/go-playground/locales",
+			"revision": ""
+		},
+		{
+			"path": "github.com/go-playground/locales/cu",
+			"revision": ""
+		},
+		{
+			"path": "github.com/go-playground/locales/currency",
+			"revision": ""
+		},
+		{
+			"path": "github.com/go-playground/universal-translator",
+			"revision": ""
+		},
+		{
+			"path": "github.com/go-sql-driver/mysql",
+			"revision": ""
+		},
+		{
 			"checksumSHA1": "luu+ud4XYZhlCoNnSAwCJlbh0Bg=",
 			"path": "github.com/go-stack/stack",
 			"revision": "259ab82a6cad3992b4e21ff5cac294ccb06474bc",
 			"revisionTime": "2017-11-12T03:14:02Z"
+		},
+		{
+			"path": "github.com/go-vgo/grpclb",
+			"revision": ""
+		},
+		{
+			"path": "github.com/go-vgo/gt/conf",
+			"revision": ""
+		},
+		{
+			"path": "github.com/go-vgo/gt/zlog",
+			"revision": ""
+		},
+		{
+			"path": "github.com/go-yaml/yaml",
+			"revision": ""
 		},
 		{
 			"checksumSHA1": "FhLvgtYfuKY0ow9wtLJRoeg7d6w=",
@@ -745,6 +1689,10 @@
 			"revisionTime": "2018-02-23T15:10:32Z"
 		},
 		{
+			"path": "github.com/goji/httpauth",
+			"revision": ""
+		},
+		{
 			"checksumSHA1": "w01kP96jx5UAf+uWB8m0w8Xghas=",
 			"path": "github.com/golang/freetype",
 			"revision": "b12e98108289d6367ecd1a819deee597b2c3fa57",
@@ -761,6 +1709,10 @@
 			"path": "github.com/golang/freetype/truetype",
 			"revision": "b12e98108289d6367ecd1a819deee597b2c3fa57",
 			"revisionTime": "2017-04-20T01:23:31Z"
+		},
+		{
+			"path": "github.com/golang/glog",
+			"revision": ""
 		},
 		{
 			"checksumSHA1": "WX1+2gktHcBmE9MGwFSGs7oqexU=",
@@ -781,6 +1733,10 @@
 			"revisionTime": "2017-02-15T23:32:05Z"
 		},
 		{
+			"path": "github.com/gopherjs/gopherjs/js",
+			"revision": ""
+		},
+		{
 			"checksumSHA1": "g/V4qrXjUGG9B+e3hB+4NAYJ5Gs=",
 			"path": "github.com/gorilla/context",
 			"revision": "08b5f424b9271eedf6f9f0ce86cb9396ed337a42",
@@ -791,6 +1747,10 @@
 			"path": "github.com/gorilla/mux",
 			"revision": "07ba1fd60e210dc5cc6f86ec25dc9ecc7c95c295",
 			"revisionTime": "2018-02-26T05:11:51Z"
+		},
+		{
+			"path": "github.com/gorilla/websocket",
+			"revision": ""
 		},
 		{
 			"checksumSHA1": "7P9hM+xfEMa8xtIzIxhDgYhlgpM=",
@@ -925,15 +1885,27 @@
 			"revisionTime": "2018-02-06T20:15:40Z"
 		},
 		{
+			"path": "github.com/jtolds/gls",
+			"revision": ""
+		},
+		{
 			"path": "github.com/kataras/iris",
 			"revision": "v10.0.2",
 			"version": "v10.0.2"
+		},
+		{
+			"path": "github.com/kennygrant/sanitize",
+			"revision": ""
 		},
 		{
 			"checksumSHA1": "abKzFXAn0KDr5U+JON1ZgJ2lUtU=",
 			"path": "github.com/kr/logfmt",
 			"revision": "b84e30acd515aadc4b783ad4ff83aff3299bdfe0",
 			"revisionTime": "2014-02-26T03:06:59Z"
+		},
+		{
+			"path": "github.com/lib/pq",
+			"revision": ""
 		},
 		{
 			"checksumSHA1": "SNmbOt4W8r1AvdWjzIfuWbT0hsQ=",
@@ -966,10 +1938,33 @@
 			"revisionTime": "2018-02-13T20:06:01Z"
 		},
 		{
+			"checksumSHA1": "z8y7kitR0a7pdUlIyKLLFyB53ZE=",
+			"path": "github.com/lxmgo/learngo",
+			"revision": "aa32c274d938d7450966343d46b60d91bd76e937",
+			"revisionTime": "2016-02-03T01:33:37Z",
+			"tree": true
+		},
+		{
 			"checksumSHA1": "8ae1DyNE/yY9NvY3PmvtQdLBJnc=",
 			"path": "github.com/magiconair/properties",
 			"revision": "49d762b9817ba1c2e9d0c69183c2b4a8b8f1d934",
 			"revisionTime": "2017-10-31T21:05:36Z"
+		},
+		{
+			"path": "github.com/mailru/easyjson",
+			"revision": ""
+		},
+		{
+			"path": "github.com/mailru/easyjson/buffer",
+			"revision": ""
+		},
+		{
+			"path": "github.com/mailru/easyjson/jlexer",
+			"revision": ""
+		},
+		{
+			"path": "github.com/mailru/easyjson/jwriter",
+			"revision": ""
 		},
 		{
 			"checksumSHA1": "w5RcOnfv5YDr3j2bd1YydkPiZx4=",
@@ -996,10 +1991,21 @@
 			"revisionTime": "2016-12-03T19:45:07Z"
 		},
 		{
+			"path": "github.com/mitchellh/go-ps",
+			"revision": ""
+		},
+		{
 			"checksumSHA1": "FpgODaspeA2JtrcagXl9JRY/i88=",
 			"path": "github.com/mitchellh/mapstructure",
 			"revision": "a4e142e9c047c904fa2f1e144d9a84e6133024bc",
 			"revisionTime": "2018-02-03T10:28:30Z"
+		},
+		{
+			"checksumSHA1": "SJEVLZSpEilxo0Ev7yr7dfiAMQ0=",
+			"path": "github.com/moyuanz/hahajing",
+			"revision": "e17d9d5b10f979ce66046f877bc9a78aa1e2393a",
+			"revisionTime": "2018-03-25T02:56:50Z",
+			"tree": true
 		},
 		{
 			"checksumSHA1": "gelmnLYIJJZcB9BHbNaYpXy5JMM=",
@@ -1042,6 +2048,14 @@
 			"path": "github.com/opentracing/opentracing-go",
 			"revision": "3999fca714c888484b78cb78d68cd49afc9eca7d",
 			"revisionTime": "2018-02-12T00:34:21Z"
+		},
+		{
+			"path": "github.com/opentracing/opentracing-go/ext",
+			"revision": ""
+		},
+		{
+			"path": "github.com/opentracing/opentracing-go/log",
+			"revision": ""
 		},
 		{
 			"checksumSHA1": "0aB6XG2HLMBK571TjMBlk6hfUb8=",
@@ -1122,6 +2136,10 @@
 			"revisionTime": "2018-01-27T01:58:12Z"
 		},
 		{
+			"path": "github.com/pmezard/go-difflib/difflib",
+			"revision": ""
+		},
+		{
 			"checksumSHA1": "Ajt29IHVbX99PUvzn8Gc/lMCXBY=",
 			"path": "github.com/prometheus/client_golang/prometheus",
 			"revision": "9bb6ab929dcbe1c8393cd9ef70387cb69811bd1c",
@@ -1182,6 +2200,10 @@
 			"revisionTime": "2018-01-25T13:30:57Z"
 		},
 		{
+			"path": "github.com/qiniu/log",
+			"revision": ""
+		},
+		{
 			"checksumSHA1": "oY/QEEFSa+kRKlgeIIAhCOYbnrE=",
 			"path": "github.com/rcrowley/go-metrics",
 			"revision": "8732c616f52954686704c8645fe1a9d59e9df7c1",
@@ -1192,6 +2214,22 @@
 			"path": "github.com/samuel/go-zookeeper/zk",
 			"revision": "c4fab1ac1bec58281ad0667dc3f0907a9476ac47",
 			"revisionTime": "2018-01-30T19:37:22Z"
+		},
+		{
+			"path": "github.com/shirou/gopsutil/internal/common",
+			"revision": ""
+		},
+		{
+			"path": "github.com/shirou/gopsutil/mem",
+			"revision": ""
+		},
+		{
+			"path": "github.com/shurcooL/httpfs/vfsutil",
+			"revision": ""
+		},
+		{
+			"path": "github.com/shurcooL/vfsgen",
+			"revision": ""
 		},
 		{
 			"checksumSHA1": "DL5vX9aOefzIAxMDdaQBtgRdR0Y=",
@@ -1296,6 +2334,30 @@
 			"revisionTime": "2018-01-29T18:18:52Z"
 		},
 		{
+			"path": "github.com/smartystreets/assertions",
+			"revision": ""
+		},
+		{
+			"path": "github.com/smartystreets/assertions/internal/go-render/render",
+			"revision": ""
+		},
+		{
+			"path": "github.com/smartystreets/assertions/internal/oglematchers",
+			"revision": ""
+		},
+		{
+			"path": "github.com/smartystreets/goconvey/convey",
+			"revision": ""
+		},
+		{
+			"path": "github.com/smartystreets/goconvey/convey/gotest",
+			"revision": ""
+		},
+		{
+			"path": "github.com/smartystreets/goconvey/convey/reporting",
+			"revision": ""
+		},
+		{
 			"checksumSHA1": "6HQLUzskMvCLHDJ0msFjZ8IDqqI=",
 			"path": "github.com/sony/gobreaker",
 			"revision": "3cb67c77c1d1e72fda30c6970578164d24f806b6",
@@ -1348,6 +2410,22 @@
 			"path": "github.com/streadway/handy/breaker",
 			"revision": "f450267a206e480d863d2a92846a40f6e2896b2a",
 			"revisionTime": "2016-04-02T20:03:21Z"
+		},
+		{
+			"path": "github.com/stretchr/testify",
+			"revision": ""
+		},
+		{
+			"path": "github.com/stretchr/testify/assert",
+			"revision": ""
+		},
+		{
+			"path": "github.com/stretchr/testify/http",
+			"revision": ""
+		},
+		{
+			"path": "github.com/stretchr/testify/mock",
+			"revision": ""
 		},
 		{
 			"checksumSHA1": "rpu5ZHjXlV13UKA7L1d5MTOyQwA=",
@@ -1476,10 +2554,70 @@
 			"revisionTime": "2017-05-01T20:16:32Z"
 		},
 		{
+			"path": "github.com/uber/jaeger-client-go",
+			"revision": ""
+		},
+		{
+			"path": "github.com/uber/jaeger-client-go/config",
+			"revision": ""
+		},
+		{
+			"path": "github.com/uber/jaeger-client-go/internal/baggage",
+			"revision": ""
+		},
+		{
+			"path": "github.com/uber/jaeger-client-go/internal/baggage/remote",
+			"revision": ""
+		},
+		{
+			"path": "github.com/uber/jaeger-client-go/internal/spanlog",
+			"revision": ""
+		},
+		{
+			"path": "github.com/uber/jaeger-client-go/log",
+			"revision": ""
+		},
+		{
+			"path": "github.com/uber/jaeger-client-go/rpcmetrics",
+			"revision": ""
+		},
+		{
+			"path": "github.com/uber/jaeger-client-go/thrift-gen/agent",
+			"revision": ""
+		},
+		{
+			"path": "github.com/uber/jaeger-client-go/thrift-gen/baggage",
+			"revision": ""
+		},
+		{
+			"path": "github.com/uber/jaeger-client-go/thrift-gen/jaeger",
+			"revision": ""
+		},
+		{
+			"path": "github.com/uber/jaeger-client-go/thrift-gen/sampling",
+			"revision": ""
+		},
+		{
+			"path": "github.com/uber/jaeger-client-go/thrift-gen/zipkincore",
+			"revision": ""
+		},
+		{
+			"path": "github.com/uber/jaeger-client-go/utils",
+			"revision": ""
+		},
+		{
+			"path": "github.com/uber/jaeger-lib/metrics",
+			"revision": ""
+		},
+		{
 			"checksumSHA1": "D0VGn6FOqysEqjuD5y0hJOdcrkY=",
 			"path": "github.com/ugorji/go/codec",
 			"revision": "105e48374b52c9b820c27b847c43fd30cce16534",
 			"revisionTime": "2018-01-31T12:39:04Z"
+		},
+		{
+			"path": "github.com/urfave/cli",
+			"revision": ""
 		},
 		{
 			"checksumSHA1": "oiypbm/3Ttp04FhXWTqRwb1MfTM=",
@@ -1620,12 +2758,86 @@
 			"revisionTime": "2018-01-29T12:08:39Z"
 		},
 		{
+			"path": "go/ast",
+			"revision": ""
+		},
+		{
+			"path": "go/build",
+			"revision": ""
+		},
+		{
+			"path": "go/constant",
+			"revision": ""
+		},
+		{
+			"path": "go/doc",
+			"revision": ""
+		},
+		{
+			"path": "go/format",
+			"revision": ""
+		},
+		{
+			"path": "go/importer",
+			"revision": ""
+		},
+		{
+			"path": "go/internal/gccgoimporter",
+			"revision": ""
+		},
+		{
+			"path": "go/internal/gcimporter",
+			"revision": ""
+		},
+		{
+			"path": "go/parser",
+			"revision": ""
+		},
+		{
+			"path": "go/printer",
+			"revision": ""
+		},
+		{
+			"path": "go/scanner",
+			"revision": ""
+		},
+		{
+			"path": "go/token",
+			"revision": ""
+		},
+		{
+			"path": "go/types",
+			"revision": ""
+		},
+		{
+			"path": "golang.org/x/arch/arm/armasm",
+			"revision": ""
+		},
+		{
+			"path": "golang.org/x/arch/ppc64/ppc64asm",
+			"revision": ""
+		},
+		{
+			"path": "golang.org/x/arch/x86/x86asm",
+			"revision": ""
+		},
+		{
+			"path": "golang.org/x/crypto",
+			"revision": "",
+			"tree": true
+		},
+		{
 			"path": "golang.org/x/crypto/acme/autocert",
 			"revision": ""
 		},
 		{
 			"path": "golang.org/x/crypto/ed25519",
 			"revision": ""
+		},
+		{
+			"path": "golang.org/x/crypto/md4",
+			"revision": "",
+			"tree": true
 		},
 		{
 			"path": "golang.org/x/crypto/pkcs12",
@@ -1648,6 +2860,10 @@
 			"revisionTime": "2017-04-17T04:12:48Z"
 		},
 		{
+			"path": "golang.org/x/net/bpf",
+			"revision": ""
+		},
+		{
 			"path": "golang.org/x/net/context",
 			"revision": ""
 		},
@@ -1656,7 +2872,35 @@
 			"revision": ""
 		},
 		{
+			"path": "golang.org/x/net/html",
+			"revision": ""
+		},
+		{
+			"path": "golang.org/x/net/html/atom",
+			"revision": ""
+		},
+		{
 			"path": "golang.org/x/net/http2",
+			"revision": ""
+		},
+		{
+			"path": "golang.org/x/net/http2/hpack",
+			"revision": ""
+		},
+		{
+			"path": "golang.org/x/net/idna",
+			"revision": ""
+		},
+		{
+			"path": "golang.org/x/net/internal/iana",
+			"revision": ""
+		},
+		{
+			"path": "golang.org/x/net/internal/socket",
+			"revision": ""
+		},
+		{
+			"path": "golang.org/x/net/internal/timeseries",
 			"revision": ""
 		},
 		{
@@ -1668,6 +2912,18 @@
 			"revision": ""
 		},
 		{
+			"path": "golang.org/x/net/lex/httplex",
+			"revision": ""
+		},
+		{
+			"path": "golang.org/x/net/trace",
+			"revision": ""
+		},
+		{
+			"path": "golang.org/x/net/websocket",
+			"revision": ""
+		},
+		{
 			"path": "golang.org/x/sync/errgroup",
 			"revision": ""
 		},
@@ -1676,11 +2932,83 @@
 			"revision": ""
 		},
 		{
+			"path": "golang.org/x/sys/windows",
+			"revision": ""
+		},
+		{
+			"path": "golang.org/x/text",
+			"revision": ""
+		},
+		{
+			"path": "golang.org/x/text/collate",
+			"revision": ""
+		},
+		{
+			"path": "golang.org/x/text/collate/build",
+			"revision": ""
+		},
+		{
+			"path": "golang.org/x/text/internal",
+			"revision": ""
+		},
+		{
+			"path": "golang.org/x/text/internal/colltab",
+			"revision": ""
+		},
+		{
+			"path": "golang.org/x/text/internal/gen",
+			"revision": ""
+		},
+		{
+			"path": "golang.org/x/text/internal/tag",
+			"revision": ""
+		},
+		{
+			"path": "golang.org/x/text/internal/triegen",
+			"revision": ""
+		},
+		{
+			"path": "golang.org/x/text/internal/ucd",
+			"revision": ""
+		},
+		{
+			"path": "golang.org/x/text/language",
+			"revision": ""
+		},
+		{
+			"path": "golang.org/x/text/secure",
+			"revision": ""
+		},
+		{
+			"path": "golang.org/x/text/secure/bidirule",
+			"revision": ""
+		},
+		{
 			"path": "golang.org/x/text/transform",
 			"revision": ""
 		},
 		{
+			"path": "golang.org/x/text/unicode",
+			"revision": ""
+		},
+		{
+			"path": "golang.org/x/text/unicode/bidi",
+			"revision": ""
+		},
+		{
+			"path": "golang.org/x/text/unicode/cldr",
+			"revision": ""
+		},
+		{
 			"path": "golang.org/x/text/unicode/norm",
+			"revision": ""
+		},
+		{
+			"path": "golang.org/x/text/unicode/rangetable",
+			"revision": ""
+		},
+		{
+			"path": "golang.org/x/text/width",
 			"revision": ""
 		},
 		{
@@ -1689,11 +3017,67 @@
 			"tree": true
 		},
 		{
+			"path": "golang.org/x/tools/go/ast/astutil",
+			"revision": ""
+		},
+		{
+			"path": "golang.org/x/tools/godoc/vfs",
+			"revision": ""
+		},
+		{
 			"path": "golang.org/x/tools/godoc/vfs/mapfs",
 			"revision": ""
 		},
 		{
 			"path": "golang.org/x/tools/imports",
+			"revision": ""
+		},
+		{
+			"path": "golang_org/x/crypto/chacha20poly1305",
+			"revision": ""
+		},
+		{
+			"path": "golang_org/x/crypto/chacha20poly1305/internal/chacha20",
+			"revision": ""
+		},
+		{
+			"path": "golang_org/x/crypto/curve25519",
+			"revision": ""
+		},
+		{
+			"path": "golang_org/x/crypto/poly1305",
+			"revision": ""
+		},
+		{
+			"path": "golang_org/x/net/http2/hpack",
+			"revision": ""
+		},
+		{
+			"path": "golang_org/x/net/idna",
+			"revision": ""
+		},
+		{
+			"path": "golang_org/x/net/lex/httplex",
+			"revision": ""
+		},
+		{
+			"path": "golang_org/x/net/lif",
+			"revision": ""
+		},
+		{
+			"path": "golang_org/x/net/route",
+			"revision": ""
+		},
+		{
+			"path": "golang_org/x/text/transform",
+			"revision": ""
+		},
+		{
+			"path": "golang_org/x/text/unicode/norm",
+			"revision": ""
+		},
+		{
+			"path": "golang_org/x/text/width",
 			"revision": ""
 		},
 		{
@@ -1786,6 +3170,10 @@
 			"revisionTime": "2017-07-30T05:02:35Z"
 		},
 		{
+			"path": "gopkg.in/go-playground/validator.v9",
+			"revision": ""
+		},
+		{
 			"checksumSHA1": "OU/wHTJqhyQfyRnXMVWx1Ox06kQ=",
 			"path": "gopkg.in/redis.v5",
 			"revision": "a16aeec10ff407b1e7be6dd35797ccf5426ef0f0",
@@ -1822,6 +3210,10 @@
 			"revisionTime": "2017-03-04T11:38:25Z"
 		},
 		{
+			"path": "gopkg.in/urfave/cli.v1",
+			"revision": ""
+		},
+		{
 			"checksumSHA1": "I4c3qsEX8KAUTeB9+2pwVX/2ojU=",
 			"path": "gopkg.in/warnings.v0",
 			"revision": "ec4a0fea49c7b46c2aeb0b51aac55779c607e52b",
@@ -1832,6 +3224,1866 @@
 			"path": "gopkg.in/yaml.v2",
 			"revision": "d670f9405373e636a5a2765eea47fac0c9bc91a4",
 			"revisionTime": "2018-01-09T11:43:31Z"
+		},
+		{
+			"path": "goplay/x/src/flag",
+			"revision": ""
+		},
+		{
+			"path": "gosrc/x/src/internal/nettrace",
+			"revision": ""
+		},
+		{
+			"path": "gosrc/x/src/net/http",
+			"revision": ""
+		},
+		{
+			"path": "gosrc/x/src/net/http/httptrace",
+			"revision": ""
+		},
+		{
+			"path": "gosrc/x/src/net/http/internal",
+			"revision": ""
+		},
+		{
+			"path": "gosrc/x/src/net/http/pprof",
+			"revision": ""
+		},
+		{
+			"path": "gostudy/apiproject/controllers",
+			"revision": ""
+		},
+		{
+			"path": "gostudy/apiproject/models",
+			"revision": ""
+		},
+		{
+			"path": "gostudy/apiproject/routers",
+			"revision": ""
+		},
+		{
+			"path": "gostudy/lib/net/heartbeat",
+			"revision": ""
+		},
+		{
+			"path": "gostudy/lib/net/rpcx",
+			"revision": ""
+		},
+		{
+			"path": "gostudy/webproject/controllers",
+			"revision": ""
+		},
+		{
+			"path": "gostudy/webproject/routers",
+			"revision": ""
+		},
+		{
+			"path": "gowhole",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/algorithm",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/build",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/channel",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/cli",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/cli/altsrc",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/gosuv",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/gosuv/gops",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/gosuv/hipchat",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/gosuv/pushover",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/proxy",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/proxy/revert",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/riot",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/riot/core",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/riot/data",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/riot/data/client",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/riot/data/riot",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/riot/data/riot/heartb",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/riot/data/riot1",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/riot/data/riot1/heartb",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/riot/engine",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/riot/examples/benchmark",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/riot/examples/codelab",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/riot/examples/dict",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/riot/examples/logic",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/riot/examples/new",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/riot/examples/pinyin",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/riot/examples/pinyin_weibo",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/riot/examples/simple",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/riot/examples/simple/zh",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/riot/examples/store",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/riot/examples/weibo",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/riot/geo",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/riot/net",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/riot/net/com",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/riot/net/grpc",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/riot/net/grpc/riot-pb",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/riot/net/heartb",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/riot/net/http",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/riot/net/rpcx",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/riot/storage",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/riot/types",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/riot/utils",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/rssmatch",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/rssmatch/matchers",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/code/rssmatch/search",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/colsure",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/concurrent",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/crypto",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/db",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/flag",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/func_type",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/img",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/interface",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/io",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/json",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/map",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/module",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/module/algorithm",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/module/cmd",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/module/net/heartbeat",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/module/net/rpcx",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/module/parallel",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/module/test",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/module/wrr",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/net",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/net/http",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/net/server/draining",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/net/server/serverpush",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/panic",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/parall",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/runtime",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/slice",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/time",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/type",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/archive/tar",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/archive/zip",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/bufio",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/builtin",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/bytes",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/addr2line",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/api",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/asm",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/asm/internal/arch",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/asm/internal/asm",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/asm/internal/flags",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/asm/internal/lex",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/cgo",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/compile",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/compile/internal/amd64",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/compile/internal/arm",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/compile/internal/arm64",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/compile/internal/gc",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/compile/internal/mips",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/compile/internal/mips64",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/compile/internal/ppc64",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/compile/internal/s390x",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/compile/internal/ssa",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/compile/internal/ssa/gen",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/compile/internal/syntax",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/compile/internal/test",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/compile/internal/x86",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/cover",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/dist",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/doc",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/fix",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/go",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/gofmt",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/internal/bio",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/internal/browser",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/internal/dwarf",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/internal/gcprog",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/internal/goobj",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/internal/obj",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/internal/obj/arm",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/internal/obj/arm64",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/internal/obj/mips",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/internal/obj/ppc64",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/internal/obj/s390x",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/internal/obj/x86",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/internal/objfile",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/internal/sys",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/link",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/link/internal/amd64",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/link/internal/arm",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/link/internal/arm64",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/link/internal/ld",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/link/internal/mips",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/link/internal/mips64",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/link/internal/ppc64",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/link/internal/s390x",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/link/internal/x86",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/nm",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/objdump",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/pack",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/pprof",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/pprof/internal/commands",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/pprof/internal/driver",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/pprof/internal/fetch",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/pprof/internal/plugin",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/pprof/internal/report",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/pprof/internal/svg",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/pprof/internal/symbolizer",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/pprof/internal/symbolz",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/pprof/internal/tempfile",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/trace",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/vet",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/vet/internal/cfg",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/cmd/vet/internal/whitelist",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/compress/bzip2",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/compress/flate",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/compress/gzip",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/compress/lzw",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/compress/zlib",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/container/heap",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/container/list",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/container/ring",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/context",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/crypto",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/crypto/aes",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/crypto/cipher",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/crypto/des",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/crypto/dsa",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/crypto/ecdsa",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/crypto/elliptic",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/crypto/hmac",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/crypto/internal/cipherhw",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/crypto/md5",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/crypto/rand",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/crypto/rc4",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/crypto/rsa",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/crypto/sha1",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/crypto/sha256",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/crypto/sha512",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/crypto/subtle",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/crypto/tls",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/crypto/x509",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/crypto/x509/pkix",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/database/sql",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/database/sql/driver",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/debug/dwarf",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/debug/elf",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/debug/gosym",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/debug/macho",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/debug/pe",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/debug/plan9obj",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/encoding",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/encoding/ascii85",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/encoding/asn1",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/encoding/base32",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/encoding/base64",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/encoding/binary",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/encoding/csv",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/encoding/gob",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/encoding/hex",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/encoding/json",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/encoding/pem",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/encoding/xml",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/errors",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/expvar",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/flag",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/fmt",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/go/ast",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/go/build",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/go/constant",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/go/doc",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/go/format",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/go/importer",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/go/internal/gccgoimporter",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/go/internal/gcimporter",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/go/parser",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/go/printer",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/go/scanner",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/go/token",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/go/types",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/hash",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/hash/adler32",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/hash/crc32",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/hash/crc64",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/hash/fnv",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/html",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/html/template",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/image",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/image/color",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/image/color/palette",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/image/draw",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/image/gif",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/image/internal/imageutil",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/image/jpeg",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/image/png",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/index/suffixarray",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/internal/nettrace",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/internal/pprof/profile",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/internal/race",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/internal/singleflight",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/internal/syscall/unix",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/internal/syscall/windows",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/internal/syscall/windows/registry",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/internal/syscall/windows/sysdll",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/internal/testenv",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/internal/trace",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/io",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/io/ioutil",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/log",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/log/syslog",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/math",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/math/big",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/math/cmplx",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/math/rand",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/mime",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/mime/multipart",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/mime/quotedprintable",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/net",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/net/http",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/net/http/cgi",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/net/http/cookiejar",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/net/http/fcgi",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/net/http/httptest",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/net/http/httptrace",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/net/http/httputil",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/net/http/internal",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/net/http/pprof",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/net/internal/socktest",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/net/mail",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/net/rpc",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/net/rpc/jsonrpc",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/net/smtp",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/net/textproto",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/net/url",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/os",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/os/exec",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/os/signal",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/os/user",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/path",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/path/filepath",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/plugin",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/reflect",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/regexp",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/regexp/syntax",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/runtime",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/runtime/cgo",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/runtime/debug",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/runtime/internal/atomic",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/runtime/internal/sys",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/runtime/msan",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/runtime/pprof",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/runtime/pprof/internal/protopprof",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/runtime/race",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/runtime/trace",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/sort",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/strconv",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/strings",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/sync",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/sync/atomic",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/syscall",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/testing",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/testing/internal/testdeps",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/testing/iotest",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/testing/quick",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/text/scanner",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/text/tabwriter",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/text/template",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/text/template/parse",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/time",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/unicode",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/unicode/utf16",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/unicode/utf8",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/exercise/x/src/unsafe",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/lib/xrand",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/library/session",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/library/sid",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/library/xrand",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/module/watermark",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/module/weixin",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/module/weixin/config",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/module/weixin/context",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/module/weixin/model",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/module/weixin/oauth",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/module/weixin/server",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/module/weixin/sign",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/module/weixin/util",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/project/beeapi",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/project/beeapi/controllers",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/project/beeapi/models",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/project/beeapi/routers",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/project/beeapi/tests",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/project/beeweb",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/project/beeweb/controllers",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/project/beeweb/models",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/project/beeweb/routers",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/project/beeweb/tests",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/project/ginweb/cmd",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/project/ginweb/model",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/project/ginweb/router",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/project/ginweb/router/middleware",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/project/kitmicro",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/project/nirvanaAPI",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/project/nirvanaAPI/cmd",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/queue",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/syslearning/atomic/loadint",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/syslearning/atomic/norace",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/syslearning/atomic/race",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/syslearning/basic",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/syslearning/branch",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/syslearning/channel",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/syslearning/channel/done",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/syslearning/channel/done2",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/syslearning/channel/done3",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/syslearning/channel/done4",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/syslearning/channel/done5",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/syslearning/channel/multijob",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/syslearning/channel/select",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/syslearning/channel/select/test",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/syslearning/channel/test",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/syslearning/func",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/syslearning/func/closure",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/syslearning/func/defer",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/syslearning/goroutine",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/syslearning/loop",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/syslearning/net/http/client",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/syslearning/net/tcp",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/syslearning/net/tcp/client",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/syslearning/net/tcp/server",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/syslearning/queue",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/syslearning/queue/entry",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/syslearning/spider",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/syslearning/spider/schedule",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/syslearning/type/compose",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/syslearning/type/struct",
+			"revision": ""
+		},
+		{
+			"path": "gowhole/syslearning/type/struct/aaa",
+			"revision": ""
+		},
+		{
+			"path": "hahajing/com",
+			"revision": ""
+		},
+		{
+			"path": "hahajing/door",
+			"revision": ""
+		},
+		{
+			"path": "hahajing/kad",
+			"revision": ""
+		},
+		{
+			"path": "hahajing/web",
+			"revision": ""
+		},
+		{
+			"path": "hash",
+			"revision": ""
+		},
+		{
+			"path": "hash/adler32",
+			"revision": ""
+		},
+		{
+			"path": "hash/crc32",
+			"revision": ""
+		},
+		{
+			"path": "hash/crc64",
+			"revision": ""
+		},
+		{
+			"path": "hash/fnv",
+			"revision": ""
+		},
+		{
+			"path": "html",
+			"revision": ""
+		},
+		{
+			"path": "html/template",
+			"revision": ""
+		},
+		{
+			"path": "image",
+			"revision": ""
+		},
+		{
+			"path": "image/color",
+			"revision": ""
+		},
+		{
+			"path": "image/color/palette",
+			"revision": ""
+		},
+		{
+			"path": "image/draw",
+			"revision": ""
+		},
+		{
+			"path": "image/gif",
+			"revision": ""
+		},
+		{
+			"path": "image/internal/imageutil",
+			"revision": ""
+		},
+		{
+			"path": "image/jpeg",
+			"revision": ""
+		},
+		{
+			"path": "image/png",
+			"revision": ""
+		},
+		{
+			"path": "index/suffixarray",
+			"revision": ""
+		},
+		{
+			"path": "internal/nettrace",
+			"revision": ""
+		},
+		{
+			"path": "internal/pprof/profile",
+			"revision": ""
+		},
+		{
+			"path": "internal/race",
+			"revision": ""
+		},
+		{
+			"path": "internal/singleflight",
+			"revision": ""
+		},
+		{
+			"path": "internal/syscall/unix",
+			"revision": ""
+		},
+		{
+			"path": "internal/syscall/windows",
+			"revision": ""
+		},
+		{
+			"path": "internal/syscall/windows/registry",
+			"revision": ""
+		},
+		{
+			"path": "internal/syscall/windows/sysdll",
+			"revision": ""
+		},
+		{
+			"path": "internal/testenv",
+			"revision": ""
+		},
+		{
+			"path": "internal/trace",
+			"revision": ""
+		},
+		{
+			"path": "io",
+			"revision": ""
+		},
+		{
+			"path": "io/ioutil",
+			"revision": ""
+		},
+		{
+			"path": "k8s.io/gengo/args",
+			"revision": ""
+		},
+		{
+			"path": "k8s.io/gengo/generator",
+			"revision": ""
+		},
+		{
+			"path": "k8s.io/gengo/namer",
+			"revision": ""
+		},
+		{
+			"path": "k8s.io/gengo/parser",
+			"revision": ""
+		},
+		{
+			"path": "k8s.io/gengo/types",
+			"revision": ""
+		},
+		{
+			"path": "log",
+			"revision": ""
+		},
+		{
+			"path": "log/syslog",
+			"revision": ""
+		},
+		{
+			"path": "math",
+			"revision": ""
+		},
+		{
+			"path": "math/big",
+			"revision": ""
+		},
+		{
+			"path": "math/cmplx",
+			"revision": ""
+		},
+		{
+			"path": "math/rand",
+			"revision": ""
+		},
+		{
+			"path": "mime",
+			"revision": ""
+		},
+		{
+			"path": "mime/multipart",
+			"revision": ""
+		},
+		{
+			"path": "mime/quotedprintable",
+			"revision": ""
+		},
+		{
+			"path": "net",
+			"revision": ""
+		},
+		{
+			"path": "net/http",
+			"revision": ""
+		},
+		{
+			"path": "net/http/cgi",
+			"revision": ""
+		},
+		{
+			"path": "net/http/cookiejar",
+			"revision": ""
+		},
+		{
+			"path": "net/http/fcgi",
+			"revision": ""
+		},
+		{
+			"path": "net/http/httptest",
+			"revision": ""
+		},
+		{
+			"path": "net/http/httptrace",
+			"revision": ""
+		},
+		{
+			"path": "net/http/httputil",
+			"revision": ""
+		},
+		{
+			"path": "net/http/internal",
+			"revision": ""
+		},
+		{
+			"path": "net/http/pprof",
+			"revision": ""
+		},
+		{
+			"path": "net/internal/socktest",
+			"revision": ""
+		},
+		{
+			"path": "net/mail",
+			"revision": ""
+		},
+		{
+			"path": "net/rpc",
+			"revision": ""
+		},
+		{
+			"path": "net/smtp",
+			"revision": ""
+		},
+		{
+			"path": "net/textproto",
+			"revision": ""
+		},
+		{
+			"path": "net/url",
+			"revision": ""
+		},
+		{
+			"path": "os",
+			"revision": ""
+		},
+		{
+			"path": "os/exec",
+			"revision": ""
+		},
+		{
+			"path": "os/signal",
+			"revision": ""
+		},
+		{
+			"path": "os/user",
+			"revision": ""
+		},
+		{
+			"path": "path",
+			"revision": ""
+		},
+		{
+			"path": "path/filepath",
+			"revision": ""
+		},
+		{
+			"path": "proxy/revert",
+			"revision": ""
+		},
+		{
+			"path": "reflect",
+			"revision": ""
+		},
+		{
+			"path": "regexp",
+			"revision": ""
+		},
+		{
+			"path": "regexp/syntax",
+			"revision": ""
+		},
+		{
+			"path": "rssmatch/matchers",
+			"revision": ""
+		},
+		{
+			"path": "rssmatch/search",
+			"revision": ""
+		},
+		{
+			"path": "runtime",
+			"revision": ""
+		},
+		{
+			"path": "runtime/debug",
+			"revision": ""
+		},
+		{
+			"path": "runtime/internal/atomic",
+			"revision": ""
+		},
+		{
+			"path": "runtime/internal/sys",
+			"revision": ""
+		},
+		{
+			"path": "runtime/pprof",
+			"revision": ""
+		},
+		{
+			"path": "runtime/pprof/internal/protopprof",
+			"revision": ""
+		},
+		{
+			"path": "runtime/trace",
+			"revision": ""
+		},
+		{
+			"path": "sort",
+			"revision": ""
 		},
 		{
 			"checksumSHA1": "3zeEInJd/r8ZmBzFwbz8jqqqkv4=",
@@ -1850,6 +5102,74 @@
 			"path": "sourcegraph.com/sourcegraph/appdash/opentracing",
 			"revision": "2cc67fd647551af94593ecaaa89fe4e5b2940a3e",
 			"revisionTime": "2018-01-10T18:02:08Z"
+		},
+		{
+			"path": "strconv",
+			"revision": ""
+		},
+		{
+			"path": "strings",
+			"revision": ""
+		},
+		{
+			"path": "sync",
+			"revision": ""
+		},
+		{
+			"path": "sync/atomic",
+			"revision": ""
+		},
+		{
+			"path": "syscall",
+			"revision": ""
+		},
+		{
+			"path": "testing",
+			"revision": ""
+		},
+		{
+			"path": "testing/iotest",
+			"revision": ""
+		},
+		{
+			"path": "testing/quick",
+			"revision": ""
+		},
+		{
+			"path": "text/scanner",
+			"revision": ""
+		},
+		{
+			"path": "text/tabwriter",
+			"revision": ""
+		},
+		{
+			"path": "text/template",
+			"revision": ""
+		},
+		{
+			"path": "text/template/parse",
+			"revision": ""
+		},
+		{
+			"path": "time",
+			"revision": ""
+		},
+		{
+			"path": "unicode",
+			"revision": ""
+		},
+		{
+			"path": "unicode/utf16",
+			"revision": ""
+		},
+		{
+			"path": "unicode/utf8",
+			"revision": ""
+		},
+		{
+			"path": "unsafe",
+			"revision": ""
 		}
 	],
 	"rootPath": "gowhole"

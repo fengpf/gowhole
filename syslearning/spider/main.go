@@ -5,8 +5,6 @@ import (
 	"log"
 	"net/http"
 	"sync"
-
-	"gowhole/syslearning/spider/schedule"
 )
 
 const (
@@ -18,11 +16,12 @@ type worker struct {
 	done func()
 }
 
+func hanle(http.ResponseWriter, *http.Request) {
+
+}
+
 func main() {
-	// dispatch()
-	dispatcher := schedule.NewDispatcher(10)
-	dispatcher.Run()
-	http.HandleFunc("/", schedule.PayloadHandler)
+	http.HandleFunc("/", hanle)
 	err := http.ListenAndServe(":8888", nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
