@@ -1889,6 +1889,12 @@
 			"revision": ""
 		},
 		{
+			"checksumSHA1": "gEjGS03N1eysvpQ+FCHTxPcbxXc=",
+			"path": "github.com/kardianos/osext",
+			"revision": "ae77be60afb1dcacde03767a8c37337fad28ac14",
+			"revisionTime": "2017-05-10T13:15:34Z"
+		},
+		{
 			"path": "github.com/kataras/iris",
 			"revision": "v10.0.2",
 			"version": "v10.0.2"
@@ -1896,6 +1902,12 @@
 		{
 			"path": "github.com/kennygrant/sanitize",
 			"revision": ""
+		},
+		{
+			"checksumSHA1": "1jQqVXhudkipVvVyTc3har4P2KU=",
+			"path": "github.com/kr/binarydist",
+			"revision": "3035450ff8b987ec4373f65c40767f096b35f2d2",
+			"revisionTime": "2016-07-21T04:38:06Z"
 		},
 		{
 			"checksumSHA1": "abKzFXAn0KDr5U+JON1ZgJ2lUtU=",
@@ -2216,6 +2228,13 @@
 			"revisionTime": "2018-01-30T19:37:22Z"
 		},
 		{
+			"checksumSHA1": "ZMiw2OjwMt18Rduifq8g42pWHLA=",
+			"path": "github.com/sanbornm/go-selfupdate",
+			"revision": "bf295275fb1ee4e347c09330ed9a3c76cc19895a",
+			"revisionTime": "2016-12-16T17:22:40Z",
+			"tree": true
+		},
+		{
 			"path": "github.com/shirou/gopsutil/internal/common",
 			"revision": ""
 		},
@@ -2362,6 +2381,12 @@
 			"path": "github.com/sony/gobreaker",
 			"revision": "3cb67c77c1d1e72fda30c6970578164d24f806b6",
 			"revisionTime": "2017-11-08T10:09:24Z"
+		},
+		{
+			"checksumSHA1": "jAzqolwnRJhHsKXmmvKNrHqxqAw=",
+			"path": "github.com/spaolacci/murmur3",
+			"revision": "f09979ecbc725b9e6d41a297405f65e7e8804acc",
+			"revisionTime": "2018-01-18T20:28:30Z"
 		},
 		{
 			"checksumSHA1": "F3JU4T4XXvZTRAcv6rhTao4QGos=",
@@ -2660,6 +2685,19 @@
 			"path": "github.com/voidint/gbb/variable",
 			"revision": "fad8dd047173d4c9b6f5894c7d2d11378251c912",
 			"revisionTime": "2017-04-08T02:46:57Z"
+		},
+		{
+			"checksumSHA1": "5amfcgkpgnDTPxm8yPfdeHUW9KQ=",
+			"path": "github.com/willf/bitset",
+			"revision": "1a37ad96e8c1a11b20900a232874843b5174221f",
+			"revisionTime": "2017-09-05T00:26:39Z"
+		},
+		{
+			"checksumSHA1": "yyysY3Ior4jy2HtchTxlP1ayIvQ=",
+			"path": "github.com/willf/bloom",
+			"revision": "54e3b963ee1652b06c4562cb9b6020ebc6e36e59",
+			"revisionTime": "2017-05-05T22:16:40Z",
+			"tree": true
 		},
 		{
 			"checksumSHA1": "xEeUbVb6pAzoepk4DgDxKu2M7Rc=",
@@ -3172,6 +3210,18 @@
 		{
 			"path": "gopkg.in/go-playground/validator.v9",
 			"revision": ""
+		},
+		{
+			"checksumSHA1": "Ct3XiK9DlRLSgQbcCiWObBifNE8=",
+			"path": "gopkg.in/inconshreveable/go-update.v0",
+			"revision": "d8b0b1d421aa1cbf392c05869f8abbc669bb7066",
+			"revisionTime": "2015-08-14T20:01:26Z"
+		},
+		{
+			"checksumSHA1": "ygwIVokEPzIfqN4eHkXSJZuLVes=",
+			"path": "gopkg.in/inconshreveable/go-update.v0/download",
+			"revision": "d8b0b1d421aa1cbf392c05869f8abbc669bb7066",
+			"revisionTime": "2015-08-14T20:01:26Z"
 		},
 		{
 			"checksumSHA1": "OU/wHTJqhyQfyRnXMVWx1Ox06kQ=",
@@ -4919,6 +4969,10 @@
 		},
 		{
 			"path": "math/big",
+			"revision": ""
+		},
+		{
+			"path": "math/bits",
 			"revision": ""
 		},
 		{
