@@ -497,6 +497,13 @@
 			"revisionTime": "2018-02-09T01:38:31Z"
 		},
 		{
+			"checksumSHA1": "3xGqKYcmG4G3MX7rtjw3F+Ow2j4=",
+			"path": "github.com/akkuman/parseConfig",
+			"revision": "80c123578a7134974f58c94533f892f480e73f22",
+			"revisionTime": "2017-08-10T15:01:35Z",
+			"tree": true
+		},
+		{
 			"checksumSHA1": "Q/2QpI7E35SsNYfaxLsWHFry9k4=",
 			"path": "github.com/andybalholm/cascadia",
 			"revision": "901648c87902174f774fac311d7f176f8647bdaa",
@@ -1517,6 +1524,11 @@
 			"revisionTime": "2017-07-02T09:28:26Z",
 			"version": "v1.2",
 			"versionExact": "v1.2"
+		},
+		{
+			"path": "github.com/globalsign/mgo",
+			"revision": "",
+			"tree": true
 		},
 		{
 			"path": "github.com/glycerine/rbuf",

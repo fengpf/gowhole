@@ -1,0 +1,4 @@
+{
+  "mongopath": "./mgo.json",
+  "mysqlfile": ""
+}
