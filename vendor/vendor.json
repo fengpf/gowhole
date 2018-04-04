@@ -940,6 +940,16 @@
 			"revision": ""
 		},
 		{
+			"path": "github.com/axgle/mahonia",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "oMX+Dnl1HZ/zBD3jaMPC/0FfVjU=",
+			"path": "github.com/axgle/pinyin",
+			"revision": "d1557e083be4122f6f10a762a0e2839c36e1a13b",
+			"revisionTime": "2018-02-08T00:31:32Z"
+		},
+		{
 			"checksumSHA1": "uQ45zJk9KjLPXDV71EVUbRog6sE=",
 			"path": "github.com/beego/bee",
 			"revision": "1a79d6dcca0cfa714895f86f62ed9061e55e4914",
@@ -1034,6 +1044,10 @@
 			"path": "github.com/beorn7/perks/quantile",
 			"revision": "4c0e84591b9aa9e6dcfdf3e020114cd81f89d5f9",
 			"revisionTime": "2016-08-04T10:47:26Z"
+		},
+		{
+			"path": "github.com/bluele/gcache",
+			"revision": ""
 		},
 		{
 			"path": "github.com/boltdb/bolt",
@@ -1210,6 +1224,13 @@
 		{
 			"path": "github.com/codahale/hdrhistogram",
 			"revision": ""
+		},
+		{
+			"checksumSHA1": "DlfvOHiUt0ByfIy8foc3NBdArek=",
+			"path": "github.com/codeskyblue/gosuv",
+			"revision": "688b0605a4768671975691d3ca52b36587094d4b",
+			"revisionTime": "2018-01-27T03:14:58Z",
+			"tree": true
 		},
 		{
 			"path": "github.com/codeskyblue/gosuv/gops",
@@ -1531,8 +1552,10 @@
 			"tree": true
 		},
 		{
+			"checksumSHA1": "JXmdHzVV38y/HgvzwRIeGZti2RE=",
 			"path": "github.com/glycerine/rbuf",
-			"revision": ""
+			"revision": "54320fe9f6f340f8fbe3f34306e3c32589d97dc4",
+			"revisionTime": "2017-10-31T01:22:12Z"
 		},
 		{
 			"path": "github.com/go-ego/cedar",
@@ -1761,8 +1784,10 @@
 			"revisionTime": "2018-02-26T05:11:51Z"
 		},
 		{
+			"checksumSHA1": "+1LsRRZKa06yTFg/Tu5NCsyHxOA=",
 			"path": "github.com/gorilla/websocket",
-			"revision": ""
+			"revision": "eb925808374e5ca90c83401a40d711dc08c0c0f6",
+			"revisionTime": "2018-03-06T18:15:48Z"
 		},
 		{
 			"checksumSHA1": "7P9hM+xfEMa8xtIzIxhDgYhlgpM=",
@@ -1867,6 +1892,10 @@
 			"revisionTime": "2018-01-22T17:53:20Z"
 		},
 		{
+			"path": "github.com/imroc/req",
+			"revision": ""
+		},
+		{
 			"checksumSHA1": "40vJyUB4ezQSn/NSadsKEOrudMc=",
 			"path": "github.com/inconshreveable/mousetrap",
 			"revision": "76626ae9c91c4f2a10f34cad8ce83ea42c93bb75",
@@ -1962,6 +1991,10 @@
 			"revisionTime": "2018-02-13T20:06:01Z"
 		},
 		{
+			"path": "github.com/lunny/dingtalk_webhook",
+			"revision": ""
+		},
+		{
 			"checksumSHA1": "z8y7kitR0a7pdUlIyKLLFyB53ZE=",
 			"path": "github.com/lxmgo/learngo",
 			"revision": "aa32c274d938d7450966343d46b60d91bd76e937",
@@ -2030,6 +2063,12 @@
 			"revision": "e17d9d5b10f979ce66046f877bc9a78aa1e2393a",
 			"revisionTime": "2018-03-25T02:56:50Z",
 			"tree": true
+		},
+		{
+			"checksumSHA1": "UOQ1nSRZ3f+CmrGuMuBItADE/44=",
+			"path": "github.com/natefinch/lumberjack",
+			"revision": "6d54cbc97d7e419cb85c9a5d2123d24f9610817d",
+			"revisionTime": "2015-04-11T23:30:54Z"
 		},
 		{
 			"checksumSHA1": "gelmnLYIJJZcB9BHbNaYpXy5JMM=",
@@ -2224,8 +2263,10 @@
 			"revisionTime": "2018-01-25T13:30:57Z"
 		},
 		{
+			"checksumSHA1": "P7gR/mj56/a7m4iXH/fdFZma/oo=",
 			"path": "github.com/qiniu/log",
-			"revision": ""
+			"revision": "e002bc2020b19bfa61ed378cc5407383dbd2f346",
+			"revisionTime": "2014-07-28T01:23:31Z"
 		},
 		{
 			"checksumSHA1": "oY/QEEFSa+kRKlgeIIAhCOYbnrE=",
@@ -2393,6 +2434,20 @@
 			"path": "github.com/sony/gobreaker",
 			"revision": "3cb67c77c1d1e72fda30c6970578164d24f806b6",
 			"revisionTime": "2017-11-08T10:09:24Z"
+		},
+		{
+			"path": "github.com/soopsio/gosuv/gops",
+			"revision": ""
+		},
+		{
+			"path": "github.com/soopsio/gosuv/pushover",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "L8CawkqUEWg/9n5SAlv5r/KnjwU=",
+			"path": "github.com/soopsio/kexec",
+			"revision": "863094f94c7fb7c235764bf8f0f79cccea78c8eb",
+			"revisionTime": "2016-09-08T02:05:25Z"
 		},
 		{
 			"checksumSHA1": "jAzqolwnRJhHsKXmmvKNrHqxqAw=",
