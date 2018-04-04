@@ -1750,6 +1750,13 @@
 			"revision": ""
 		},
 		{
+			"checksumSHA1": "HrdsLtaKNLX1sXkhsyG0io5xmOA=",
+			"path": "github.com/golang/groupcache",
+			"revision": "66deaeb636dff1ac7d938ce666d090556056a4b0",
+			"revisionTime": "2018-02-03T14:35:32Z",
+			"tree": true
+		},
+		{
 			"checksumSHA1": "WX1+2gktHcBmE9MGwFSGs7oqexU=",
 			"path": "github.com/golang/protobuf/proto",
 			"revision": "bbd03ef6da3a115852eaf24c8a1c46aeb39aa175",
