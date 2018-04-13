@@ -1547,8 +1547,10 @@
 			"versionExact": "v1.2"
 		},
 		{
+			"checksumSHA1": "T5h4jSEzVIJ5hfgu0tSydDi7EN8=",
 			"path": "github.com/globalsign/mgo",
-			"revision": "",
+			"revision": "f76e4f9da92ecd56e3be26f5ba92580af1ef97b4",
+			"revisionTime": "2018-04-03T08:58:42Z",
 			"tree": true
 		},
 		{
@@ -3332,6 +3334,12 @@
 			"path": "gopkg.in/redis.v5/internal/proto",
 			"revision": "a16aeec10ff407b1e7be6dd35797ccf5426ef0f0",
 			"revisionTime": "2017-03-04T11:38:25Z"
+		},
+		{
+			"checksumSHA1": "t95/FNK2nGCx3e6IARbO7OrcCuY=",
+			"path": "gopkg.in/tomb.v2",
+			"revision": "d5d1b5820637886def9eef33e03a27a9f166942c",
+			"revisionTime": "2016-12-08T15:16:19Z"
 		},
 		{
 			"path": "gopkg.in/urfave/cli.v1",
