@@ -1,11 +1,14 @@
 package base
 
-import s "strings"
-import "fmt"
+import (
+	"fmt"
+	s "strings"
+	"testing"
+)
 
 var p = fmt.Println
 
-func main() {
+func test_flag(t *testing.T) {
 	p("Contains:  ", s.Contains("test", "es"))
 	p("Count:     ", s.Count("test", "t"))
 	p("HasPrefix: ", s.HasPrefix("test", "te"))

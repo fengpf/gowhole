@@ -6,6 +6,25 @@ import (
 	"unsafe"
 )
 
+const (
+	_        = iota             //iota=0
+	KB int64 = 1 << (10 * iota) //iota =1
+	MB                          //与KB表达式相同，但iota=2
+	GB
+	TB
+)
+const (
+	A, B = iota, iota << 10 //0, 0<<10
+	C, D                    //1,1<<10
+)
+const (
+	AA = iota //0
+	BB        //1
+	CC = "c"  // c
+	DD        //c，与上一行相同
+	EE
+)
+
 func Test_Def(t *testing.T) {
 	// var x int
 	// var f float32 = 1.6
@@ -42,25 +61,6 @@ func Test_Def(t *testing.T) {
 		Friday           //5
 		Saturday         //6
 	)
-	const (
-		_        = iota             //iota=0
-		KB int64 = 1 << (10 * iota) //iota =1
-		MB                          //与KB表达式相同，但iota=2
-		GB
-		TB
-	)
-	const (
-		A, B = iota, iota << 10 //0, 0<<10
-		C, D                    //1,1<<10
-	)
-	const (
-		AA = iota //0
-		BB        //1
-		CC = "c"  // c
-		DD        //c，与上一行相同
-		EE
-	)
-
 }
 
 type Color int

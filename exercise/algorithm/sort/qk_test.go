@@ -1,4 +1,4 @@
-package main
+package sort
 
 import (
 	"math/rand"
@@ -34,8 +34,8 @@ func Test_quick(t *testing.T) {
 	nums := []int{2, 1, 3, 4}
 	wg := &sync.WaitGroup{}
 	wg.Add(1)
-	go QuickSort2(nums, wg)
-	QuickSort(nums, wg)
+	go QuickSort3(nums, 0, len(nums)-1, wg)
+	// QuickSort(nums, wg)
 	wg.Wait()
 	spew.Dump(nums)
 }

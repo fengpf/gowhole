@@ -1,6 +1,9 @@
-package main
+package base
 
-import "fmt"
+import (
+	"fmt"
+	"testing"
+)
 
 const (
 	// User user handler
@@ -40,16 +43,16 @@ const (
 	CtxDegrade = "degrade"
 )
 
-func t(args ...int) {
+func print(args ...int) {
 	fmt.Printf("t  %p\n", args)
 }
 
-func main() {
+func Test_enum(t *testing.T) {
 	a := []int{1, 2, 3}
 	b := a[1:]
 
-	t(a...)
-	t(b...)
+	print(a...)
+	print(b...)
 
 	fmt.Printf("main %p\n", a)
 	fmt.Printf("main %p\n", b)

@@ -1,11 +1,12 @@
-package main
+package base
 
 import (
 	"fmt"
+	"testing"
 	"unsafe"
 )
 
-func main() {
+func Test_byte(t *testing.T) {
 	str2 := "aAhello"
 	data2 := []byte(str2)
 	fmt.Println(data2)
