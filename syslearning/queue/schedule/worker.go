@@ -1,8 +1,28 @@
 package schedule
 
+import (
+	"fmt"
+)
+
+type PayloadCollection struct {
+	// WindowsVersion string    `json:"version"`
+	// Token          string    `json:"token"`
+	Payloads []Payload `json:"data"`
+}
+type Payload struct {
+	ID   int64
+	Name string
+}
+
+func (p *Payload) Set() {
+	for i := 0; i < 1000; i++ {
+		fmt.Println(i)
+	}
+}
+
 // Job represents the job to be run
 type Job struct {
-	Consume func()
+	Payload Payload
 }
 
 // A buffered channel that we can send work requests on.
@@ -34,9 +54,7 @@ func (w Worker) Start() {
 			select {
 			case job := <-w.JobChannel:
 				// we have received a work request.
-				job.Consume()
-				// w.Stop()
-
+				job.Payload.Set()
 			case <-w.quit:
 				// we have received a signal to stop
 				return
