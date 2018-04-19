@@ -1353,6 +1353,12 @@
 			"revisionTime": "2018-01-08T23:06:52Z"
 		},
 		{
+			"checksumSHA1": "NHqE67y+/xEkTTqnXt2HvwubP38=",
+			"path": "github.com/cznic/b",
+			"revision": "35e9bbe41f07452a183c517a5fc5f3c9f45eaa0f",
+			"revisionTime": "2018-01-15T12:50:44Z"
+		},
+		{
 			"checksumSHA1": "CSPbwbyzqA6sfORicn4HFtIhF/c=",
 			"path": "github.com/davecgh/go-spew/spew",
 			"revision": "8991bc29aa16c548c550c7ff78260e27b9ab7c73",
@@ -1771,6 +1777,12 @@
 			"revision": "66deaeb636dff1ac7d938ce666d090556056a4b0",
 			"revisionTime": "2018-02-03T14:35:32Z",
 			"tree": true
+		},
+		{
+			"checksumSHA1": "kpDdn8FTTpe3DOSH7qDyfvIIzrY=",
+			"path": "github.com/golang/mock/gomock",
+			"revision": "8b2eeeb0ca5f56c78bec5efde9c4a21d9201126c",
+			"revisionTime": "2018-04-06T15:19:24Z"
 		},
 		{
 			"checksumSHA1": "WX1+2gktHcBmE9MGwFSGs7oqexU=",
@@ -2929,6 +2941,13 @@
 			"path": "github.com/tidwall/tinyqueue",
 			"revision": "1feaf062ef04a231c9126f99a68eaa579fd0e390",
 			"revisionTime": "2017-05-01T20:16:32Z"
+		},
+		{
+			"checksumSHA1": "2LWi7iXyikW0mQbS1YqHoWyoBxQ=",
+			"path": "github.com/tsuna/gohbase",
+			"revision": "4e6cef8dacd28118ccfc1af9623612b31fa610d6",
+			"revisionTime": "2018-02-22T01:13:51Z",
+			"tree": true
 		},
 		{
 			"path": "github.com/uber/jaeger-client-go",
