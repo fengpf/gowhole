@@ -1803,6 +1803,13 @@
 			"revisionTime": "2017-02-15T23:32:05Z"
 		},
 		{
+			"checksumSHA1": "JnDxpH9sCqOz+8sSEdoJBCm5mfg=",
+			"path": "github.com/golang/time",
+			"revision": "fbb02b2291d28baffd63558aa44b4b56f178d650",
+			"revisionTime": "2018-04-12T16:56:04Z",
+			"tree": true
+		},
+		{
 			"checksumSHA1": "fqOeX6hfVZtiqrpyFf3QHyXfwFI=",
 			"path": "github.com/gonuts/commander",
 			"revision": "f8ba4e959ca914268227c3ebbd7f6bf0bb35541a",
