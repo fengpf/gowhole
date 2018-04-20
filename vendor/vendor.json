@@ -443,6 +443,10 @@
 			"revision": ""
 		},
 		{
+			"path": "git.apache.org/thrift.git/lib/go/thrift",
+			"revision": ""
+		},
+		{
 			"path": "github.com/AndreasBriese/bbloom",
 			"revision": ""
 		},
@@ -2098,6 +2102,12 @@
 			"revisionTime": "2018-01-22T17:53:20Z"
 		},
 		{
+			"checksumSHA1": "AhryWYCSawqOXBcdLNmikYhLYTA=",
+			"path": "github.com/ianwoolf/gohbase",
+			"revision": "9322aeb75a6e0ad96d5478092daa363b6bf74e67",
+			"revisionTime": "2016-04-16T16:29:16Z"
+		},
+		{
 			"path": "github.com/imroc/req",
 			"revision": ""
 		},
@@ -2552,6 +2562,24 @@
 			"revision": "bf295275fb1ee4e347c09330ed9a3c76cc19895a",
 			"revisionTime": "2016-12-16T17:22:40Z",
 			"tree": true
+		},
+		{
+			"checksumSHA1": "IY24Ht9+5KARLi7Mi22BvJu15Fs=",
+			"path": "github.com/sdming/goh",
+			"revision": "7071d6d7ab1fa0b2fc46bb4fa913944c800bd774",
+			"revisionTime": "2013-03-19T08:27:38Z"
+		},
+		{
+			"checksumSHA1": "cVB5Y9IH6Osx2j66WAjweH6E68Y=",
+			"path": "github.com/sdming/goh/Hbase",
+			"revision": "7071d6d7ab1fa0b2fc46bb4fa913944c800bd774",
+			"revisionTime": "2013-03-19T08:27:38Z"
+		},
+		{
+			"checksumSHA1": "F88Hoz1TiL/cRAdqizfrHu1bdP0=",
+			"path": "github.com/sdming/goh/thrift",
+			"revision": "7071d6d7ab1fa0b2fc46bb4fa913944c800bd774",
+			"revisionTime": "2013-03-19T08:27:38Z"
 		},
 		{
 			"checksumSHA1": "q14d3C3xvWevU3dSv4P5K0+OSD0=",

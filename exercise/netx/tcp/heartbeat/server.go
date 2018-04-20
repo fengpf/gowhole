@@ -170,4 +170,3 @@ func ServerWork(C *CS) {
 		}
 	*/ // 往写ch写信息
 }
-
