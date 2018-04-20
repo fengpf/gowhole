@@ -1,9 +1,10 @@
 package main
 
 import (
-	"net"
 	"fmt"
-	"gostudy/lib/net/heartbeat"
+	"net"
+
+	"gowhole/exercise/netx/tcp/heartbeat"
 )
 
 func main() {
