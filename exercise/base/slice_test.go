@@ -3,10 +3,11 @@ package base
 import (
 	"encoding/json"
 	"fmt"
-	"go-common/log"
 	"os"
 	"testing"
 	"time"
+
+	"github.com/qiniu/log"
 )
 
 func Test_Slice(t *testing.T) {
