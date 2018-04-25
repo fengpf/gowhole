@@ -95,3 +95,28 @@ func NewHead(buf []byte) *Head {
 	head.BodyLen = binary.BigEndian.Uint16(buf[6:8])
 	return head
 }
+
+func Test_IntByte(t *testing.T) {
+	i := uint64(1)
+	size := binary.Size(i)
+	fmt.Println(i, size)
+
+	buf := new(bytes.Buffer)
+	binary.Write(buf, binary.LittleEndian, i)
+	fmt.Println("after write, buf is:", buf.Bytes())
+
+	var u uint8 = 255
+	fmt.Println(u, u+1, u*u) // "255 0 1"
+
+	var j int8 = 127
+	fmt.Println(j, j+1, j*j) // "127 -128 1"
+
+	var a int = 12
+	fmt.Println(a, unsafe.Sizeof(a), binary.Size(a))
+	buf2 := new(bytes.Buffer)
+	binary.Write(buf2, binary.BigEndian, a)
+	fmt.Println("after write, buf2 is:", buf2.Bytes())
+	var b int32
+	binary.Read(buf2, binary.BigEndian, &b)
+	fmt.Println(b)
+}
