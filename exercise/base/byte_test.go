@@ -120,3 +120,11 @@ func Test_IntByte(t *testing.T) {
 	binary.Read(buf2, binary.BigEndian, &b)
 	fmt.Println(b)
 }
+
+func Test_byteScope(t *testing.T) {
+	i := uint32(1)
+	size := binary.Size(i)
+	buf := new(bytes.Buffer)
+	binary.Write(buf, binary.LittleEndian, i)
+	fmt.Println(size, len(buf.Bytes()))
+}

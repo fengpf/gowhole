@@ -8,7 +8,7 @@ import (
 
 var p = fmt.Println
 
-func test_flag(t *testing.T) {
+func Test_flag(t *testing.T) {
 	p("Contains:  ", s.Contains("test", "es"))
 	p("Count:     ", s.Count("test", "t"))
 	p("HasPrefix: ", s.HasPrefix("test", "te"))
