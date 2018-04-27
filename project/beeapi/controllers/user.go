@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	"gostudy/apiproject/models"
 	"encoding/json"
+	"gostudy/apiproject/models"
 
 	"github.com/astaxie/beego"
 )
@@ -116,4 +116,3 @@ func (u *UserController) Logout() {
 	u.Data["json"] = "logout success"
 	u.ServeJSON()
 }
-

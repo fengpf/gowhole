@@ -8,86 +8,86 @@ func init() {
 
 	beego.GlobalControllerRouter["gostudy/apiproject/controllers:ObjectController"] = append(beego.GlobalControllerRouter["gostudy/apiproject/controllers:ObjectController"],
 		beego.ControllerComments{
-			Method: "Post",
-			Router: `/`,
+			Method:           "Post",
+			Router:           `/`,
 			AllowHTTPMethods: []string{"post"},
-			Params: nil})
+			Params:           nil})
 
 	beego.GlobalControllerRouter["gostudy/apiproject/controllers:ObjectController"] = append(beego.GlobalControllerRouter["gostudy/apiproject/controllers:ObjectController"],
 		beego.ControllerComments{
-			Method: "Get",
-			Router: `/:objectId`,
+			Method:           "Get",
+			Router:           `/:objectId`,
 			AllowHTTPMethods: []string{"get"},
-			Params: nil})
+			Params:           nil})
 
 	beego.GlobalControllerRouter["gostudy/apiproject/controllers:ObjectController"] = append(beego.GlobalControllerRouter["gostudy/apiproject/controllers:ObjectController"],
 		beego.ControllerComments{
-			Method: "GetAll",
-			Router: `/`,
+			Method:           "GetAll",
+			Router:           `/`,
 			AllowHTTPMethods: []string{"get"},
-			Params: nil})
+			Params:           nil})
 
 	beego.GlobalControllerRouter["gostudy/apiproject/controllers:ObjectController"] = append(beego.GlobalControllerRouter["gostudy/apiproject/controllers:ObjectController"],
 		beego.ControllerComments{
-			Method: "Put",
-			Router: `/:objectId`,
+			Method:           "Put",
+			Router:           `/:objectId`,
 			AllowHTTPMethods: []string{"put"},
-			Params: nil})
+			Params:           nil})
 
 	beego.GlobalControllerRouter["gostudy/apiproject/controllers:ObjectController"] = append(beego.GlobalControllerRouter["gostudy/apiproject/controllers:ObjectController"],
 		beego.ControllerComments{
-			Method: "Delete",
-			Router: `/:objectId`,
+			Method:           "Delete",
+			Router:           `/:objectId`,
 			AllowHTTPMethods: []string{"delete"},
-			Params: nil})
+			Params:           nil})
 
 	beego.GlobalControllerRouter["gostudy/apiproject/controllers:UserController"] = append(beego.GlobalControllerRouter["gostudy/apiproject/controllers:UserController"],
 		beego.ControllerComments{
-			Method: "Post",
-			Router: `/`,
+			Method:           "Post",
+			Router:           `/`,
 			AllowHTTPMethods: []string{"post"},
-			Params: nil})
+			Params:           nil})
 
 	beego.GlobalControllerRouter["gostudy/apiproject/controllers:UserController"] = append(beego.GlobalControllerRouter["gostudy/apiproject/controllers:UserController"],
 		beego.ControllerComments{
-			Method: "GetAll",
-			Router: `/`,
+			Method:           "GetAll",
+			Router:           `/`,
 			AllowHTTPMethods: []string{"get"},
-			Params: nil})
+			Params:           nil})
 
 	beego.GlobalControllerRouter["gostudy/apiproject/controllers:UserController"] = append(beego.GlobalControllerRouter["gostudy/apiproject/controllers:UserController"],
 		beego.ControllerComments{
-			Method: "Get",
-			Router: `/:uid`,
+			Method:           "Get",
+			Router:           `/:uid`,
 			AllowHTTPMethods: []string{"get"},
-			Params: nil})
+			Params:           nil})
 
 	beego.GlobalControllerRouter["gostudy/apiproject/controllers:UserController"] = append(beego.GlobalControllerRouter["gostudy/apiproject/controllers:UserController"],
 		beego.ControllerComments{
-			Method: "Put",
-			Router: `/:uid`,
+			Method:           "Put",
+			Router:           `/:uid`,
 			AllowHTTPMethods: []string{"put"},
-			Params: nil})
+			Params:           nil})
 
 	beego.GlobalControllerRouter["gostudy/apiproject/controllers:UserController"] = append(beego.GlobalControllerRouter["gostudy/apiproject/controllers:UserController"],
 		beego.ControllerComments{
-			Method: "Delete",
-			Router: `/:uid`,
+			Method:           "Delete",
+			Router:           `/:uid`,
 			AllowHTTPMethods: []string{"delete"},
-			Params: nil})
+			Params:           nil})
 
 	beego.GlobalControllerRouter["gostudy/apiproject/controllers:UserController"] = append(beego.GlobalControllerRouter["gostudy/apiproject/controllers:UserController"],
 		beego.ControllerComments{
-			Method: "Login",
-			Router: `/login`,
+			Method:           "Login",
+			Router:           `/login`,
 			AllowHTTPMethods: []string{"get"},
-			Params: nil})
+			Params:           nil})
 
 	beego.GlobalControllerRouter["gostudy/apiproject/controllers:UserController"] = append(beego.GlobalControllerRouter["gostudy/apiproject/controllers:UserController"],
 		beego.ControllerComments{
-			Method: "Logout",
-			Router: `/logout`,
+			Method:           "Logout",
+			Router:           `/logout`,
 			AllowHTTPMethods: []string{"get"},
-			Params: nil})
+			Params:           nil})
 
 }

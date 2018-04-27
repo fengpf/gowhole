@@ -1,17 +1,14 @@
 package main
 
-import (
-	"gowhole/project/nirvanaAPI"
-
-	"github.com/caicloud/nirvana/config"
-	"github.com/caicloud/nirvana/log"
-	"github.com/caicloud/nirvana/plugins/metrics"
-)
+import "github.com/caicloud/nirvana"
 
 func main() {
-	cmd := config.NewDefaultNirvanaCommand()
-	cmd.EnablePlugin(&metrics.Option{Path: "/metrics"})
-	if err := cmd.Execute(nirvanaAPI.EchoDesc); err != nil {
-		log.Fatal(err)
-	}
+	// cmd := config.NewDefaultNirvanaCommand()
+	// cmd.EnablePlugin(&metrics.Option{Path: "/metrics"})
+	// if err := cmd.Execute(nirvanaAPI.EchoDesc); err != nil {
+	// 	log.Fatal(err)
+	// }
+	conf := nirvana.NewDefaultConfig()
+	s := nirvana.NewServer(conf)
+	s.Serve()
 }

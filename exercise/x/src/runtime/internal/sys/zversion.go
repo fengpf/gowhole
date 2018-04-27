@@ -6,4 +6,3 @@ const DefaultGoroot = `/usr/local/go`
 const TheVersion = `go1.8.3`
 const Goexperiment = ``
 const StackGuardMultiplier = 1
-
