@@ -1843,10 +1843,45 @@
 			"revisionTime": "2016-08-17T18:46:32Z"
 		},
 		{
-			"checksumSHA1": "Ne2HHjBVT8tegOp3l3ataHYmq9M=",
+			"checksumSHA1": "wIjH5qqkqS6cHTrJP015mI1jvy8=",
+			"path": "github.com/gorilla/csrf",
+			"revision": "8aae08ff9fb9a8fe293deea3d057f37d89744670",
+			"revisionTime": "2017-09-12T15:53:03Z",
+			"tree": true
+		},
+		{
+			"checksumSHA1": "XOY0t65siat4bLbC4VCmBA9dE7Y=",
+			"path": "github.com/gorilla/handlers",
+			"revision": "2b8556b16671de6e753c3eccf2aa763f3c55848a",
+			"revisionTime": "2018-04-16T20:39:09Z",
+			"tree": true
+		},
+		{
+			"checksumSHA1": "YuYKzn2jczaM6DQcFDmukvAHUX4=",
 			"path": "github.com/gorilla/mux",
-			"revision": "07ba1fd60e210dc5cc6f86ec25dc9ecc7c95c295",
-			"revisionTime": "2018-02-26T05:11:51Z"
+			"revision": "b57cb1605fd11ba2ecfa7f68992b4b9cc791934d",
+			"revisionTime": "2018-04-16T20:45:19Z",
+			"tree": true
+		},
+		{
+			"checksumSHA1": "PCLeuW5D0dEk1Vc29lUsXEPLmuY=",
+			"path": "github.com/gorilla/schema",
+			"revision": "d0e4c24cff97ae983e9847e0ed5a02dc10013d41",
+			"revisionTime": "2018-03-21T16:33:53Z",
+			"tree": true
+		},
+		{
+			"checksumSHA1": "ucTBCc7dDRKLGPsYfAzu/Gq63qA=",
+			"path": "github.com/gorilla/securecookie",
+			"revision": "e59506cc896acb7f7bf732d4fdf5e25f7ccd8983",
+			"revisionTime": "2017-02-24T19:38:04Z"
+		},
+		{
+			"checksumSHA1": "/jOLCzAcN8p1GakgUYaWOs4tjw8=",
+			"path": "github.com/gorilla/sessions",
+			"revision": "a2f2a3de9a4a575047f73e3e36bc85ecc3546391",
+			"revisionTime": "2018-03-21T16:38:55Z",
+			"tree": true
 		},
 		{
 			"checksumSHA1": "+1LsRRZKa06yTFg/Tu5NCsyHxOA=",
