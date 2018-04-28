@@ -18,7 +18,7 @@ func main() {
 	r.LoadHTMLGlob("../views/**/*")
 	r.GET("/", func(c *gin.Context) {
 		res := make(gin.H)
-		res["nickname"] = "not get nickname"
+		res["nickname"] = "nickname"
 		c.HTML(http.StatusOK, "index.html", res)
 	})
 	r.GET("/user/index", func(c *gin.Context) {
@@ -36,5 +36,5 @@ func main() {
 			}
 		}
 	})
-	r.Run(":8080")
+	r.Run(":8888")
 }
