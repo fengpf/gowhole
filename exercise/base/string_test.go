@@ -62,6 +62,7 @@ func myTrim(s string) string {
 	for j < len(s) {
 		for j < len(s) && !unicode.IsSpace(rune(s[j])) {
 			j++
+			println("!unicode.IsSpace>>>>", j, s[j])
 		}
 		if i != j {
 			b.Write([]byte(s[i:j]))
@@ -69,6 +70,7 @@ func myTrim(s string) string {
 			println(b.String())
 		}
 		for j < len(s) && unicode.IsSpace(rune(s[j])) {
+			println("unicode.IsSpace----", j, s[j])
 			j++
 		}
 		println(i, j)
@@ -78,9 +80,9 @@ func myTrim(s string) string {
 }
 
 func Test_trim(t *testing.T) {
-	str := " 111 ddssdds dsddsfff dsdsd dsds 222 "
-	fmt.Println(str)
-	str2 := strings.TrimSpace(str)
-	fmt.Println(str2)
+	str := "   111 ddssdds dsddsfff dsdsd dsds 222 "
+	// fmt.Println(str)
+	// str2 := strings.TrimSpace(str)
+	// fmt.Println(str2)
 	fmt.Println(myTrim(str))
 }
