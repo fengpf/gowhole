@@ -128,3 +128,21 @@ func Test_byteScope(t *testing.T) {
 	binary.Write(buf, binary.LittleEndian, i)
 	fmt.Println(size, len(buf.Bytes()))
 }
+
+func Test_byteToInt(t *testing.T) {
+	c := make([]byte, 0)
+	c[0] = byte(255)
+	c[1] = byte(255)
+	c[2] = byte(255)
+	c[3] = byte(248) //228,248
+	fmt.Println(byteToInt(c))
+	//        c[0]=(byte)0;
+	//        c[1]=(byte)0;
+	//        c[2]=(byte)2;
+	//        c[3]=(byte)235;
+	// binary.BigEndian.Uint32(c)
+}
+
+func byteToInt(b []byte) int32 {
+	return int32(b[3]) | int32(b[2])<<8 | int32(b[1])<<16 | int32(b[0])<<24
+}
