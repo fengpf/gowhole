@@ -65,6 +65,7 @@ func myTrim(s string) string {
 			println("!unicode.IsSpace>>>>", j, s[j])
 		}
 		if i != j {
+			println(i, j)
 			b.Write([]byte(s[i:j]))
 			i = j
 			println(b.String())
@@ -73,7 +74,7 @@ func myTrim(s string) string {
 			println("unicode.IsSpace----", j, s[j])
 			j++
 		}
-		println(i, j)
+		// println(i, j)
 		i = j
 	}
 	return b.String()
