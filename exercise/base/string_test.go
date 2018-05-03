@@ -61,23 +61,23 @@ func myTrim(s string) string {
 		b    strings.Builder
 		i, j int
 	)
-	for j < len(s) {
-		for j < len(s) && !unicode.IsSpace(rune(s[j])) {
+	for j < len(s) { //开启整个字符串的遍历
+		for j < len(s) && unicode.IsSpace(rune(s[j])) { //空格位置计数
+			println("unicode.IsSpace----", j, s[j])
+			j++
+		}
+		i = j //先记录非空格位置
+		println(i, j)
+		for j < len(s) && !unicode.IsSpace(rune(s[j])) { //非空格位置计数
 			j++
 			println("!unicode.IsSpace>>>>", j, s[j])
 		}
-		if i != j {
+		if i != j { //如果空格标记不等于非空格标记则获取i-j段数据压入字节数组,并且重置当前位置
 			println(i, j)
 			b.Write([]byte(s[i:j]))
 			i = j
 			println(b.String())
 		}
-		for j < len(s) && unicode.IsSpace(rune(s[j])) {
-			println("unicode.IsSpace----", j, s[j])
-			j++
-		}
-		// println(i, j)
-		i = j
 	}
 	return b.String()
 }
