@@ -130,19 +130,19 @@ func Test_byteScope(t *testing.T) {
 }
 
 func Test_byteToInt(t *testing.T) {
-	c := make([]byte, 0)
-	c[0] = byte(255)
-	c[1] = byte(255)
-	c[2] = byte(255)
-	c[3] = byte(248) //228,248
-	fmt.Println(byteToInt(c))
-	//        c[0]=(byte)0;
-	//        c[1]=(byte)0;
-	//        c[2]=(byte)2;
-	//        c[3]=(byte)235;
-	// binary.BigEndian.Uint32(c)
+	c := make([]byte, 4, 4)
+	// c := []byte{255, 255, 255, 228}
+	// c := []byte{255, 255, 255, 248}
+	// c := []byte{0, 0, 2, 248}
+	// c = append(c, byte(1))
+	c[0] = byte(0)
+	c[1] = byte(0)
+	c[2] = byte(2)
+	c[3] = byte(248)
+	fmt.Println(byteToInt32(c))
+
 }
 
-func byteToInt(b []byte) int32 {
+func byteToInt32(b []byte) int32 {
 	return int32(b[3]) | int32(b[2])<<8 | int32(b[1])<<16 | int32(b[0])<<24
 }

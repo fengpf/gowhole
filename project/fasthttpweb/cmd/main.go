@@ -3,7 +3,8 @@ package main
 import (
 	"flag"
 	"fmt"
-	"log"
+
+	"gowhole/lib/log"
 
 	"github.com/valyala/fasthttp"
 )
@@ -20,9 +21,9 @@ func main() {
 	if *compress {
 		h = fasthttp.CompressHandler(h)
 	}
-
+	log.Infof("%s message", "fasthttp start...")
 	if err := fasthttp.ListenAndServe(*addr, h); err != nil {
-		log.Fatalf("Error in ListenAndServe: %s", err)
+		log.Errorf("Error in ListenAndServe: %s", err)
 	}
 }
 
