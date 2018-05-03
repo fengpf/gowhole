@@ -2,9 +2,11 @@ package base
 
 import (
 	"fmt"
+	"reflect"
 	"strings"
 	"testing"
 	"unicode"
+	"unsafe"
 )
 
 var p = fmt.Println
@@ -86,4 +88,39 @@ func Test_trim(t *testing.T) {
 	// str2 := strings.TrimSpace(str)
 	// fmt.Println(str2)
 	fmt.Println(myTrim(str))
+}
+
+type Bytes []byte
+
+func StringBytes(s string) Bytes {
+	return *(*Bytes)(unsafe.Pointer(&s))
+}
+
+func BytesString(b []byte) string {
+	return *(*string)(unsafe.Pointer(&b))
+}
+
+// 获取&s[0]，即存储字符串的字节数组的地址指针，Go里不允许这种操作。
+func StringPointer(s string) unsafe.Pointer {
+	p := (*reflect.StringHeader)(unsafe.Pointer(&s))
+	return unsafe.Pointer(p.Data)
+}
+
+// r获取&b[0]，即[]byte底层数组的地址指针，Go里不允许这种操作
+func BytesPointer(b []byte) unsafe.Pointer {
+	p := (*reflect.SliceHeader)(unsafe.Pointer(&b))
+	return unsafe.Pointer(p.Data)
+}
+func Test_byte2String(t *testing.T) {
+	s := "dd"
+	fmt.Println(StringBytes(s))
+	fmt.Println([]byte(s))
+	fmt.Println(BytesString([]byte{255, 255, 255, 248}))
+	fmt.Println(StringPointer(s))
+	fmt.Println(BytesPointer([]byte{255, 255, 255, 248}))
+
+	const nihongo = "汉语aas爱好"
+	for index, runeValue := range nihongo {
+		fmt.Printf("%#U starts at byte position %d\n", runeValue, index)
+	}
 }
