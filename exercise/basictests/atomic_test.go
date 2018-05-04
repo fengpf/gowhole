@@ -60,6 +60,7 @@ func (a *atomicInt) increment() {
 		a.value++
 	}()
 }
+
 func (a *atomicInt) get() int {
 	a.lock.Lock()
 	defer a.lock.Unlock()
@@ -74,14 +75,4 @@ func Test_incr(t *testing.T) {
 	}()
 	time.Sleep(time.Millisecond)
 	fmt.Println(a.get())
-}
-
-func Test_increment(t *testing.T) {
-	var a atomicInt
-	a.increment()
-	go func() {
-		a.increment()
-	}()
-	time.Sleep(time.Millisecond)
-	fmt.Println(a)
 }

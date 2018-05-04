@@ -86,7 +86,7 @@ func Test_type(t *testing.T) {
 	//c := new([]int)
 	//c(1) = 10
 	var m byte = 100
-	var n int = int(m)
+	var n = int(m)
 	println(n)
 	// *Point(p) //相当于*(Point(p))
 	//(*Point)(p)
@@ -155,7 +155,7 @@ func Test_Ptr(t *testing.T) {
 	fmt.Printf("%x\n", p2)
 	p2 += unsafe.Offsetof(d2.y) //uintptr + offset
 	fmt.Printf("%x\n", p2)
-	p3 := unsafe.Pointer(p2)
+	p3 := unsafe.Pointer(&p2)
 	px := (*int)(p3)
 	*px = 200
 	fmt.Printf("%#v\n", d)

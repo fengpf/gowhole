@@ -111,7 +111,7 @@ func Test_IntByte(t *testing.T) {
 	var j int8 = 127
 	fmt.Println(j, j+1, j*j) // "127 -128 1"
 
-	var a int = 12
+	a := 12
 	fmt.Println(a, unsafe.Sizeof(a), binary.Size(a))
 	buf2 := new(bytes.Buffer)
 	binary.Write(buf2, binary.BigEndian, a)
