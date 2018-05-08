@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"net/http/httputil"
 	"sync"
 )
 
@@ -17,12 +18,12 @@ type worker struct {
 }
 
 func hanle(http.ResponseWriter, *http.Request) {
-
+	parse()
 }
 
 func main() {
 	http.HandleFunc("/", hanle)
-	err := http.ListenAndServe(":8888", nil)
+	err := http.ListenAndServe(":8000", nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}
@@ -44,11 +45,11 @@ func parse() {
 		panic(err)
 	}
 	defer resp.Body.Close()
-	// s, err := httputil.DumpResponse(resp, true)
-	// if err != nil {
-	// 	panic(err)
-	// }
-	// fmt.Printf("%s\n", s)
+	s, err := httputil.DumpResponse(resp, true)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("%s\n", s)
 
 }
 
