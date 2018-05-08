@@ -45,7 +45,12 @@ func main() {
 	}
 	http.Handle("/list", http.HandlerFunc(us.list))
 	http.HandleFunc("/user", us.user)
-	log.Fatal(http.ListenAndServe(addr, nil))
+	err := http.ListenAndServe(addr, nil)
+	if err != nil {
+		log.Fatal(err)
+		return
+	}
+	log.Println("connect ok")
 }
 
 // HandleFunc registers the handler function for the given pattern.
