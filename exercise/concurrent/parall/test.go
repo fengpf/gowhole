@@ -1,4 +1,4 @@
-package parallel
+package parall
 
 import "sync"
 

@@ -1,8 +1,9 @@
-package main
+package parall
 
 import (
 	"fmt"
 	"runtime"
+	"testing"
 	"time"
 )
 
@@ -33,7 +34,7 @@ func say(s string) {
 // GOMAXPROCS 设置最大的可同时使用的CPU核数
 // Goexit 退出当前goroutine(但是defer语句会照常执行)
 
-func main() {
+func Test_loop(t *testing.T) {
 	// 并发
 	// go loop()
 	// go loop()
@@ -51,12 +52,12 @@ func main() {
 	// }
 
 	//并行
-	// runtime.GOMAXPROCS(2) //最多使用2个核
-	// go loop()
-	// go loop()
-	// for i := 0; i < 2; i++ {
-	// 	<-quit
-	// }
+	runtime.GOMAXPROCS(2) //最多使用2个核
+	go loop()
+	go loop()
+	for i := 0; i < 2; i++ {
+		<-quit
+	}
 
 	go say("world") // 显式地让出CPU时间给其他goroutine
 	for {
