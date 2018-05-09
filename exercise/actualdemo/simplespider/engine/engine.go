@@ -1,9 +1,10 @@
 package engine
 
 import (
-	"gowhole/exercise/actualdemo/spider/fetcher"
-	"gowhole/exercise/actualdemo/spider/model"
 	"log"
+
+	"gowhole/exercise/actualdemo/simplespider/fetcher"
+	"gowhole/exercise/actualdemo/simplespider/model"
 )
 
 func Run(seeds ...model.Request) {
@@ -24,8 +25,6 @@ func Run(seeds ...model.Request) {
 		if body, err = fetcher.Fetch(r.URL); err != nil {
 			log.Printf("fetch url(%s) error(%v)", r.URL, err)
 		}
-		// fmt.Printf("%s\n", body)
-
 		parseResult := r.ParseFunc(body)
 		resquests = append(resquests, parseResult.Requests...)
 		for _, item := range parseResult.Items {

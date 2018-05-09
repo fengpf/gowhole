@@ -3,7 +3,7 @@ package parser
 import (
 	"regexp"
 
-	"gowhole/exercise/actualdemo/spider/model"
+	"gowhole/exercise/actualdemo/simplespider/model"
 )
 
 const (
