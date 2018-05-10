@@ -1,6 +1,8 @@
 package scheduler
 
-import "gowhole/exercise/actualdemo/demoscheduler/model"
+import (
+	"gowhole/exercise/actualdemo/demoscheduler/model"
+)
 
 type DataScheduler struct {
 	msgChan    chan *model.Msg

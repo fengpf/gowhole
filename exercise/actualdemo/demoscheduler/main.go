@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"gowhole/exercise/actualdemo/demoscheduler/model"
 	"gowhole/exercise/actualdemo/demoscheduler/scheduler"
+	"time"
 )
 
 type Scheduler interface {
@@ -55,8 +56,9 @@ func main() {
 		WorkerCount: 1,
 	}
 
-	contents := make([]int32, 0, 1000)
-	for index := 0; index < 1000; index++ {
+	count := 100
+	contents := make([]int32, 0, count)
+	for index := 0; index < count; index++ {
 		contents = append(contents, int32(index))
 	}
 
@@ -64,5 +66,5 @@ func main() {
 
 	ce.Run(contents)
 
-	// time.Sleep(time.Second * 2)
+	time.Sleep(time.Second * 3)
 }
