@@ -8,31 +8,42 @@ import (
 type queue []chan int
 
 func main() {
-	ids := []int{1, 2, 3, 4, 5}
+	count := 5
+	ids := make([]int, 0)
+
+	for index := 0; index < count; index++ {
+		ids = append(ids, index)
+	}
+
 	queue := make([]chan int, 0)
 	for _, id := range ids {
-		w := make(chan int, 10)
+		var w chan int
+		if id%2 == 0 {
+			w = make(chan int, 5)
+		}
 		w <- id
 		queue = append(queue, w)
 	}
 
 	var wg sync.WaitGroup
 	for _, w := range queue {
-		select {
-		case j := <-w:
-			wg.Add(1)
-			go func(i int) {
-				defer wg.Done()
-				worker(i)
-			}(j)
-		default:
-			fmt.Println("no")
+		fmt.Println(w)
+		j, ok := <-w
+		if !ok {
+			return
 		}
+		wg.Add(1)
+		go func(i int) {
+			defer wg.Done()
+			worker(i)
+		}(j)
+
 	}
 	wg.Wait()
 }
 
 func worker(i int) int {
-	i = i + 1
+	i = i * 2
+	fmt.Println(i)
 	return i
 }
