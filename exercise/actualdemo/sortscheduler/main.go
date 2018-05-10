@@ -2,37 +2,27 @@ package main
 
 import (
 	"fmt"
-	"sync"
+	"gowhole/exercise/actualdemo/sortscheduler/engine"
+	"gowhole/exercise/actualdemo/sortscheduler/scheduler"
+	"time"
 )
 
-type queue []chan int
-
 func main() {
-	ids := []int{1, 2, 3, 4, 5}
-	queue := make([]chan int, 0)
-	for _, id := range ids {
-		w := make(chan int, 10)
-		w <- id
-		queue = append(queue, w)
+	//mock 消费数据
+	count := 100
+	msg := make([]int, count)
+	for i := 0; i < count; i++ {
+		msg[i] = i
+	}
+	de := engine.DispatchEngine{
+		Scheduler:   &scheduler.DataScheduler{},
+		WorkerCount: 100,
 	}
 
-	var wg sync.WaitGroup
-	for _, w := range queue {
-		select {
-		case j := <-w:
-			wg.Add(1)
-			go func(i int) {
-				defer wg.Done()
-				worker(i)
-			}(j)
-		default:
-			fmt.Println("no")
-		}
-	}
-	wg.Wait()
-}
+	t := time.Now()
+	de.Run(msg)
+	elapsed := time.Since(t)
 
-func worker(i int) int {
-	i = i + 1
-	return i
+	time.Sleep(time.Second * 1)
+	fmt.Printf("app elapsed(%v)\n", elapsed)
 }
