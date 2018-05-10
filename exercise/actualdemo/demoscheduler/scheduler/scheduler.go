@@ -26,6 +26,7 @@ func (ds *DataScheduler) Run() {
 	ds.workerChan = make(chan chan *model.Msg)
 	go func() {
 		var (
+			ids     []int32
 			msgQ    []*model.Msg
 			workerQ []chan *model.Msg
 		)
@@ -39,12 +40,20 @@ func (ds *DataScheduler) Run() {
 				activeWorker = workerQ[0]
 			}
 			select {
-			case in := <-ds.msgChan:
-				msgQ = append(msgQ, in)
-			case out := <-ds.workerChan:
-				workerQ = append(workerQ, out)
+			case msg := <-ds.msgChan:
+				ids = append(ids, msg.ID)
+				// fmt.Println("ids", ids)
+				msgQ = append(msgQ, msg)
+			case worker := <-ds.workerChan:
+				workerQ = append(workerQ, worker)
 			case activeWorker <- activeMsg:
+				// for _, m := range msgQ {
+				// 	fmt.Println("m.ID", m.ID)
+				// }
 				msgQ = msgQ[1:]
+				// for _, m := range msgQ {
+				// 	fmt.Println("m.ID---------", m.ID)
+				// }
 				workerQ = workerQ[1:]
 			}
 		}
