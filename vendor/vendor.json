@@ -1525,6 +1525,13 @@
 			"revisionTime": "2018-01-10T05:33:47Z"
 		},
 		{
+			"checksumSHA1": "p1C/uZ9aF5mK3nFtepXJpJOmOeI=",
+			"path": "github.com/g4zhuj/hashring",
+			"revision": "5d542568fdbd35c6572588f810414d8d23ff32f3",
+			"revisionTime": "2018-04-26T07:31:19Z",
+			"tree": true
+		},
+		{
 			"checksumSHA1": "2UmMbNHc8FBr98mJFN1k8ISOIHk=",
 			"path": "github.com/garyburd/redigo/internal",
 			"revision": "d1ed5c67e5794de818ea85e6b522fda02623a484",
