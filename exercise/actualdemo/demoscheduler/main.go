@@ -46,25 +46,30 @@ func (ce *ConcurrentEngine) createWorker(in chan *model.Msg, ready ReadyNotifier
 
 func echo(id int32) int32 {
 	id = id + 1
-	fmt.Println(id)
+	// fmt.Println(id)
 	return id
 }
 
 func main() {
 	ce := ConcurrentEngine{
 		Scheduler:   &scheduler.DataScheduler{},
-		WorkerCount: 1,
+		WorkerCount: 1000,
 	}
 
-	count := 100
+	count := 1000000
 	contents := make([]int32, 0, count)
 	for index := 0; index < count; index++ {
 		contents = append(contents, int32(index))
 	}
 
-	fmt.Println(contents)
+	// fmt.Println(contents)
 
+	t := time.Now()
 	ce.Run(contents)
+	elapsed := time.Since(t)
 
-	time.Sleep(time.Second * 3)
+	// time.Sleep(time.Second * 3)
+
+	fmt.Printf("app elapsed(%v)\n", elapsed)
+
 }
