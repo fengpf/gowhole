@@ -62,3 +62,17 @@ func Test_wgGroup(t *testing.T) {
 	wg.Wait()
 	fmt.Println(b)
 }
+
+func Test_rely(t *testing.T) {
+	a := func() []int {
+		b := []int{1, 2, 3}
+		return b
+	}()
+
+	go func() {
+		for _, v := range a {
+			i := v + 1
+			fmt.Println(i)
+		}
+	}()
+}
