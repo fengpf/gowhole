@@ -3273,6 +3273,13 @@
 			"revisionTime": "2018-01-28T14:04:16Z"
 		},
 		{
+			"checksumSHA1": "i54gvV/HPbk5rPsFoyhRuJMLVoo=",
+			"path": "github.com/tabalt/gracehttp",
+			"revision": "c6579a30be2b9c9e1c31a4d32a471f28dd71dca0",
+			"revisionTime": "2018-03-27T01:49:28Z",
+			"tree": true
+		},
+		{
 			"checksumSHA1": "uUtXBFLUIO6B03tMVPu18NPuqhU=",
 			"path": "github.com/temoto/robotstxt",
 			"revision": "9e4646fa705336d5b2fa9dddfafbe0a1a965acd7",
