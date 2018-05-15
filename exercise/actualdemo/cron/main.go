@@ -3,18 +3,13 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"os"
 	"os/signal"
 	"syscall"
 
-	"log"
-
-	"github.com/robfig/cron"
+	"goutil/calendar/cron"
 )
-
-/**
-定时任务
-*/
 
 var (
 	Conf configuration
@@ -63,6 +58,8 @@ func readConfig() (conf configuration, err error) {
 }
 
 func main() {
+	// callBack(2, Add)
+
 	i := 0
 	c := cron.New()
 	spec := loadConfig().Run
@@ -71,10 +68,8 @@ func main() {
 		i++
 		log.Println("cron running : ", i)
 	})
-
 	c.AddJob(spec, TestJob{})
 	// c.AddJob(spec, Test2Job{})
-
 	c.Start()
 	defer c.Stop()
 	select {}
@@ -93,3 +88,13 @@ func (this TestJob) Run() {
 // func (this Test2Job) Run() {
 // 	fmt.Println("testJob2...")
 // }
+
+func Add(a, b int) {
+	fmt.Printf("a(%d),b(%d),a+b(%d)\n", a, b, a+b)
+}
+
+// type myFunc func(int, func(int, int)) interface{}
+
+func callBack(a int, f func(i, j int)) {
+	f(a, 2)
+}
