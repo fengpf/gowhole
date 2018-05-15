@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "net.tabalt.ipqueryd.pb";
+option java_outer_classname = "IpQuery";
+
+package pb;
+
+service IpQuery {
+
+    // find ip location data
+    rpc Find(IpFindRequest) returns (IpFindReply) {}
+
+}
+
+message IpFindRequest {
+    string ip = 1;
+}
+
+message IpFindReply {
+    repeated string data = 1;
+}
+
