@@ -2095,10 +2095,11 @@
 			"tree": true
 		},
 		{
-			"checksumSHA1": "0+39KqLyi1GnFP9sTLX0UscwW7s=",
+			"checksumSHA1": "Q7VXdctfl/us6dpWPnukKdB7VZg=",
 			"path": "github.com/henrylee2cn/pholcus_lib",
 			"revision": "3ffb61273b750ae6b570cbceda71cd2f283bd41f",
-			"revisionTime": "2018-03-12T02:55:45Z"
+			"revisionTime": "2018-03-12T02:55:45Z",
+			"tree": true
 		},
 		{
 			"path": "github.com/henrylee2cn/pholcus_lib/IJGUC",
