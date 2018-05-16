@@ -16,9 +16,7 @@ func main() {
 	defer conn.Close()
 
 	iqc := pb.NewIpQueryClient(conn)
-
 	ip := "1.1.8.1"
-
 	r, err := iqc.Find(context.Background(), &pb.IpFindRequest{Ip: ip})
 	if err != nil {
 		log.Fatalf("could not find: %v", err)
