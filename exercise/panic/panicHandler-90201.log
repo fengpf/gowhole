@@ -1,0 +1,7 @@
+goroutine 1 [running]:
+runtime/debug.Stack(0xc420045f38, 0x0, 0x0)
+	/usr/local/go/src/runtime/debug/stack.go:24 +0xa7
+main.panicHandler()
+	/data/app/go/src/gowhole/exercise/panic/main.go:53 +0x299
+main.main()
+	/data/app/go/src/gowhole/exercise/panic/main.go:38 +0x97
