@@ -489,6 +489,13 @@
 			"revision": ""
 		},
 		{
+			"checksumSHA1": "FtryN2Ck2dOfrTRDeKvjCO+8Lb0=",
+			"path": "github.com/Scalingo/etcd-discovery/service",
+			"revision": "4064d96f745cdd15d4b081192b3f833553802844",
+			"revisionTime": "2018-04-30T11:58:35Z",
+			"tree": true
+		},
+		{
 			"checksumSHA1": "KmJ+GiuioSqHeVFfw92ikv+1NsM=",
 			"path": "github.com/Shopify/sarama",
 			"revision": "eae91468c24263f06ae73dce45eb26252c73b1d6",
@@ -2733,6 +2740,12 @@
 			"revisionTime": "2015-04-11T23:30:54Z"
 		},
 		{
+			"checksumSHA1": "gcLub3oB+u4QrOJZcYmk/y2AP4k=",
+			"path": "github.com/nu7hatch/gouuid",
+			"revision": "179d4d0c4d8d407a32af483c2354df1d2c91e6c3",
+			"revisionTime": "2013-12-21T20:05:32Z"
+		},
+		{
 			"checksumSHA1": "gelmnLYIJJZcB9BHbNaYpXy5JMM=",
 			"path": "github.com/oklog/oklog/pkg/group",
 			"revision": "5716cd64ee1c07e5b22113fb28d6121f80b8a24a",
@@ -4458,6 +4471,12 @@
 			"path": "gopkg.in/chanxuehong/wechat.v2",
 			"revision": "f77f6157f681fd1c6d55a9263813ddbece83d60f",
 			"revisionTime": "2018-02-04T04:43:37Z"
+		},
+		{
+			"checksumSHA1": "GviOmP3YDid6pk17waeLrwP4aXA=",
+			"path": "gopkg.in/errgo.v1",
+			"revision": "c17903c6b19d5dedb9cfba9fa314c7fae63e554f",
+			"revisionTime": "2018-05-02T12:39:06Z"
 		},
 		{
 			"checksumSHA1": "+bXcif7ODrtZWpPXswZ7YANpFH0=",

@@ -1,7 +1,8 @@
-package netstat
+package main
 
 import (
 	"bufio"
+	"fmt"
 	"os"
 	"strconv"
 	"strings"
@@ -82,4 +83,8 @@ func toInt(str string) uint64 {
 		panic(err)
 	}
 	return res
+}
+
+func main() {
+	fmt.Println(Stats())
 }
