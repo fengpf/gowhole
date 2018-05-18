@@ -1794,6 +1794,11 @@
 			"revision": ""
 		},
 		{
+			"path": "github.com/goadesign/goa",
+			"revision": "",
+			"tree": true
+		},
+		{
 			"checksumSHA1": "/RE0VzeaXdaBUNeNMUXWqzly7qY=",
 			"path": "github.com/gobwas/glob",
 			"revision": "f00a7392b43971b2fdb562418faab1f18da2067a",

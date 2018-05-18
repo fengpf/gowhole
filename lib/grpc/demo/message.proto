@@ -1,0 +1,21 @@
+syntax = "proto3";
+package main;
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+option (gogoproto.marshaler_all) = true;
+option (gogoproto.sizer_all) = true;
+option (gogoproto.unmarshaler_all) = true;
+option (gogoproto.goproto_getters_all) = false;
+
+service Transporter {
+  rpc Transfer(Request) returns (Response) {}
+}
+
+message Request {
+  string data = 1;
+}
+
+message Response {
+  string result = 1;
+}
