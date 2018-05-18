@@ -1,4 +1,4 @@
-package main
+package channel
 
 import (
 	"crypto/md5"
@@ -9,6 +9,7 @@ import (
 	"path/filepath"
 	"sort"
 	"sync"
+	"testing"
 )
 
 type result struct {
@@ -17,9 +18,9 @@ type result struct {
 	err  error
 }
 
-func main() {
+func Test_paralleBoundlDir(t *testing.T) {
 	// 计算指定目录下所有文件的MD5值，之后按照目录名排序并打印结果
-	m, err := MD5All(os.Args[1])
+	m, err := MD5All3(os.Args[1])
 	if err != nil {
 		fmt.Println(err)
 		return
@@ -71,7 +72,7 @@ func digester(done <-chan struct{}, paths <-chan string, c chan<- result) {
 }
 
 // MD5All 在返回时关闭done channel；这个可能在从c和errc收到所有的值之前被调用
-func MD5All(root string) (m map[string][md5.Size]byte, err error) {
+func MD5All3(root string) (m map[string][md5.Size]byte, err error) {
 	// 启动固定数量的Goroutine来读取并对文件做摘要。
 	c := make(chan result)
 	done := make(chan struct{})

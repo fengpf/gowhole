@@ -2,12 +2,9 @@ package channel
 
 import (
 	"fmt"
-	"sync"
 	"testing"
 	"time"
 )
-
-var wg sync.WaitGroup
 
 func Test_run(t *testing.T) {
 	//模拟4x4接力比赛

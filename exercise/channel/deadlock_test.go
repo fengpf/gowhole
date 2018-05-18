@@ -1,7 +1,8 @@
-package main
+package channel
 
 import (
 	"fmt"
+	"testing"
 )
 
 var ch = make(chan int)
@@ -30,7 +31,7 @@ func foo2(id int) {
 	quit <- id // ok, finished
 }
 
-func main() {
+func Test_deadLock(t *testing.T) {
 	// go loop()
 	// loop()
 	// time.Sleep(time.Second)

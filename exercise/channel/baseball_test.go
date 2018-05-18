@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math/rand"
 	"sync"
+	"testing"
 	"time"
 )
 
@@ -14,7 +15,6 @@ func init() {
 }
 
 func Test_play(t *testing.T) {
-	func main() {
 	ball := make(chan int)
 	wg.Add(2)
 	go play("a", ball)

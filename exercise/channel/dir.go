@@ -1,4 +1,4 @@
-package main
+package channel
 
 import (
 	"crypto/md5"
@@ -7,9 +7,10 @@ import (
 	"os"
 	"path/filepath"
 	"sort"
+	"testing"
 )
 
-func main() {
+func Test_dir(t *testing.T) {
 	// 计算指定目录下所有文件的MD5值，之后按照目录名排序并打印结果
 	m, err := MD5All(os.Args[1])
 	if err != nil {

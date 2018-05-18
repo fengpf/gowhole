@@ -1,4 +1,4 @@
-package main
+package channel
 
 import (
 	"fmt"
@@ -7,6 +7,7 @@ import (
 	"os"
 	"regexp"
 	"strconv"
+	"testing"
 )
 
 const (
@@ -30,7 +31,8 @@ func init() {
 	go regexChildHTML()
 	go downloadImg()
 }
-func main() {
+
+func Test_capture(t *testing.T) {
 	fmt.Println("start")
 	for item := range c3 {
 		fmt.Println("已经下载完成第" + strconv.Itoa(item) + "张图片")

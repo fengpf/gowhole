@@ -1,4 +1,4 @@
-package main
+package channel
 
 import (
 	"crypto/md5"
@@ -9,17 +9,12 @@ import (
 	"path/filepath"
 	"sort"
 	"sync"
+	"testing"
 )
 
-type result struct {
-	path string
-	sum  [md5.Size]byte
-	err  error
-}
-
-func main() {
+func Test_parallelDir(t *testing.T) {
 	// 计算指定目录下所有文件的MD5值，之后按照目录名排序并打印结果
-	m, err := MD5All(os.Args[1])
+	m, err := MD5All2(os.Args[1])
 	if err != nil {
 		fmt.Println(err)
 		return
@@ -77,7 +72,7 @@ func sumFiles(done <-chan struct{}, root string) (<-chan result, <-chan error) {
 }
 
 // MD5All 在返回时关闭done channel；这个可能在从c和errc收到所有的值之前被调用
-func MD5All(root string) (m map[string][md5.Size]byte, err error) {
+func MD5All2(root string) (m map[string][md5.Size]byte, err error) {
 	done := make(chan struct{})
 	defer close(done)
 	c, errc := sumFiles(done, root)
