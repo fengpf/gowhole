@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"net/http"
@@ -30,18 +31,28 @@ func myHandler(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(err)
 		return
 	}
-	fmt.Println(person)
-	b, err := json.Marshal(&Person{
+	p := &Person{
 		Name:  person.Name,
 		Phone: person.Phone,
-	})
+	}
+	fmt.Printf("server get data(%v)\n", p)
+	b, err := json.Marshal(p)
 	if err != nil {
 		// Handle error
 		fmt.Println(err)
 		return
 	}
-	fmt.Println(b)
-	fmt.Fprint(w, b)
+	var (
+		buffer bytes.Buffer
+		buff   bytes.Buffer
+	)
+	buff.Write(b)
+	if err := json.Compact(&buffer, buff.Bytes()); err != nil {
+		println(err) //error message: invalid character ',' looking for beginning of value
+		return
+
+	}
+	w.Write(buffer.Bytes())
 	// Do something with person.Name or person.Phone
 }
 
