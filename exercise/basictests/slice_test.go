@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"sort"
 	"testing"
 	"time"
 
@@ -69,9 +70,64 @@ func Test_AppendByTime(t *testing.T) {
 			}
 		}
 	}
+	res = res[0:2]
 	b, err := json.Marshal(res)
 	if err != nil {
 		fmt.Printf("error(%v)", err)
 	}
 	os.Stdout.Write(b)
+}
+
+type Person struct {
+	Name string
+	Age  int
+}
+
+func Test_sliceSort(t *testing.T) {
+	a := []int{5, 2, 1, 4, 3}
+	sort.Slice(a, func(i, j int) bool {
+		return a[i] > a[j]
+	})
+	fmt.Println(a, sort.SliceIsSorted(a, func(i, j int) bool {
+		return a[i] > a[j]
+	}))
+
+	var people = []Person{
+		{"Bob", 31},
+		{"AJohn", 42},
+		{"DMichael", 17},
+		{"CJenny", 26},
+	}
+	sort.Slice(people, func(i int, j int) bool {
+		return people[i].Name > people[j].Name
+	})
+
+	fmt.Println(people)
+
+}
+
+// func BenchmarkSort(b *testing.B) {
+// 	var people = []Person{
+// 		{"Bob", 31},
+// 		{"John", 42},
+// 		{"Michael", 17},
+// 		{"Jenny", 26},
+// 	}
+// 	for i := 0; i < b.N; i++ {
+// 		sort.Sort(ByAge(people))
+// 	}
+// }
+
+func BenchmarkSortSlice(b *testing.B) {
+	var people = []Person{
+		{"Bob", 31},
+		{"John", 42},
+		{"Michael", 17},
+		{"Jenny", 26},
+	}
+	for i := 0; i < b.N; i++ {
+		sort.Slice(people, func(i int, j int) bool {
+			return people[i].Age < people[j].Age
+		})
+	}
 }

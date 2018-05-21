@@ -2,6 +2,7 @@ package channel
 
 import (
 	"fmt"
+	"sort"
 	"sync"
 	"testing"
 )
@@ -18,10 +19,13 @@ func Test_slice(t *testing.T) {
 		}(i)
 	}
 	wg.Wait()
-	fmt.Println(<-aCh)
 	close(aCh)
+	// fmt.Println(<-aCh)
 	for c := range aCh {
 		a = append(a, c)
 	}
+	sort.Slice(a, func(i, j int) bool {
+		return a[i] > a[j]
+	})
 	fmt.Println(a, <-aCh, <-aCh)
 }
