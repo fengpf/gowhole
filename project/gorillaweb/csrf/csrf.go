@@ -2,7 +2,10 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
+	"log"
 	"net/http"
+	"strconv"
 
 	"github.com/gorilla/csrf"
 	"github.com/gorilla/mux"
@@ -12,7 +15,7 @@ func main() {
 	r := mux.NewRouter()
 	api := r.PathPrefix("/api").Subrouter()
 	api.HandleFunc("/user/{id}", getUser).Methods("GET")
-	http.ListenAndServe(":8000",
+	http.ListenAndServe(":8080",
 		csrf.Protect([]byte("32-byte-long-auth-key"))(r))
 }
 
@@ -22,11 +25,30 @@ func getUser(w http.ResponseWriter, r *http.Request) {
 	// Get the token and pass it in the CSRF header. Our JSON-speaking client
 	// or JavaScript framework can now read the header and return the token in
 	// in its own "X-CSRF-Token" request header on the subsequent POST.
-	user := map[string]string{
-		"name": "tom",
+	params := r.URL.Query()
+	fmt.Println(params["id"])
+	idStr := params["id"][0]
+	fmt.Println(idStr)
+	user := map[int]map[string]string{
+		1: {
+			"name": "tom",
+		},
+		2: {
+			"name": "jack",
+		},
+	}
+	id, err := strconv.Atoi(idStr)
+	if err != nil {
+		log.Println(err)
+		return
+	}
+	u, ok := user[id]
+	if !ok {
+		log.Println(err)
+		return
 	}
 	w.Header().Set("X-CSRF-Token", csrf.Token(r))
-	b, err := json.Marshal(user)
+	b, err := json.Marshal(u)
 	if err != nil {
 		http.Error(w, err.Error(), 500)
 		return
