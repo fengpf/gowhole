@@ -15,17 +15,29 @@ func Test_getCurTime(t *testing.T) {
 	fmt.Println(c.String())                      //输出当前英文时间戳格式
 }
 
+var (
+	consumeLimit = int64(1)
+	tokenChan    = make(chan int, consumeLimit) //速率缓冲大小控制
+	consumeRate  = int64(1e9 / consumeLimit)
+)
+
 func Test_tick(t *testing.T) {
-	var timer = time.NewTicker(time.Duration(1) * time.Second)
-	var token = 0
-	go func() {
-		for range timer.C {
-			token++
-			fmt.Println(token)
-			if token == 20 {
-				break
-			}
-		}
-	}()
-	time.Sleep(5 * time.Second)
+	a := []int{11, 22, 33, 44, 55, 66, 77, 88, 99}
+	go generateToken(time.Duration(consumeRate))
+	for _, v := range a {
+		token := <-tokenChan //消费速率控制
+		fmt.Println(v, token)
+	}
+	time.Sleep(10 * time.Second)
+}
+
+func generateToken(duration time.Duration) {
+	var (
+		timer = time.NewTicker(duration)
+		token = 0
+	)
+	for range timer.C {
+		token++
+		tokenChan <- token
+	}
 }
