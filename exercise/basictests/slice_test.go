@@ -131,3 +131,27 @@ func BenchmarkSortSlice(b *testing.B) {
 		})
 	}
 }
+
+func Test_deduplication(t *testing.T) {
+	a := []int{2, 3, 5, 2, 4, 5, 6}
+	b := make([]int, 0)
+	fmt.Println(a)
+	for k, v := range a {
+		if len(b) == 0 {
+			b = append(b, v)
+		}
+		fmt.Println("out cycle-----", k, v)
+		for kk, vv := range b {
+			if vv == v {
+				fmt.Println("break-----", kk, v)
+				break
+			}
+			fmt.Println("current-----", kk, b)
+			if kk == len(b)-1 {
+				b = append(b, v)
+				fmt.Println("append----", kk, b)
+			}
+		}
+	}
+	fmt.Println(b)
+}
