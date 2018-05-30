@@ -2,7 +2,6 @@ package persist
 
 import (
 	"context"
-	"fmt"
 	"log"
 
 	elastic "gopkg.in/olivere/elastic.v5"
@@ -38,6 +37,5 @@ func save(item interface{}) (id string, err error) {
 	if err != nil {
 		return "", err
 	}
-	fmt.Printf("%+v\n", resp)
 	return resp.Id, nil
 }
