@@ -2167,6 +2167,12 @@
 			"tree": true
 		},
 		{
+			"checksumSHA1": "uFNLkTxk8BkHTk0Jcub2lj2BX4M=",
+			"path": "github.com/google/uuid",
+			"revision": "dec09d789f3dba190787f8b4454c7d3c936fed9e",
+			"revisionTime": "2017-11-29T19:10:14Z"
+		},
+		{
 			"checksumSHA1": "yIkYzW7bzAD81zHyuCNmEj4+oxQ=",
 			"path": "github.com/gopherjs/gopherjs/js",
 			"revision": "8dffc02ea1cb8398bb73f30424697c60fcf8d4c5",
@@ -2835,11 +2841,13 @@
 		},
 		{
 			"path": "github.com/mailru/easyjson/jlexer",
-			"revision": ""
+			"revision": "",
+			"tree": true
 		},
 		{
 			"path": "github.com/mailru/easyjson/jwriter",
-			"revision": ""
+			"revision": "",
+			"tree": true
 		},
 		{
 			"checksumSHA1": "ZS/wXgKJGvl1ZhJkDCJWyiMJBcY=",
@@ -4780,6 +4788,13 @@
 		{
 			"path": "gopkg.in/mgo.v2/sasl",
 			"revision": ""
+		},
+		{
+			"checksumSHA1": "VGUymg9Sqhtc885s0e03gvXevrc=",
+			"path": "gopkg.in/olivere/elastic.v5",
+			"revision": "b708306d715bea9b983685e94ab4602cdc9f988b",
+			"revisionTime": "2018-05-17T13:57:48Z",
+			"tree": true
 		},
 		{
 			"path": "gopkg.in/readline.v1",
