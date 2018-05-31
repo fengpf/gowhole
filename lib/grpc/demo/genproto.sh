@@ -6,8 +6,8 @@
 set -e
 
 # for now, be conservative about what version of protoc we expect
-if ! [[ $(protoc --version) =~ "3.0.0" ]]; then
-	echo "could not find protoc 3.0.0, is it installed + in PATH?"
+if ! [[ $(protoc --version) =~ "libprotoc 3.5.1" ]]; then
+	echo "could not find libprotoc 3.5.1, is it installed + in PATH?"
 	exit 255
 fi
 
