@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"log"
 	"net/rpc"
+
+	"gowhole/exercise/netx/rpcx/model"
 )
 
 // SynchronousCall 同步调用.
@@ -13,7 +15,7 @@ func SynchronousCall() {
 	if err != nil {
 		log.Fatal("dialing:", err)
 	}
-	args := &Args{7, 8}
+	args := &model.Args{A: 7, B: 8}
 	err = client.Call("Arith.Multiply", args, &reply)
 	if err != nil {
 		log.Fatal("arith error:", err)
@@ -27,8 +29,8 @@ func AsynchronousCall() {
 	if err != nil {
 		log.Fatal("dialing:", err)
 	}
-	args := &Args{16, 8}
-	quotient := new(Quotient)
+	args := &model.Args{A: 16, B: 8}
+	quotient := new(model.Quotient)
 	divCall := client.Go("Arith.Divide", args, quotient, nil)
 	replyCall := <-divCall.Done // will be equal to divCall
 	// check errors, print, etc.

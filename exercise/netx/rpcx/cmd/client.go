@@ -1,8 +1,6 @@
 package main
 
-import (
-	"gostudy/lib/net/rpcx"
-)
+import rpcx "gowhole/exercise/netx/rpcx/client"
 
 func main() {
 	rpcx.SynchronousCall()
