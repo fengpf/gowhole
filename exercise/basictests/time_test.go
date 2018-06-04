@@ -41,3 +41,11 @@ func generateToken(duration time.Duration) {
 		tokenChan <- token
 	}
 }
+
+func Test_burst(t *testing.T) {
+	hour := 1
+	second := hour * 3600
+	curHour := int(time.Now().Unix() / 3600)
+	burst := curHour - curHour%hour
+	fmt.Println(second, curHour, curHour%hour, burst)
+}
