@@ -155,3 +155,18 @@ func Test_deduplication(t *testing.T) {
 	}
 	fmt.Println(b)
 }
+
+func Test_copy(t *testing.T) {
+	abortIndex := 1<<8 - 1
+	Element := []int{1, 2, 3}
+	ElementA := []int{4, 5, 6, 7}
+	finalSize := len(Element) + len(ElementA)
+	if finalSize >= int(abortIndex) {
+		panic("too many Element")
+	}
+	mergedElement := make([]int, finalSize)
+	copy(mergedElement, Element)
+	fmt.Println(abortIndex, mergedElement)
+	copy(mergedElement[len(Element):], ElementA)
+	fmt.Println(mergedElement)
+}

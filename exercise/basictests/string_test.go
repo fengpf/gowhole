@@ -2,6 +2,7 @@ package basictests
 
 import (
 	"fmt"
+	"path"
 	"reflect"
 	"strings"
 	"testing"
@@ -103,4 +104,27 @@ func Test_byte2String(t *testing.T) {
 	for index, runeValue := range nihongo {
 		fmt.Printf("%#U starts at byte position %d\n", runeValue, index)
 	}
+}
+
+func Test_join(t *testing.T) {
+	fmt.Println(joinPaths("/a", "test/"))
+}
+
+func lastChar(s string) uint8 {
+	if s == "" {
+		panic("The length of the string can't be 0")
+	}
+	return s[len(s)-1]
+}
+
+func joinPaths(absolutePath, relativePath string) string {
+	if relativePath == "" {
+		return absolutePath
+	}
+	finalPath := path.Join(absolutePath, relativePath)
+	appendSlash := lastChar(relativePath) == '/' && lastChar(finalPath) != '/'
+	if appendSlash {
+		return finalPath + "/"
+	}
+	return finalPath
 }
