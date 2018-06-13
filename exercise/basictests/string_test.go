@@ -4,10 +4,13 @@ import (
 	"fmt"
 	"path"
 	"reflect"
+	"strconv"
 	"strings"
 	"testing"
 	"unicode"
 	"unsafe"
+
+	"github.com/qiniu/log"
 )
 
 // Substr get part of a string.
@@ -127,4 +130,20 @@ func joinPaths(absolutePath, relativePath string) string {
 		return finalPath + "/"
 	}
 	return finalPath
+}
+
+func Test_split(t *testing.T) {
+	var tids []int64
+	tidsStr := "1,2,3"
+	tidSlice := strings.Split(tidsStr, ",")
+	tids = make([]int64, 0, len(tidSlice))
+	for _, v := range tidSlice {
+		tid, err := strconv.ParseInt(v, 10, 64)
+		if err != nil {
+			log.Error("strconv.ParseInt(%s) error(%v)", v, err)
+			return
+		}
+		tids = append(tids, tid)
+	}
+	fmt.Println(tids)
 }

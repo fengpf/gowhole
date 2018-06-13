@@ -8,6 +8,8 @@ import (
 	"testing"
 	"time"
 
+	"github.com/davecgh/go-spew/spew"
+
 	"github.com/qiniu/log"
 )
 
@@ -169,4 +171,84 @@ func Test_copy(t *testing.T) {
 	fmt.Println(abortIndex, mergedElement)
 	copy(mergedElement[len(Element):], ElementA)
 	fmt.Println(mergedElement)
+}
+
+type pagination struct {
+	Pn    int
+	Ps    int
+	Total int
+	Items []int
+}
+
+func Test_pagination(t *testing.T) {
+	var (
+		pn, ps int
+	)
+	items := []int{1, 2, 3, 5}
+
+	pn = 4
+	ps = 1
+
+	res := &pagination{}
+	total := len(items)
+	res.Total = total
+	start := (pn - 1) * ps
+	end := pn * ps
+
+	println(total, start, end)
+	if end < total {
+		println(111)
+		res.Items = items[start:end]
+	} else {
+		println(222)
+		res.Items = items[start:total]
+	}
+
+	spew.Dump(res)
+}
+
+func Test_cutOut(t *testing.T) {
+	/* 创建切片 */
+	numbers := []int{0, 1, 2, 3, 4, 5, 6, 7, 8}
+	printSlice(numbers)
+
+	/* 打印原始切片 */
+	fmt.Println("numbers ==", numbers)
+
+	/* 打印子切片从索引1(包含) 到索引4(不包含)*/
+	fmt.Println("numbers[1:4] ==", numbers[1:4])
+
+	/* 默认下限为 0*/
+	fmt.Println("numbers[:3] ==", numbers[:3])
+
+	/* 默认上限为 len(s)*/
+	fmt.Println("numbers[4:] ==", numbers[4:])
+
+	numbers1 := make([]int, 0, 5)
+	printSlice(numbers1)
+
+	/* 打印子切片从索引  0(包含) 到索引 2(不包含) */
+	number2 := numbers[:2]
+	printSlice(number2)
+
+	/* 打印子切片从索引 2(包含) 到索引 5(不包含) */
+	number3 := numbers[2:5]
+	printSlice(number3)
+
+}
+
+func printSlice(x []int) {
+	fmt.Printf("len=%d cap=%d slice=%v\n", len(x), cap(x), x)
+}
+
+func Test_make(t *testing.T) {
+	arcs := []int{
+		11, 12, 13,
+	}
+	var bindMapTIDs map[int][]int
+	bindMapTIDs = make(map[int][]int)
+	for k, v := range arcs {
+		bindMapTIDs[k] = append(bindMapTIDs[k], v)
+	}
+	fmt.Println(bindMapTIDs)
 }
