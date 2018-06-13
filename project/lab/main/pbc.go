@@ -21,7 +21,8 @@ package main
 import (
 	"fmt"
 	"os"
-	"pbservice"
+
+	"gowhole/project/lab/mit-6.824-2015/pbservice"
 )
 
 func usage() {

@@ -9,7 +9,7 @@ import (
 	"os"
 	"time"
 
-	"viewservice"
+	"gowhole/project/lab/mit-6.824-2015/viewservice"
 )
 
 func main() {

@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"os"
 
-	"lockservice"
+	"gowhole/project/lab/mit-6.824-2015/lockservice"
 )
 
 func usage() {

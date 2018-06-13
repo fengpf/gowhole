@@ -16,12 +16,13 @@ package main
 //   -r restart
 
 import (
-	"diskv"
 	"fmt"
 	"os"
 	"runtime"
 	"strconv"
 	"time"
+
+	"gowhole/project/lab/mit-6.824-2015/diskv"
 )
 
 func usage() {

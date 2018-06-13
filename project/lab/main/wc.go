@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"gowhole/project/lab/mapreduce"
 	"os"
+
+	"gowhole/project/lab/mapreduce"
 )
 
 //

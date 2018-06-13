@@ -9,7 +9,7 @@ import (
 	"os"
 	"time"
 
-	"pbservice"
+	"gowhole/project/lab/mit-6.824-2015/pbservice"
 )
 
 func main() {
