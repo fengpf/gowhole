@@ -469,8 +469,10 @@
 			"revision": ""
 		},
 		{
+			"checksumSHA1": "Pc2ORQp+VY3Un/dkh4QwLC7R6lE=",
 			"path": "github.com/BurntSushi/toml",
-			"revision": ""
+			"revision": "a368813c5e648fee92e5f6c30e3944ff9d5e8895",
+			"revisionTime": "2017-06-26T11:06:00Z"
 		},
 		{
 			"checksumSHA1": "uvutHOxcwOHqLNLbHcTz5cI3fEA=",
@@ -1105,8 +1107,38 @@
 			"revisionTime": "2016-08-04T10:47:26Z"
 		},
 		{
+			"checksumSHA1": "Wqg57i6dQo9ZvTAifQscSij80dE=",
+			"path": "github.com/bitly/go-hostpool",
+			"revision": "a3a6125de9329587178a9792dc8f4bc98e620d2d",
+			"revisionTime": "2017-10-23T18:07:38Z"
+		},
+		{
+			"checksumSHA1": "0EhLvZ6Og9HYqJtCc2Dzs1EgM30=",
+			"path": "github.com/bitly/go-simplejson",
+			"revision": "0c965951289cce37dec52ad1f34200fefc816777",
+			"revisionTime": "2017-10-23T17:51:54Z"
+		},
+		{
+			"checksumSHA1": "P+viYmsLwHRU4tTXWqxDqHVJqHE=",
+			"path": "github.com/bitly/timer_metrics",
+			"revision": "b1c65ca7ae6232b456134f3862db0cdc42c929fd",
+			"revisionTime": "2017-06-06T16:43:00Z"
+		},
+		{
+			"checksumSHA1": "f423Rwr9K0TMRFwPgJgjojAmZd8=",
+			"path": "github.com/blang/semver",
+			"revision": "c5e971dbed7850a93c23aa6ff69db5771d8e23b3",
+			"revisionTime": "2018-03-05T13:03:54Z"
+		},
+		{
 			"path": "github.com/bluele/gcache",
 			"revision": ""
+		},
+		{
+			"checksumSHA1": "xBwkW3XCOni1zsg8S/uHv4aGPKw=",
+			"path": "github.com/bmizerany/perks/quantile",
+			"revision": "d9a9656a3a4b1c2864fdb44db2ef8619772d92aa",
+			"revisionTime": "2014-07-16T21:06:14Z"
 		},
 		{
 			"path": "github.com/boltdb/bolt",
@@ -1656,6 +1688,13 @@
 			"path": "github.com/facebookgo/stats",
 			"revision": "1b76add642e42c6ffba7211ad7b3939ce654526e",
 			"revisionTime": "2015-10-06T22:16:25Z"
+		},
+		{
+			"checksumSHA1": "m1FY9RpGXgz2Q2dhhdfpmNxcUe0=",
+			"path": "github.com/feixiao/nsq-0.3.7",
+			"revision": "e52ff56d829ffd716c1a522c7e4826f8fe6927c3",
+			"revisionTime": "2017-05-31T00:59:47Z",
+			"tree": true
 		},
 		{
 			"checksumSHA1": "3fNi2irNlMcDs4Xrn57f+dcWyGo=",
@@ -2664,6 +2703,18 @@
 			"revision": ""
 		},
 		{
+			"checksumSHA1": "WsvX9236D5dfwifhcDkGuYUHA8E=",
+			"path": "github.com/judwhite/go-svc/svc",
+			"revision": "52e9762f4dcd5373a8ecdefd85ed089cac66afa4",
+			"revisionTime": "2017-02-05T09:16:34Z"
+		},
+		{
+			"checksumSHA1": "X7g98YfLr+zM7aN76AZvAfpZyfk=",
+			"path": "github.com/julienschmidt/httprouter",
+			"revision": "adbc77eec0d91467376ca515bc3a14b8434d0f18",
+			"revisionTime": "2018-04-11T15:45:01Z"
+		},
+		{
 			"checksumSHA1": "gEjGS03N1eysvpQ+FCHTxPcbxXc=",
 			"path": "github.com/kardianos/osext",
 			"revision": "ae77be60afb1dcacde03767a8c37337fad28ac14",
@@ -2910,10 +2961,34 @@
 			"tree": true
 		},
 		{
+			"checksumSHA1": "XllafKZGHd1HH3PUB9MWJjEYpn8=",
+			"path": "github.com/mreiferson/go-options",
+			"revision": "77551d20752b54535462404ad9d877ebdb26e53d",
+			"revisionTime": "2016-12-29T19:00:02Z"
+		},
+		{
+			"checksumSHA1": "IwuaGWkq9sh9hzmmgkyHvCEMGzM=",
+			"path": "github.com/mreiferson/go-snappystream",
+			"revision": "028eae7ab5c4c9e2d1cb4c4ca1e53259bbe7e504",
+			"revisionTime": "2015-04-16T23:44:20Z"
+		},
+		{
+			"checksumSHA1": "5mGTJWVBk+2KdbBQoJWMtGoJJgU=",
+			"path": "github.com/mreiferson/go-snappystream/snappy-go",
+			"revision": "028eae7ab5c4c9e2d1cb4c4ca1e53259bbe7e504",
+			"revisionTime": "2015-04-16T23:44:20Z"
+		},
+		{
 			"checksumSHA1": "UOQ1nSRZ3f+CmrGuMuBItADE/44=",
 			"path": "github.com/natefinch/lumberjack",
 			"revision": "6d54cbc97d7e419cb85c9a5d2123d24f9610817d",
 			"revisionTime": "2015-04-11T23:30:54Z"
+		},
+		{
+			"checksumSHA1": "MZdppx6laedD1LcVomiZ/Sfa6rE=",
+			"path": "github.com/nsqio/go-nsq",
+			"revision": "be2eb35667954359e06a56f76dd629c54895b8b9",
+			"revisionTime": "2018-06-14T14:09:36Z"
 		},
 		{
 			"checksumSHA1": "gcLub3oB+u4QrOJZcYmk/y2AP4k=",

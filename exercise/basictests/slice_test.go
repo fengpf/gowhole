@@ -252,3 +252,37 @@ func Test_make(t *testing.T) {
 	}
 	fmt.Println(bindMapTIDs)
 }
+
+func CheckSameElementOfSlice(a []int64, b []int64) (isSame bool) {
+	isSame = true
+	if len(a) == 0 && len(b) == 0 {
+		return
+	}
+	isHas := make(map[int64]bool)
+	if len(a) < len(b) {
+		for _, k := range a {
+			isHas[k] = true
+		}
+		for _, v := range b {
+			if !isHas[v] {
+				isSame = false
+			}
+		}
+	} else {
+		for _, k := range b {
+			isHas[k] = true
+		}
+		for _, v := range a {
+			if !isHas[v] {
+				isSame = false
+			}
+		}
+	}
+	return
+}
+
+func Test_checkSameElementOfSlice(t *testing.T) {
+	a := []int64{3, 2, 1}
+	b := []int64{2, 3, 1}
+	fmt.Println(CheckSameElementOfSlice(a, b))
+}
