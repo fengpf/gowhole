@@ -282,7 +282,36 @@ func CheckSameElementOfSlice(a []int64, b []int64) (isSame bool) {
 }
 
 func Test_checkSameElementOfSlice(t *testing.T) {
-	a := []int64{3, 2, 1}
-	b := []int64{2, 3, 1}
-	fmt.Println(CheckSameElementOfSlice(a, b))
+	a := []int64{9, 10, 11, 12}
+	b := []int64{16, 2, 3, 15}
+	c := []int64{2, 3, 9, 10, 11, 12}
+	// fmt.Println(CheckSameElementOfSlice(a, b))
+	fmt.Println(ContainAll(a, c))
+	fmt.Println(ContainAtLeastOne(b, c))
+}
+
+func ContainAll(a []int64, b []int64) bool {
+	isHas := make(map[int64]bool)
+	for _, k := range b {
+		isHas[k] = true
+	}
+	for _, v := range a {
+		if !isHas[v] {
+			return false
+		}
+	}
+	return true
+}
+
+func ContainAtLeastOne(a []int64, b []int64) bool {
+	isHas := make(map[int64]bool)
+	for _, k := range b {
+		isHas[k] = true
+	}
+	for _, v := range a {
+		if isHas[v] {
+			return true
+		}
+	}
+	return false
 }
