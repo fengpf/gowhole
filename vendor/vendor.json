@@ -1151,6 +1151,13 @@
 			"revisionTime": "2017-02-08T21:30:04Z"
 		},
 		{
+			"checksumSHA1": "r86lzPdlm4nSouHqa7l+a9LNf3E=",
+			"path": "github.com/buaazp/fasthttprouter",
+			"revision": "28db72dff5a1512dab256b4b7f85c5aa8c36cf73",
+			"revisionTime": "2018-02-11T07:41:05Z",
+			"tree": true
+		},
+		{
 			"path": "github.com/caicloud/nirvana",
 			"revision": ""
 		},
@@ -3197,6 +3204,13 @@
 			"revisionTime": "2018-01-25T13:30:57Z"
 		},
 		{
+			"checksumSHA1": "+mB8aEvEg2wl3PoWZjAVfhGxtJA=",
+			"path": "github.com/qiangxue/fasthttp-routing",
+			"revision": "6ccdc2a18d8712f842de50ddcb8c9a3d025ddc71",
+			"revisionTime": "2016-02-25T05:06:29Z",
+			"tree": true
+		},
+		{
 			"checksumSHA1": "P7gR/mj56/a7m4iXH/fdFZma/oo=",
 			"path": "github.com/qiniu/log",
 			"revision": "e002bc2020b19bfa61ed378cc5407383dbd2f346",
@@ -3821,6 +3835,13 @@
 			"path": "github.com/valyala/tcplisten",
 			"revision": "ceec8f93295a060cdb565ec25e4ccf17941dbd55",
 			"revisionTime": "2016-11-14T21:01:44Z"
+		},
+		{
+			"checksumSHA1": "x3uK8eUfueedIYSkiueIyBXdOsc=",
+			"path": "github.com/vincentLiuxiang/lu",
+			"revision": "9328682acd3d3080407b8cc3448ed1dba7266dbf",
+			"revisionTime": "2017-05-23T06:07:02Z",
+			"tree": true
 		},
 		{
 			"checksumSHA1": "oiypbm/3Ttp04FhXWTqRwb1MfTM=",

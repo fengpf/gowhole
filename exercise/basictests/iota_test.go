@@ -13,10 +13,12 @@ const (
 	GB
 	TB
 )
+
 const (
 	A, B = iota, iota << 10 //0, 0<<10
 	C, D                    //1,1<<10
 )
+
 const (
 	AA = iota //0
 	BB        //1
@@ -24,6 +26,16 @@ const (
 	DD        //c，与上一行相同
 	EE
 )
+
+const (
+	mutexLocked = 1 << iota // mutex is locked
+	mutexWoken
+	mutexWaiterShift = iota
+)
+
+func Test_lock(t *testing.T) {
+	fmt.Println(mutexLocked, mutexWoken, mutexWaiterShift)
+}
 
 func Test_Def(t *testing.T) {
 	// var x int
