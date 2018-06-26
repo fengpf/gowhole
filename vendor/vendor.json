@@ -1317,6 +1317,13 @@
 			"revision": ""
 		},
 		{
+			"checksumSHA1": "Yb3CPLfxPJbHjsPm3q6O4KzeIl8=",
+			"path": "github.com/codegangsta/negroni",
+			"revision": "dae7dc68e5a970eeecdaa7e4191e11d103cb8c1d",
+			"revisionTime": "2018-06-12T00:28:49Z",
+			"tree": true
+		},
+		{
 			"checksumSHA1": "DlfvOHiUt0ByfIy8foc3NBdArek=",
 			"path": "github.com/codeskyblue/gosuv",
 			"revision": "688b0605a4768671975691d3ca52b36587094d4b",
@@ -1574,10 +1581,11 @@
 			"revision": ""
 		},
 		{
-			"checksumSHA1": "+TKtBzv23ywvmmqRiGEjUba4YmI=",
+			"checksumSHA1": "nVO4/umeX0nN0hEblyezI8LsBt0=",
 			"path": "github.com/dgrijalva/jwt-go",
-			"revision": "dbeaa9332f19a944acb5736b4456cfcc02140e29",
-			"revisionTime": "2017-10-19T21:57:19Z"
+			"revision": "06ea1031745cb8b3dab3f6a236daf2b0aa468b7e",
+			"revisionTime": "2018-03-08T23:13:08Z",
+			"tree": true
 		},
 		{
 			"path": "github.com/dgryski/go-farm",
