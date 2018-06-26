@@ -2,8 +2,14 @@ package basictests
 
 import (
 	"fmt"
+	"reflect"
 	"testing"
 )
+
+func Test_mapEqual(t *testing.T) {
+	var c, d map[string]int = nil, make(map[string]int)
+	fmt.Println(reflect.DeepEqual(c, d)) // "false"
+}
 
 func Test_map(t *testing.T) {
 	var (

@@ -51,6 +51,7 @@ package labrpc
 
 import (
 	"bytes"
+	"fmt"
 	"log"
 	"math/rand"
 	"reflect"
@@ -104,6 +105,7 @@ func (e *ClientEnd) Call(svcMeth string, args interface{}, reply interface{}) bo
 	}
 
 	rep := <-req.replyCh
+	fmt.Println(string(rep.reply))
 	if rep.ok {
 		rb := bytes.NewBuffer(rep.reply)
 		rd := labgob.NewDecoder(rb)
@@ -142,15 +144,15 @@ func MakeNetwork() *Network {
 
 	// single goroutine to handle all ClientEnd.Call()s
 	go func() {
-		for {
-			select {
-			case xreq := <-rn.endCh:
-				atomic.AddInt32(&rn.count, 1)
-				go rn.ProcessReq(xreq)
-			case <-rn.done:
-				return
-			}
+		// for {
+		select {
+		case xreq := <-rn.endCh:
+			atomic.AddInt32(&rn.count, 1)
+			go rn.ProcessReq(xreq)
+		case <-rn.done:
+			return
 		}
+		// }
 	}()
 
 	return rn
@@ -394,11 +396,10 @@ func (rs *Server) dispatch(req reqMsg) replyMsg {
 
 	// split Raft.AppendEntries into service and method
 	dot := strings.LastIndex(req.svcMeth, ".")
+	// fmt.Println(dot, req.svcMeth[:dot], req.svcMeth[dot+1:])
 	serviceName := req.svcMeth[:dot]
 	methodName := req.svcMeth[dot+1:]
-
 	service, ok := rs.services[serviceName]
-
 	rs.mu.Unlock()
 
 	if ok {

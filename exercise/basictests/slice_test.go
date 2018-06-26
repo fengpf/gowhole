@@ -4,7 +4,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"reflect"
 	"sort"
+	"strings"
 	"testing"
 	"time"
 
@@ -12,6 +14,19 @@ import (
 
 	"github.com/qiniu/log"
 )
+
+func Test_sliceEqual(t *testing.T) {
+	got := strings.Split("a:b:c", ":")
+	want := []string{"a", "b", "c"}
+	if !reflect.DeepEqual(got, want) {
+		fmt.Println("not equal")
+	} else {
+		fmt.Println("is equal")
+	}
+
+	var a, b []string = nil, []string{}
+	fmt.Println(reflect.DeepEqual(a, b)) // "false"
+}
 
 func Test_Slice(t *testing.T) {
 	a := make([]int, 0, 3)
