@@ -27,6 +27,7 @@ func (js *JunkServer) Handler1(args string, reply *int) {
 	defer js.mu.Unlock()
 	js.log1 = append(js.log1, args)
 	*reply, _ = strconv.Atoi(args)
+	fmt.Println("test Handler1", *reply)
 }
 
 func (js *JunkServer) Handler2(args int, reply *string) {
@@ -76,6 +77,8 @@ func TestBasic(t *testing.T) {
 		e.Call("JunkServer.Handler2", 111, &reply)
 		if reply != "handler2-111" {
 			t.Fatalf("wrong reply from Handler2")
+		} else {
+			t.Logf("get reply(%v)", reply)
 		}
 	}
 
