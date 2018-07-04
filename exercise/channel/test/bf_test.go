@@ -1,16 +1,13 @@
-package main
+package test
 
 import (
 	"fmt"
-	"gowhole/exercise/channel/buffer"
 	"sync"
 	"testing"
 	"time"
+
+	"gowhole/exercise/channel/buffer"
 )
-
-func main() {
-
-}
 
 func Test_set_get(t *testing.T) {
 	for i := 0; i < 5; i++ {
