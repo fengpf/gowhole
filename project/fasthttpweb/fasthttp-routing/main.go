@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 
+	_ "net/http/pprof"
+
 	"github.com/qiangxue/fasthttp-routing"
 	"github.com/valyala/fasthttp"
 )
