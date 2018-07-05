@@ -12,16 +12,30 @@ import (
 	"syscall"
 )
 
+type stu struct {
+	id int
+}
+
+type msg struct {
+	next *msg
+	data *stu
+	done bool
+}
+
 type service struct {
-	wg                sync.WaitGroup
-	soureData, myData chan int
-	de                DispatchEngine
+	wg        sync.WaitGroup
+	soureData chan *stu
+	myData    chan *msg
+	mergeChan []chan *msg
+	doneChan  chan []*msg
+	de        DispatchEngine
 }
 
 var (
-	dataLen     = 100
+	chanSize    = 1024
+	dataLen     = 1000
 	workerCount = 10
-	workerQueue []chan int
+	workerQueue []chan *msg
 	s           *service
 	cpuprofile  = flag.String("cpuprofile", "", "write cpu profile to `file`")
 	memprofile  = flag.String("memprofile", "", "write memory profile to `file`")
@@ -59,11 +73,13 @@ func init() {
 			Scheduler:   &DataScheduler{},
 			WorkerCount: workerCount,
 		},
-		soureData: make(chan int, dataLen),
-		myData:    make(chan int),
+		soureData: make(chan *stu, chanSize),
+		myData:    make(chan *msg, chanSize),
+		mergeChan: make([]chan *msg, workerCount),
+		doneChan:  make(chan []*msg, chanSize),
 	}
 	for i := 0; i < dataLen; i++ {
-		s.soureData <- i
+		s.soureData <- &stu{id: i}
 	}
 }
 
@@ -90,26 +106,48 @@ func main() {
 }
 
 func (s *service) consume() {
+	defer s.wg.Done()
+	var head, last *msg
 	for {
-		i, ok := <-s.soureData
-		if !ok {
-			fmt.Printf("consume exit\n")
-			return
+		select {
+		case stu, ok := <-s.soureData:
+			if !ok {
+				return
+			}
+			m := &msg{data: stu}
+			if head == nil {
+				head = m
+				last = m
+			} else {
+				last.next = m
+				last = m
+			}
+			s.myData <- m
+		case done := <-s.doneChan:
+			fin := make(map[int]*stu)
+			for _, d := range done {
+				d.done = true
+			}
+			for ; head != nil && head.done; head = head.next {
+				fin[head.data.id] = head.data
+			}
+			for _, f := range fin {
+				fmt.Printf("consume at id(%d)\n", f.id)
+			}
 		}
-		s.myData <- i
 	}
 }
 
 func (s *service) Close() {
+	defer s.wg.Wait()
 	close(s.soureData)
 	close(s.myData)
 	s.de.Scheduler.Close()
-	s.wg.Wait()
 }
 
 type Scheduler interface {
-	InitQueue([]chan int, *service)
-	SubmitMsg(int)
+	InitQueue([]chan *msg, *service)
+	SubmitMsg(*msg)
 	Dispatch()
 	Start()
 	Close()
@@ -122,22 +160,23 @@ type DispatchEngine struct {
 
 type DataScheduler struct {
 	s                            *service
-	msgChan                      chan int
-	workerQueue, remainQueue     []chan int
+	msgChan                      chan *msg
+	workerQueue, remainQueue     []chan *msg
 	lenOfQueue, remainLenOfQueue int
-	quit, quit2                  chan struct{}
+	stopCh                       chan struct{}
+	toStop                       chan struct{}
 }
 
-func (d *DataScheduler) InitQueue(q []chan int, s *service) {
+func (d *DataScheduler) InitQueue(q []chan *msg, s *service) {
 	d.s = s
-	d.msgChan = make(chan int)
+	d.msgChan = make(chan *msg)
 	d.lenOfQueue = len(q)
 	d.workerQueue = q
-	d.quit = make(chan struct{})
-	d.quit2 = make(chan struct{})
+	d.stopCh = make(chan struct{})
+	d.toStop = make(chan struct{})
 }
 
-func (d *DataScheduler) SubmitMsg(m int) {
+func (d *DataScheduler) SubmitMsg(m *msg) {
 	d.msgChan <- m
 }
 
@@ -147,15 +186,21 @@ func (d *DataScheduler) Dispatch() { //队列分发
 	go func() {
 		for {
 			select {
+			case <-d.stopCh:
+				fmt.Printf("Dispatch stopCh \n")
+			default:
+			}
+			select {
 			case m, ok := <-d.msgChan:
 				if !ok {
-					fmt.Printf("close Dispatch msgChan \n")
+					select {
+					case d.toStop <- struct{}{}:
+						fmt.Printf("Dispatch toStop ...\n")
+					default:
+					}
 					return
 				}
 				d.workerQueue[d.ShardingQueueIndex(m)] <- m
-			case <-d.quit:
-				fmt.Printf("Dispatch quit \n")
-				return
 			}
 		}
 	}()
@@ -168,15 +213,21 @@ func (d *DataScheduler) Start() { //队列消费
 			defer d.s.wg.Done()
 			for {
 				select {
+				case <-d.stopCh:
+					fmt.Printf("Start stopCh\n")
+				default:
+				}
+				select {
 				case n, ok := <-d.workerQueue[iWorker]:
 					if !ok {
-						fmt.Printf("close Start workerQueue(%d) chan \n", iWorker)
+						select {
+						case d.toStop <- struct{}{}:
+						default:
+						}
+						fmt.Printf("Start toStop at num(%d)\n", iWorker)
 						return
 					}
-					fmt.Printf("worker num(%d) data(%d)\n", iWorker, n)
-				case <-d.quit2:
-					fmt.Printf("Start quit\n")
-					return
+					fmt.Printf("worker Start at num(%d) data(%d)\n", iWorker, n.data.id)
 				}
 			}
 		}(i)
@@ -185,9 +236,11 @@ func (d *DataScheduler) Start() { //队列消费
 
 func (de *DispatchEngine) Run(s *service) {
 	defer s.wg.Done()
-	workerQueue := make([]chan int, de.WorkerCount)
+	workerQueue := make([]chan *msg, de.WorkerCount)
 	for i := 0; i < de.WorkerCount; i++ {
-		workerQueue[i] = make(chan int)
+		m := make(chan *msg, chanSize)
+		// s.mergeChan[i] = m
+		workerQueue[i] = m
 	}
 	de.Scheduler.InitQueue(workerQueue, s)
 	de.Scheduler.Dispatch()
@@ -198,15 +251,15 @@ func (de *DispatchEngine) Run(s *service) {
 	fmt.Printf("Run.....over\n")
 }
 
-func (d *DataScheduler) ShardingQueueIndex(m int) (i int) {
-	i = m % d.lenOfQueue
+func (d *DataScheduler) ShardingQueueIndex(m *msg) (i int) {
+	i = m.data.id % d.lenOfQueue
 	return
 }
 
 func (d *DataScheduler) Stop() {
 	go func() {
-		d.quit <- struct{}{}
-		d.quit2 <- struct{}{}
+		<-d.toStop
+		close(d.stopCh)
 	}()
 }
 
@@ -218,7 +271,7 @@ func (d *DataScheduler) Close() {
 		close(d.workerQueue[i])
 	}
 	for m := range d.msgChan {
-		fmt.Printf("after close msgChan get m(%d)\n", m)
+		fmt.Printf("after close msgChan get m(%d)\n", m.data.id)
 	}
 	d.Stop()
 }
