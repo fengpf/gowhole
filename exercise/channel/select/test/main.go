@@ -20,7 +20,7 @@ func process(ch chan string) {
 }
 
 func main() {
-	select {}
+	// select {}
 	// var wg sync.WaitGroup
 	// var ch chan string
 	ch := make(chan string)
@@ -37,8 +37,8 @@ func main() {
 		fmt.Println(n)
 	case n := <-ch2:
 		fmt.Println(n)
-		// default:
-		// 	fmt.Printf("no value\n")
+	default:
+		fmt.Printf("no value\n")
 	}
 	// }
 	// wg.Wait()
