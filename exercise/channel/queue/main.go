@@ -33,7 +33,7 @@ type service struct {
 
 var (
 	chanSize    = 1024
-	dataLen     = 200000
+	dataLen     = 200
 	workerCount = 10
 	s           *service
 	cpuprofile  = flag.String("cpuprofile", "", "write cpu profile to `file`")
@@ -199,16 +199,19 @@ func (d *DataScheduler) Start() { //队列消费
 				select {
 				case <-d.stopCh:
 					fmt.Printf("Start stopCh\n")
-				default:
+					// default:
+					// 	fmt.Println("Start default stop........")
 				}
 				select {
 				case n, ok := <-d.workerQueue[iWorker]:
 					if !ok {
+						fmt.Printf("Start toStop at num(%d)\n", iWorker)
 						select {
 						case d.toStop <- struct{}{}:
-						default:
+							fmt.Println("Start toStop........")
+							// default:
+							// 	fmt.Println("Start toStop default........")
 						}
-						fmt.Printf("Start toStop at num(%d)\n", iWorker)
 						return
 					}
 					fmt.Printf("worker Start at num(%d) data(%d)\n", iWorker, n.data.id)
