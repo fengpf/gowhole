@@ -46,3 +46,14 @@
 10、consumer接收消息
 consumer订阅了topic test就可以接收上面的消息。命令行运行consumer将接收到的消息显示在终端：
 # $KAFKA_HOME/bin/kafka-console-consumer.sh --bootstrap-server a938097ce7c4:9092 --from-beginning --topic test 
+
+
+
+
+docker run -d --name kafka --publish 9092:9092 \
+--link zookeeper \
+--env KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181 \
+--env KAFKA_ADVERTISED_HOST_NAME=localhost\
+--env KAFKA_ADVERTISED_PORT=9092 \
+--volume /etc/localtime:/etc/localtime \
+wurstmeister/kafka:latest

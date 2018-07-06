@@ -11,7 +11,7 @@ import (
 	cluster "github.com/bsm/sarama-cluster"
 )
 
-var address = []string{"192.168.99.100:9092"}
+var address = []string{"localhost:9092"}
 
 func main() {
 	topic := []string{"test"}
@@ -65,6 +65,7 @@ Loop:
 	for {
 		select {
 		case msg, ok := <-consumer.Messages():
+			fmt.Println(111, msg)
 			if ok {
 				fmt.Fprintf(os.Stdout, "%s:%s/%d/%d\t%s\t%s\n", groupId, msg.Topic, msg.Partition, msg.Offset, msg.Key, msg.Value)
 				consumer.MarkOffset(msg, "") // mark message as processed

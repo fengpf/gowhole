@@ -11,11 +11,11 @@ import (
 	"github.com/Shopify/sarama"
 )
 
-var address = []string{"192.168.99.100:9092"}
+var address = []string{"localhost:9092"}
 
 func main() {
-	syncProducer(address)
-	//asyncProducer1(Address)
+	// syncProducer(address)
+	asyncProducer1(address)
 }
 
 //同步消息模式
