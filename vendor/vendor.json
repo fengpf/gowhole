@@ -1151,6 +1151,13 @@
 			"revisionTime": "2017-02-08T21:30:04Z"
 		},
 		{
+			"checksumSHA1": "4JT8N9Pik6Tv9Ri9vfdiEzbvGms=",
+			"path": "github.com/bsm/sarama-cluster",
+			"revision": "7e67d87a6b3f83fe08c096fd084691bd9dca112f",
+			"revisionTime": "2018-06-25T08:32:03Z",
+			"tree": true
+		},
+		{
 			"checksumSHA1": "r86lzPdlm4nSouHqa7l+a9LNf3E=",
 			"path": "github.com/buaazp/fasthttprouter",
 			"revision": "28db72dff5a1512dab256b4b7f85c5aa8c36cf73",
