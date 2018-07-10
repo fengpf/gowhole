@@ -1472,6 +1472,12 @@
 			"revisionTime": "2018-02-21T22:46:20Z"
 		},
 		{
+			"checksumSHA1": "3Kx93/EGgHryn92eavMOyby6Voc=",
+			"path": "github.com/daviddengcn/go-colortext",
+			"revision": "186a3d44e9200d7eb331356ca4864f52708e1399",
+			"revisionTime": "2018-04-09T17:49:41Z"
+		},
+		{
 			"checksumSHA1": "MP+RMblj0BIn3mK8QIQIXHzWGXk=",
 			"path": "github.com/derekparker/delve/pkg/dwarf/frame",
 			"revision": "dc22db2b4200e67bf5daf1233088b64825c23c4c",
@@ -2759,6 +2765,12 @@
 			"revisionTime": "2018-02-06T20:15:40Z"
 		},
 		{
+			"checksumSHA1": "o0+6uQDysjh6+RsudtQDW3AOwec=",
+			"path": "github.com/joho/godotenv",
+			"revision": "1709ab122c988931ad53508747b3c061400c2984",
+			"revisionTime": "2018-04-05T05:36:34Z"
+		},
+		{
 			"path": "github.com/jtolds/gls",
 			"revision": ""
 		},
@@ -2984,6 +2996,13 @@
 			"path": "github.com/mattn/go-runewidth",
 			"revision": "ce7b0b5c7b45a81508558cd1dba6bb1e4ddb51bb",
 			"revisionTime": "2018-04-08T05:53:51Z"
+		},
+		{
+			"checksumSHA1": "iywZjsTF7veuCUHdtIYwgSzSpKI=",
+			"path": "github.com/mattn/goreman",
+			"revision": "e06e615661116559a2e76ede8f8c48244c066767",
+			"revisionTime": "2018-06-25T07:47:18Z",
+			"tree": true
 		},
 		{
 			"checksumSHA1": "bKMZjd2wPw13VwoE7mBeSv5djFA=",
