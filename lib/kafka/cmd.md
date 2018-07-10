@@ -51,3 +51,18 @@ consumer订阅了topic test就可以接收上面的消息。命令行运行consu
 kafkacat -P -b localhost:9092 -t test
 
 kafkacat -C -b localhost:9092 -t test
+
+
+（1）使用默认的 ‘local’ driver 创建一个 volume
+ docker volume create --name vol1
+ docker volume inspect vol1
+
+（2）使用这个 volume
+ docker run -d -P --name web4 -v vol1:/volume training/webapp python app.p
+
+（3）删除这个 volume
+    可以使用 docker rm -v 命令在删除容器时删除该容器的卷
+    docker run -d -P --name web5 -v /webapp training/webapp python app.py
+    批量删除孤单 volumes
+    从上面的介绍可以看出，使用 docker run -v 启动的容器被删除以后，在主机上会遗留下来孤单的卷。可以使用下面的简单方法来做清理：
+    docker volume ls -qf dangling=true

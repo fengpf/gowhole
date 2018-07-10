@@ -1357,10 +1357,11 @@
 			"revision": ""
 		},
 		{
-			"checksumSHA1": "gZSkXrkqUr2YeNM8kr21D6rTx4s=",
+			"checksumSHA1": "JquJc1wioiCWNcB5Z7Uy9mHri+0=",
 			"path": "github.com/coreos/bbolt",
-			"revision": "ee30b748bcfbd74ec1d8439ae8fd4f9123a5c94e",
-			"revisionTime": "2018-01-18T18:15:22Z"
+			"revision": "af9db2027c98c61ecd8e17caa5bd265792b9b9a2",
+			"revisionTime": "2018-03-18T00:15:26Z",
+			"tree": true
 		},
 		{
 			"checksumSHA1": "SVDbxtq6zlRJ/mB0EAau/f9r4Hc=",
