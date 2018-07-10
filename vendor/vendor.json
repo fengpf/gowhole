@@ -1738,6 +1738,13 @@
 			"tree": true
 		},
 		{
+			"checksumSHA1": "n9AyyDrAvF9FT4+OmfKOwlDPxtw=",
+			"path": "github.com/ga0/netgraph",
+			"revision": "d880d5dd674da90ce46c22ef1a81371c874af10f",
+			"revisionTime": "2018-06-14T07:02:08Z",
+			"tree": true
+		},
+		{
 			"checksumSHA1": "2UmMbNHc8FBr98mJFN1k8ISOIHk=",
 			"path": "github.com/garyburd/redigo/internal",
 			"revision": "d1ed5c67e5794de818ea85e6b522fda02623a484",
@@ -2220,6 +2227,36 @@
 			"path": "github.com/gonuts/flag",
 			"revision": "741a6cbd37a30dedc93f817e7de6aaf0ca38a493",
 			"revisionTime": "2013-05-24T08:13:38Z"
+		},
+		{
+			"checksumSHA1": "v/57yYO54fC+jbuYOmBlroG/My4=",
+			"path": "github.com/google/gopacket",
+			"revision": "79cff32cd2cb4b955635abee1ed8a632133d3420",
+			"revisionTime": "2018-05-24T07:00:27Z"
+		},
+		{
+			"checksumSHA1": "q2UzK01r1yJSRl0Hs2cVm9fLCuw=",
+			"path": "github.com/google/gopacket/layers",
+			"revision": "79cff32cd2cb4b955635abee1ed8a632133d3420",
+			"revisionTime": "2018-05-24T07:00:27Z"
+		},
+		{
+			"checksumSHA1": "LKG5lQm0yXGf12/iP0eCGG+VrqE=",
+			"path": "github.com/google/gopacket/pcap",
+			"revision": "79cff32cd2cb4b955635abee1ed8a632133d3420",
+			"revisionTime": "2018-05-24T07:00:27Z"
+		},
+		{
+			"checksumSHA1": "BuytPDG7fRSuJJAswc3Xaadsp2I=",
+			"path": "github.com/google/gopacket/pcapgo",
+			"revision": "79cff32cd2cb4b955635abee1ed8a632133d3420",
+			"revisionTime": "2018-05-24T07:00:27Z"
+		},
+		{
+			"checksumSHA1": "JB3iiLLoJSfHofXOz5cZLh9y+Eo=",
+			"path": "github.com/google/gopacket/tcpassembly",
+			"revision": "79cff32cd2cb4b955635abee1ed8a632133d3420",
+			"revisionTime": "2018-05-24T07:00:27Z"
 		},
 		{
 			"checksumSHA1": "fUm6tGPS9dL59GFTJpsxjfTfoKk=",
