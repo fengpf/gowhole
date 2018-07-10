@@ -20,8 +20,7 @@ func main() {
 	//广播式消费：消费者1
 	go clusterConsumer(wg, address, topic, "group-1")
 	//广播式消费：消费者2
-	go clusterConsumer(wg, address, topic, "group-2")
-
+	// go clusterConsumer(wg, address, topic, "group-2")
 	wg.Wait()
 }
 
@@ -65,9 +64,8 @@ Loop:
 	for {
 		select {
 		case msg, ok := <-consumer.Messages():
-			fmt.Println(111, msg)
 			if ok {
-				fmt.Fprintf(os.Stdout, "%s:%s/%d/%d\t%s\t%s\n", groupId, msg.Topic, msg.Partition, msg.Offset, msg.Key, msg.Value)
+				fmt.Fprintf(os.Stdout, "GroupID-(%s):Topic(%s)\tPartition(%d)\tOffset(%d)\tKey(%s)\tValue(%s)\n", groupId, msg.Topic, msg.Partition, msg.Offset, string(msg.Key), string(msg.Value))
 				consumer.MarkOffset(msg, "") // mark message as processed
 				successes++
 			}

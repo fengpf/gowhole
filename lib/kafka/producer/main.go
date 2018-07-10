@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 	"os/signal"
+	"strconv"
 	"sync"
 	"time"
 
@@ -16,12 +17,15 @@ var address = []string{"localhost:9092"}
 func main() {
 	// syncProducer(address)
 	asyncProducer1(address)
+	asyncProducer2(address)
 }
 
 //同步消息模式
 func syncProducer(address []string) {
 	config := sarama.NewConfig()
-	config.Producer.Return.Successes = true
+	config.Producer.RequiredAcks = sarama.WaitForAll //等待服务器所有副本都保存成功后的响应
+	config.Producer.Return.Successes = true          //是否等待成功和失败后的响应,只有上面的RequireAcks设置不是NoReponse这里才有用.
+	config.Producer.Return.Errors = true
 	config.Producer.Timeout = 5 * time.Second
 	p, err := sarama.NewSyncProducer(address, config)
 	if err != nil {
@@ -35,6 +39,7 @@ func syncProducer(address []string) {
 		value := fmt.Sprintf(srcValue, i)
 		msg := &sarama.ProducerMessage{
 			Topic: topic,
+			Key:   sarama.ByteEncoder(strconv.Itoa(i)),
 			Value: sarama.ByteEncoder(value),
 		}
 		part, offset, err := p.SendMessage(msg)
@@ -51,10 +56,10 @@ func syncProducer(address []string) {
 func asyncProducer1(address []string) {
 	config := sarama.NewConfig()
 	config.Producer.Return.Successes = true
-	//config.Producer.Partitioner = 默认为message的hash
+	//config.Producer.Partitioner = 默认为message的hash//随机的分区类型
 	p, err := sarama.NewAsyncProducer(address, config)
 	if err != nil {
-		log.Printf("sarama.NewSyncProducer err, message=%s \n", err)
+		log.Printf("sarama.NewSyncProducer error(%v)\n", err)
 		return
 	}
 
@@ -62,10 +67,12 @@ func asyncProducer1(address []string) {
 	signals := make(chan os.Signal, 1)
 	signal.Notify(signals, os.Interrupt)
 
-	var wg sync.WaitGroup
-	var enqueued, successes, errors int
-	wg.Add(2) //2 goroutine
+	var (
+		wg                          sync.WaitGroup
+		enqueued, successes, errors int
+	)
 
+	wg.Add(2) //2 goroutine
 	// 发送成功message计数
 	go func() {
 		defer wg.Done()
@@ -73,7 +80,6 @@ func asyncProducer1(address []string) {
 			successes++
 		}
 	}()
-
 	// 发送失败计数
 	go func() {
 		defer wg.Done()
@@ -91,6 +97,7 @@ Loop:
 		value := fmt.Sprintf(asrcValue, i)
 		msg := &sarama.ProducerMessage{
 			Topic: "test",
+			Key:   sarama.ByteEncoder(strconv.Itoa(i)),
 			Value: sarama.ByteEncoder(value),
 		}
 		select {
@@ -123,15 +130,17 @@ func asyncProducer2(address []string) {
 	signals := make(chan os.Signal, 1)
 	signal.Notify(signals, os.Interrupt)
 
-	var enqueued, successes, errors int
+	var (
+		enqueued, successes, errors, i int
+	)
 	asrcValue := "async-select: this is a message. index=%d"
-	var i int
 Loop:
 	for {
 		i++
 		value := fmt.Sprintf(asrcValue, i)
 		msg := &sarama.ProducerMessage{
 			Topic: "test",
+			Key:   sarama.ByteEncoder(strconv.Itoa(i)),
 			Value: sarama.ByteEncoder(value),
 		}
 		select {
