@@ -199,8 +199,8 @@ func (d *DataScheduler) Start() { //队列消费
 				select {
 				case <-d.stopCh:
 					fmt.Printf("Start stopCh\n")
-					// default:
-					// 	fmt.Println("Start default stop........")
+				default:
+					fmt.Println("Start default stop........")
 				}
 				select {
 				case n, ok := <-d.workerQueue[iWorker]:
@@ -209,8 +209,8 @@ func (d *DataScheduler) Start() { //队列消费
 						select {
 						case d.toStop <- struct{}{}:
 							fmt.Println("Start toStop........")
-							// default:
-							// 	fmt.Println("Start toStop default........")
+						default:
+							fmt.Println("Start toStop default........")
 						}
 						return
 					}

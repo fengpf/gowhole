@@ -12,12 +12,15 @@ import (
 	"github.com/Shopify/sarama"
 )
 
-var address = []string{"localhost:9092"}
+var (
+	address = []string{"localhost:9092"}
+	topic   = "test"
+)
 
 func main() {
 	// syncProducer(address)
 	asyncProducer1(address)
-	asyncProducer2(address)
+	// asyncProducer2(address)
 }
 
 //同步消息模式
@@ -33,7 +36,6 @@ func syncProducer(address []string) {
 		return
 	}
 	defer p.Close()
-	topic := "test"
 	srcValue := "sync: this is a message. index=%d"
 	for i := 0; i < 10; i++ {
 		value := fmt.Sprintf(srcValue, i)
@@ -89,21 +91,21 @@ func asyncProducer1(address []string) {
 		}
 	}()
 	// 循环发送信息
-	asrcValue := "async-goroutine: this is a message. index=%d"
+	// asrcValue := "async-goroutine: this is a message. index=%d"
 	var i int
 Loop:
 	for {
 		i++
-		value := fmt.Sprintf(asrcValue, i)
+		// value := fmt.Sprintf(asrcValue, i)
 		msg := &sarama.ProducerMessage{
-			Topic: "test",
+			Topic: topic,
 			Key:   sarama.ByteEncoder(strconv.Itoa(i)),
-			Value: sarama.ByteEncoder(value),
+			Value: sarama.ByteEncoder(strconv.Itoa(i)),
 		}
 		select {
 		case p.Input() <- msg: // 发送消息
 			enqueued++
-			fmt.Fprintln(os.Stdout, value)
+			fmt.Fprintln(os.Stdout, i)
 		case <-signals: // 中断信号
 			p.AsyncClose()
 			break Loop
@@ -139,7 +141,7 @@ Loop:
 		i++
 		value := fmt.Sprintf(asrcValue, i)
 		msg := &sarama.ProducerMessage{
-			Topic: "test",
+			Topic: topic,
 			Key:   sarama.ByteEncoder(strconv.Itoa(i)),
 			Value: sarama.ByteEncoder(value),
 		}
