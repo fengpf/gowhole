@@ -76,3 +76,20 @@ func Test_incr(t *testing.T) {
 	time.Sleep(time.Millisecond)
 	fmt.Println(a.get())
 }
+
+func Test_com(t *testing.T) {
+	addVal(int32(1))
+}
+
+func addVal(delta int32) {
+	var val int32
+	for {
+		old := val
+		new := val + delta
+		fmt.Println(val, old, new)
+		if atomic.CompareAndSwapInt32(&val, old, new) {
+			fmt.Println(val, old, new)
+			break
+		}
+	}
+}
