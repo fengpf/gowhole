@@ -2,14 +2,10 @@ package main
 
 import (
 	"fmt"
-<<<<<<< HEAD
-	"sync"
-=======
 	"os"
 	"os/signal"
 	"sync"
 	"syscall"
->>>>>>> 2247aafc530d89948b78988019120a3a9381a16f
 	"time"
 )
 
