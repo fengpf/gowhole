@@ -2,7 +2,10 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
+
+	_ "github.com/mkevac/debugcharts"
 )
 
 // type Handler interface {
@@ -22,9 +25,12 @@ func (u users) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	us := users{
-		1: "tom",
-		2: "jack",
-	}
-	http.ListenAndServe(addr, us)
+	// us := users{
+	// 	1: "tom",
+	// 	2: "jack",
+	// }
+	go func() {
+		log.Println(http.ListenAndServe(addr, nil))
+	}()
+	select {}
 }

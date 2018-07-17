@@ -516,6 +516,12 @@
 			"revisionTime": "2016-08-22T18:46:21Z"
 		},
 		{
+			"checksumSHA1": "iZ3cpzMPHGeYQWcSLweeYdPqPiw=",
+			"path": "github.com/Yawning/chacha20",
+			"revision": "e3b1f968fc6397b51d963fee8ec8711a47bc0ce8",
+			"revisionTime": "2017-09-04T08:51:04Z"
+		},
+		{
 			"checksumSHA1": "R7urN5wWvvFyWdTCtCFe9X+94LU=",
 			"path": "github.com/afex/hystrix-go/hystrix",
 			"revision": "27fae8d30f1a3cbcab6618d2ee55a4cb43064376",
@@ -1458,6 +1464,31 @@
 			"path": "github.com/coreos/pkg/capnslog",
 			"revision": "97fdf19511ea361ae1c100dd393cc47f8dcfa1e1",
 			"revisionTime": "2018-01-08T23:06:52Z"
+		},
+		{
+			"checksumSHA1": "Qxrd5HehmoWxWQmpPVHcQU4JLxM=",
+			"path": "github.com/cyfdecyf/bufio",
+			"revision": "9601756e2a6b5fa8ca6749ce4f73f6afdd83030d",
+			"revisionTime": "2013-06-13T13:56:30Z"
+		},
+		{
+			"checksumSHA1": "oEILUBYUqOYrrVxfc9OZxnSxWJM=",
+			"path": "github.com/cyfdecyf/color",
+			"revision": "31d518c963d22b95d500ab628c1d1d1b8eff2ab9",
+			"revisionTime": "2013-08-27T10:59:46Z"
+		},
+		{
+			"checksumSHA1": "DxS/Sq2fm/WcJfF0facTctSMnno=",
+			"path": "github.com/cyfdecyf/cow",
+			"revision": "41c0fb157c8b939b724ae0d58dad3a1b7cd2e811",
+			"revisionTime": "2016-06-19T15:58:48Z",
+			"tree": true
+		},
+		{
+			"checksumSHA1": "oL6TLjEpHyE1Pgt8CLy8jHGsuIc=",
+			"path": "github.com/cyfdecyf/leakybuf",
+			"revision": "ffae040843bee2891b6306d1d085c25ca822e72c",
+			"revisionTime": "2014-06-18T01:18:00Z"
 		},
 		{
 			"checksumSHA1": "NHqE67y+/xEkTTqnXt2HvwubP38=",
@@ -3033,6 +3064,13 @@
 			"revisionTime": "2018-02-03T10:28:30Z"
 		},
 		{
+			"checksumSHA1": "fql0BrGNbQpTvbCa+DGRKK6Bj0w=",
+			"path": "github.com/mkevac/debugcharts",
+			"revision": "d3203a8fa92649b82dc35c214979861de918874a",
+			"revisionTime": "2018-01-24T21:48:38Z",
+			"tree": true
+		},
+		{
 			"checksumSHA1": "SJEVLZSpEilxo0Ev7yr7dfiAMQ0=",
 			"path": "github.com/moyuanz/hahajing",
 			"revision": "e17d9d5b10f979ce66046f877bc9a78aa1e2393a",
@@ -3367,6 +3405,12 @@
 			"path": "github.com/sdming/goh/thrift",
 			"revision": "7071d6d7ab1fa0b2fc46bb4fa913944c800bd774",
 			"revisionTime": "2013-03-19T08:27:38Z"
+		},
+		{
+			"checksumSHA1": "y7tutWBg7wm+TWkiegU5GDqO0x4=",
+			"path": "github.com/shadowsocks/shadowsocks-go/shadowsocks",
+			"revision": "374838873ca7ac5c75e661cc8aab7edb68cb2e3f",
+			"revisionTime": "2018-06-19T02:26:06Z"
 		},
 		{
 			"checksumSHA1": "q14d3C3xvWevU3dSv4P5K0+OSD0=",
