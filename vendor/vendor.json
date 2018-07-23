@@ -1363,6 +1363,13 @@
 			"revision": ""
 		},
 		{
+			"checksumSHA1": "x+DNAKbGY8vVsK50KF91CWsCzEg=",
+			"path": "github.com/containerd/cgroups",
+			"revision": "5e610833b72089b37d0e615de9a92dfc043757c2",
+			"revisionTime": "2018-05-15T17:50:38Z",
+			"tree": true
+		},
+		{
 			"checksumSHA1": "JquJc1wioiCWNcB5Z7Uy9mHri+0=",
 			"path": "github.com/coreos/bbolt",
 			"revision": "af9db2027c98c61ecd8e17caa5bd265792b9b9a2",
@@ -1452,6 +1459,12 @@
 			"path": "github.com/coreos/go-semver/semver",
 			"revision": "e214231b295a8ea9479f11b70b35d5acf3556d9b",
 			"revisionTime": "2018-01-08T23:09:05Z"
+		},
+		{
+			"checksumSHA1": "1txgvJO9bgE703kK2EQ/NATy1Rg=",
+			"path": "github.com/coreos/go-systemd/dbus",
+			"revision": "88bfeed483d372fa1298dd859662e4b9a13d68cb",
+			"revisionTime": "2018-07-05T09:34:42Z"
 		},
 		{
 			"checksumSHA1": "d50/+u/LFlXvEV10HiEoXB9OsGg=",
@@ -1654,6 +1667,12 @@
 			"path": "github.com/dimfeld/httptreemux",
 			"revision": "7f532489e7739b3d49df5c602bf63549881fe753",
 			"revisionTime": "2018-02-13T07:44:14Z"
+		},
+		{
+			"checksumSHA1": "0o/uepI6WDKqPNMXPbjeml1ciNo=",
+			"path": "github.com/docker/go-units",
+			"revision": "47565b4f722fb6ceae66b95f853feed578a4a51c",
+			"revisionTime": "2018-02-12T13:46:57Z"
 		},
 		{
 			"checksumSHA1": "0IloQncJWv4xBNT8+nDKpvOZFJM=",
@@ -2101,6 +2120,12 @@
 			"revision": "488e630e04cad96fb3b64bf6cdb0ee6aec19a5a5",
 			"revisionTime": "2018-05-13T11:37:02Z",
 			"tree": true
+		},
+		{
+			"checksumSHA1": "R2LGYGzvNT2XROKhXm6Lza8p7m4=",
+			"path": "github.com/godbus/dbus",
+			"revision": "aa2b68efcdd0a473f3a213251231e3d2bf206bbd",
+			"revisionTime": "2018-06-27T19:39:43Z"
 		},
 		{
 			"checksumSHA1": "FhLvgtYfuKY0ow9wtLJRoeg7d6w=",
@@ -3130,6 +3155,12 @@
 			"path": "github.com/op/go-logging",
 			"revision": "970db520ece77730c7e4724c61121037378659d9",
 			"revisionTime": "2016-03-15T20:05:05Z"
+		},
+		{
+			"checksumSHA1": "BAk/e3zWTHHAGPsCmpIFp3IDb8A=",
+			"path": "github.com/opencontainers/runtime-spec/specs-go",
+			"revision": "d810dbc60d8c5aeeb3d054bd1132fab2121968ce",
+			"revisionTime": "2018-07-10T22:26:32Z"
 		},
 		{
 			"checksumSHA1": "Bpszc6e+BI6rmybDuuN6YuTKdCE=",
