@@ -25,19 +25,19 @@ func Register(name, host, port string, target string, interval time.Duration, tt
 		Endpoints: strings.Split(target, ","),
 	})
 	if err != nil {
-		return fmt.Errorf("grpclb: create etcd3 client failed: %v", err)
+		return fmt.Errorf("Register: create etcd3 client failed: %v", err)
 	}
 	resp, err := client.Grant(context.TODO(), int64(ttl))
 	if err != nil {
-		return fmt.Errorf("grpclb: create etcd3 lease failed: %v", err)
+		return fmt.Errorf("Register: create etcd3 lease failed: %v", err)
 	}
 
 	if _, err := client.Put(context.TODO(), serviceKey, serviceValue, etcd3.WithLease(resp.ID)); err != nil {
-		return fmt.Errorf("grpclb: set service '%s' with ttl to etcd3 failed: %s", name, err.Error())
+		return fmt.Errorf("Register: set service '%s' with ttl to etcd3 failed: %s", name, err.Error())
 	}
 
 	if _, err := client.KeepAlive(context.TODO(), resp.ID); err != nil {
-		return fmt.Errorf("grpclb: refresh service '%s' with ttl to etcd3 failed: %s", name, err.Error())
+		return fmt.Errorf("Register: refresh service '%s' with ttl to etcd3 failed: %s", name, err.Error())
 	}
 
 	// wait deregister then delete

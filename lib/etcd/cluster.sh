@@ -1,5 +1,7 @@
 #!/bin/sh
 
+https://github.com/coreos/etcd/blob/master/Procfile
+
 goreman -f Procfile start
 
 # kill etcd2

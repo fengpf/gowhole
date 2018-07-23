@@ -23,7 +23,7 @@ func NewResolver(serviceName string) *Resolver {
 // target example: "http://127.0.0.1:2379,http://127.0.0.1:12379,http://127.0.0.1:22379"
 func (re *Resolver) Resolve(target string) (naming.Watcher, error) {
 	if re.serviceName == "" {
-		return nil, errors.New("grpclb: no service name provided")
+		return nil, errors.New("Resolve: no service name provided")
 	}
 
 	// generate etcd client
@@ -31,7 +31,7 @@ func (re *Resolver) Resolve(target string) (naming.Watcher, error) {
 		Endpoints: strings.Split(target, ","),
 	})
 	if err != nil {
-		return nil, fmt.Errorf("grpclb: creat etcd3 client failed: %s", err.Error())
+		return nil, fmt.Errorf("Resolve: creat etcd3 client failed: %s", err.Error())
 	}
 
 	// Return watcher

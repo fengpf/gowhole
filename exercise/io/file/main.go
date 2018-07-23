@@ -4,11 +4,40 @@ import (
 	"fmt"
 	"io"
 	"os"
+
+	"net/http"
+)
+
+var (
+	filename = "test.txt"
 )
 
 func main() {
-	file := "test.txt"
-	out, err := Contents(file)
+	var err error
+	resp, err := http.DefaultClient.Get("http://www.baidu.com")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	defer resp.Body.Close()
+
+	// resp.Body 被读空,下面写文件没数据
+	// body, err := ioutil.ReadAll(resp.Body)
+	// if err != nil {
+	// 	fmt.Println(err)
+	// 	return
+	// }
+	// fmt.Println(string(body))
+
+	f, err := os.OpenFile(filename, os.O_RDWR|os.O_CREATE, 0600)
+	if err != nil {
+		panic(err)
+	}
+	defer f.Close()
+	// f.Write(resp.Body)
+	io.Copy(f, resp.Body) //写文件
+
+	out, err := Contents(filename) //读取文件
 	if err != nil {
 		panic(err)
 	}

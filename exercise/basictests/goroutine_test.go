@@ -76,3 +76,75 @@ func Test_rely(t *testing.T) {
 		}
 	}()
 }
+
+func Test_loop(t *testing.T) {
+	values := []int{1, 2, 3}
+	for _, val := range values {
+		go func() {
+			fmt.Println(val)
+		}()
+	}
+}
+
+func Test_loop1(t *testing.T) {
+	values := []int{1, 2, 3}
+	for _, val := range values {
+		go func(val interface{}) {
+			fmt.Println(val)
+		}(val)
+	}
+}
+
+func Test_loop2(t *testing.T) {
+	values := []int{1, 2, 3}
+	for i := range values {
+		val := values[i]
+		go func() {
+			fmt.Println(val)
+		}()
+	}
+}
+
+func Test_loop3(t *testing.T) {
+	values := []int{1, 2, 3}
+	for i := range values {
+		val := values[i]
+		go func() {
+			fmt.Println(val)
+		}()
+	}
+}
+
+func Test_loop4(t *testing.T) {
+	for i := 1; i <= 10; i++ {
+		func() {
+			fmt.Println(i)
+		}()
+	}
+}
+
+// type val interface{}
+
+// func (v *val) MyMethod() {
+// 	fmt.Println(v)
+// }
+
+// func Test_loop5(t *testing.T) {
+// 	values := []int{1, 2, 3}
+// 	for _, val := range values {
+// 		go &val.MyMethod()
+// 	}
+// }
+
+// type newVal interface{}
+
+// func (v *newVal) MyMethod() {
+// 	fmt.Println(v)
+// }
+// func Test_loop6(t *testing.T) {
+// 	values := []int{1, 2, 3}
+// 	for _, val := range values {
+// 		newVal := val
+// 		go newVal.MyMethod()
+// 	}
+// }
