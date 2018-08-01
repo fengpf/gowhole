@@ -8,6 +8,7 @@ import (
 	"github.com/garyburd/redigo/redis"
 )
 
+//sudo docker run -p 6379:6379   -d redis:latest redis-server --appendonly yes
 var (
 	redisClient *redis.Pool
 	host        = "127.0.0.1:6379"

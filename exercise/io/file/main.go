@@ -9,7 +9,8 @@ import (
 )
 
 var (
-	filename = "test.txt"
+	filename = "a.txt"
+	data     *string
 )
 
 func main() {
@@ -37,11 +38,11 @@ func main() {
 	// f.Write(resp.Body)
 	io.Copy(f, resp.Body) //写文件
 
-	out, err := Contents(filename) //读取文件
+	_, err = Contents(filename) //读取文件
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("out %s\n", out)
+	// fmt.Printf("out %s\n", out)
 }
 
 // Contents get file content.
@@ -55,7 +56,7 @@ func Contents(filename string) (string, error) {
 	buf := make([]byte, 100)
 	for {
 		n, err := f.Read(buf[0:])
-		println(n)
+		// println(n)
 		// println(string(buf[0:n]))
 		res = append(res, buf[0:n]...)
 		if err != nil {
