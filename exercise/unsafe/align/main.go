@@ -4,8 +4,6 @@ import (
 	"fmt"
 	"reflect"
 	"unsafe"
-
-	"gowhole/exercise/convert"
 )
 
 //逃逸分析（escape analysis）
@@ -36,7 +34,7 @@ func main() {
 	fmt.Printf("Score :%p \t sizeof :%d\n", &stu.Score, unsafe.Sizeof(stu.Name)) //Score :0xc42009a038 sizeof :16
 
 	t := reflect.TypeOf(stu)
-	fmt.Println(unsafe.Sizeof(stu), t.Align()) //32 8
+	// fmt.Println(unsafe.Sizeof(stu), t.Align()) //32 8
 
 	name, _ := t.FieldByName("Name")
 	age, _ := t.FieldByName("Age")
@@ -45,6 +43,7 @@ func main() {
 	//Name :8	Age :8	 Score :4
 	fmt.Printf("Name :%d\t Age :%d\t Score :%d\t \n", name.Type.FieldAlign(), age.Type.FieldAlign(), score.Type.FieldAlign())
 
+	println("----------------------")
 	// First ask Go to give us some information about the MyData type
 	typ := reflect.TypeOf(stu)
 	fmt.Printf("Struct is %d bytes long\n", typ.Size())
@@ -57,7 +56,7 @@ func main() {
 			field.Type.Align(), &field.Name)
 	}
 
-	fmt.Println(convert.HexBin("0xc42009a020"), convert.HexBin("0xc42009a030"))
+	// fmt.Println(convert.HexBin("0xc42009a020"), convert.HexBin("0xc42009a030"))
 }
 
 //test
