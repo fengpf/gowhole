@@ -1,12 +1,10 @@
-package basictests
+package main
 
 import (
 	"fmt"
 	"testing"
 	"unsafe"
 )
-
-func Float64bits(f float64) uint64 { return *(*uint64)(unsafe.Pointer(&f)) }
 
 func Test_ptr(t *testing.T) {
 	fmt.Printf("%#016x\n", Float64bits(1.0)) // "0x3ff0000000000000"

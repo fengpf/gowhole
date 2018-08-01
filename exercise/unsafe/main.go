@@ -20,7 +20,8 @@ func main() {
 
 	var a float64
 	a = 5.0
-	fmt.Println(a, Float64bits(a))
+	fmt.Println(a)
+	fmt.Printf("%#016x\n", Float64bits(5.0))
 
 	fmt.Println("=====================")
 
