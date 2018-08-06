@@ -1,4 +1,4 @@
-package basictests
+package tests
 
 import (
 	"fmt"
@@ -11,6 +11,15 @@ import (
 //return 操作  1、将返回值拷贝到栈空间第一块区域 2、判断defer函数是否修改栈空间的返回值 3、空的return（ret 跳转）
 func Test_defer(t *testing.T) {
 	fmt.Println(f(), f2(), f3())
+
+	i := 100
+	j := 200
+	defer fmt.Printf("start i=%d, j=%d\n", i, j)
+	defer func(v int) {
+		defer fmt.Printf("end v=%d, i=%d, j=%d\n", v, i, j)
+	}(j)
+	i = 300
+	j = 400
 }
 
 func f() (result int) {
@@ -78,7 +87,7 @@ func b() (i int) {
 // 2.所有函数在执行RET返回指令之前，都会先检查是否存在defer语句，若存在则先逆序调用defer语句进行收尾工作再退出返回；
 // 3.匿名返回值是在return执行时被声明，有名返回值则是在函数声明的同时被声明，因此在defer语句中只能访问有名返回值，而不能直接访问匿名返回值；
 // 4.return其实应该包含前后两个步骤：第一步是给返回值赋值（若为有名返回值则直接赋值，若为匿名返回值则先声明再赋值）；第二步是调用RET返回指令并传入返回值，而RET则会检查defer是否存在，若存在就先逆序插播defer语句，最后RET携带返回值退出函数；
-// ‍‍因此，‍‍defer、return、返回值三者的执行顺序应该是：return最先给返回值赋值；接着defer开始执行一些收尾工作；最后RET指令携带返回值退出函数。
+// ‍‍因此，‍‍return、defer、返回值三者的执行顺序应该是：return最先给返回值赋值；接着defer开始执行一些收尾工作；最后RET指令携带返回值退出函数。
 
 // C. 下面我们再来看第三个例子，验证上面的结论
 func c() *int {

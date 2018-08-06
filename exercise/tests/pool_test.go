@@ -5,7 +5,7 @@
 // Pool is no-op under race detector, so all these tests do not work.
 // +build !race
 
-package basictests
+package tests
 
 import (
 	"fmt"

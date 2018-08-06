@@ -1,4 +1,4 @@
-package basictests
+package tests
 
 import (
 	"fmt"
@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"gowhole/exercise/x/src/context"
+	"gowhole/src/go1.10.1/context"
 )
 
 func Test_cancel(t *testing.T) {

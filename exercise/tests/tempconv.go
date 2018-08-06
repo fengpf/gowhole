@@ -3,7 +3,7 @@
 // See page 180.
 
 // Package tempconv performs Celsius and Fahrenheit temperature computations.
-package basictests
+package tests
 
 import (
 	"flag"
