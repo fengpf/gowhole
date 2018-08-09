@@ -869,6 +869,7 @@ func copystack(gp *g, newsize uintptr, sync bool) {
 	}
 
 	// Copy the stack (or the rest of it) to the new location
+	// 将数据拷贝到新栈
 	memmove(unsafe.Pointer(new.hi-ncopy), unsafe.Pointer(old.hi-ncopy), ncopy)
 
 	// Adjust remaining structures that have pointers into stacks.
@@ -882,6 +883,7 @@ func copystack(gp *g, newsize uintptr, sync bool) {
 	}
 
 	// Swap out old stack for new one
+	// 切换到新栈
 	gp.stack = new
 	gp.stackguard0 = new.lo + _StackGuard // NOTE: might clobber a preempt request
 	gp.sched.sp = new.hi - used
@@ -890,7 +892,7 @@ func copystack(gp *g, newsize uintptr, sync bool) {
 	// Adjust pointers in the new stack.
 	gentraceback(^uintptr(0), ^uintptr(0), 0, gp, 0, nil, 0x7fffffff, adjustframe, noescape(unsafe.Pointer(&adjinfo)), 0)
 
-	// free old stack
+	// free old stack // 释放旧栈
 	if stackPoisonCopy != 0 {
 		fillstack(old, 0xfc)
 	}
@@ -1048,6 +1050,7 @@ func newstack() {
 
 	// Allocate a bigger segment and move the stack.
 	oldsize := gp.stack.hi - gp.stack.lo
+	// 扩容至现在的2倍
 	newsize := oldsize * 2
 	if newsize > maxstacksize {
 		print("runtime: goroutine stack exceeds ", maxstacksize, "-byte limit\n")
@@ -1060,10 +1063,12 @@ func newstack() {
 
 	// The concurrent GC will not scan the stack while we are doing the copy since
 	// the gp is in a Gcopystack status.
+	// 拷贝栈数据后切换到新栈
 	copystack(gp, newsize, true)
 	if stackDebug >= 1 {
 		print("stack grow done\n")
 	}
+	// 恢复执行
 	casgstatus(gp, _Gcopystack, _Grunning)
 	gogo(&gp.sched)
 }
@@ -1088,6 +1093,10 @@ func gostartcallfn(gobuf *gobuf, fv *funcval) {
 // Maybe shrink the stack being used by gp.
 // Called at garbage collection time.
 // gp must be stopped, but the world need not be.
+
+// 栈收缩不是在函数调用时发生的，是由垃圾回收器在垃圾回收时主动触发的。
+// 基本过程是计算当前使用的空间，小于栈空间的1/4的话，
+//  执行栈的收缩，将栈收缩为现在的1/2，否则直接返回
 func shrinkstack(gp *g) {
 	gstatus := readgstatus(gp)
 	if gstatus&^_Gscan == _Gdead {
@@ -1118,7 +1127,7 @@ func shrinkstack(gp *g) {
 	}
 
 	oldsize := gp.stack.hi - gp.stack.lo
-	newsize := oldsize / 2
+	newsize := oldsize / 2 // 收缩目标是一半大小
 	// Don't shrink the allocation below the minimum-sized stack
 	// allocation.
 	if newsize < _FixedStack {
@@ -1130,7 +1139,7 @@ func shrinkstack(gp *g) {
 	// down to the SP plus the stack guard space that ensures
 	// there's room for nosplit functions.
 	avail := gp.stack.hi - gp.stack.lo
-	if used := gp.stack.hi - gp.sched.sp + _StackLimit; used >= avail/4 {
+	if used := gp.stack.hi - gp.sched.sp + _StackLimit; used >= avail/4 { // 如果使用空间超过1/4, 则不收缩
 		return
 	}
 
@@ -1147,7 +1156,7 @@ func shrinkstack(gp *g) {
 		print("shrinking stack ", oldsize, "->", newsize, "\n")
 	}
 
-	copystack(gp, newsize, false)
+	copystack(gp, newsize, false) // 用较小的栈替换当前的栈
 }
 
 // freeStackSpans frees unused stack spans at the end of GC.

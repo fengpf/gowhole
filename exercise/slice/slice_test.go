@@ -1,9 +1,12 @@
 package slice
 
 import (
+	"bytes"
 	"fmt"
 	"math"
+	"strings"
 	"testing"
+	"unicode/utf8"
 )
 
 func Test_main(t *testing.T) {
@@ -154,4 +157,24 @@ func Test_sliceDuration(t *testing.T) {
 		ds = append(ds, int64(math.Ceil(j)))
 	}
 	fmt.Println(ds)
+}
+
+func Test_sliceCunt(t *testing.T) {
+	str := "HelloWord"
+	l1 := len([]rune(str))
+	l2 := bytes.Count([]byte(str), nil)
+	l3 := strings.Count(str, "")
+	l4 := utf8.RuneCountInString(str)
+	fmt.Println("l1", l1)
+	fmt.Println("l2", l2)
+	fmt.Println("l3", l3)
+	fmt.Println("l4", l4)
+
+	// func Count(s, sep string) int{}
+	// 判断字符sep在字符串s中出现的次数，没有找到则返回-1，如果为空字符串("")则返回字符串的长度+1
+	fmt.Println(strings.Count(str, "o"))
+
+	str1 := "Hello, 世界"
+	fmt.Println(len(str))                     //打印结果：9  （如果是纯英文字符的字符串，可以使用来判断字符串的长度）
+	fmt.Println(len(str1), len([]rune(str1))) // 打印结果：13
 }

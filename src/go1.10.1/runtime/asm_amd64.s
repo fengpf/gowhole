@@ -477,6 +477,7 @@ TEXT runtime·morestack(SB),NOSPLIT,$0-0
 	MOVQ	m_g0(BX), BX
 	MOVQ	BX, g(CX)
 	MOVQ	(g_sched+gobuf_sp)(BX), SP
+	// 调用runtime.newstack完成栈扩容
 	CALL	runtime·newstack(SB)
 	MOVQ	$0, 0x1003	// crash if newstack returns
 	RET
