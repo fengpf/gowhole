@@ -2,11 +2,14 @@ package main
 
 func main() {
 	p := test() //如果是内联的话，name都是main stack frame，自然内存合法，不需要逃逸
-	println(*p)
+	println(p, &p, *p)
+	// fmt.Printf("p(%v),&p(%v),p(%v)\n", p, &p, *p) //all escapes to heap
 }
 
 func test() *int {
 	x := 0x100
+	println(x, &x)
+	// fmt.Printf("x(%v),&x(%v)\n", x, &x)//all escapes to heap
 	return &x //ret 以后，其stack frame就是不合法的，所以必须放到堆上
 }
 
@@ -25,6 +28,7 @@ func test() *int {
 // ./main.go:10:9: &x escapes to heap
 // ./main.go:9:2: moved to heap: x
 
+// go tool compile -N -S -l main.go
 // go tool objdump -S -s "main\.test" main
 // TEXT main.test(SB) /data/app/go/src/gowhole/exercise/runtime/stack/escape_analysis/main.go
 // func test() *int {

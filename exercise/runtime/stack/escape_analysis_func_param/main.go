@@ -1,13 +1,19 @@
 package main
 
-func main() {
-	x := 0x100
-	test(&x)
+import "fmt"
 
+func main() {
+	i := 10
+	ip := &i
+	fmt.Printf("i的内存地址是：%p\n", ip)
+	fmt.Printf("原始指针的内存地址是：%p\n", &ip)
+	modify(ip)
+	fmt.Println("int值被修改了，新值为:", i)
 }
 
-func test(x *int) {
-	println(*x)
+func modify(ip *int) {
+	*ip = 100
+	fmt.Printf("函数里接收到的指针的内存地址是：%p\n", &ip)
 }
 
 //我们知道一个函数只能直接访问它的（函数栈）空间，或者通过（函数栈空间内的）指针，
