@@ -4,3 +4,8 @@
 debug
 
 *.bak
+
+
+*.o
+*.out
+*.exe

@@ -12,11 +12,13 @@ type Stringer interface {
 var i int
 
 func (v val) String() string {
-	// fmt.Println(v.String()) //递归 栈溢出
+	fmt.Println(v.String()) //递归 栈溢出
 	i++
 	println(i)
 	return "aaa"
 }
+
+// go tool compile -N -l -S main.go > main.s
 
 func main() {
 	// var value interface{} = "aaa" // Value provided by caller.

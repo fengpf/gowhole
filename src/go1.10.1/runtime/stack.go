@@ -920,6 +920,20 @@ func round2(x int32) int32 {
 // compiler doesn't check this.
 //
 //go:nowritebarrierrec
+
+// stack.lo: 栈空间的低地址
+// stack.hi: 栈空间的高地址
+// stackguard0: stack.lo + StackGuard, 用于stack overlow的检测
+// StackGuard: 保护区大小，常量Linux上为880字节
+// StackSmall: 常量大小为128字节，用于小函数调用的优化
+
+// 在判断栈空间是否需要扩容的时候，可以根据被调用函数栈帧的大小, 分为以下两种情况:
+// 1.小于StackSmall
+//   SP小于stackguard0, 执行栈扩容，否则直接执行。
+// 2.大于StackSamll
+//   SP - Function’s Stack Frame Size + StackSmall 小于stackguard0, 执行栈扩容，否则直接执行。
+//   StackBig=4096 被调用函数栈帧大小大于StackBig的时候， 一定会发生栈的扩容
+
 func newstack() {
 	thisg := getg()
 	// TODO: double check all gp. shouldn't be getg().
