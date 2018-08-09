@@ -112,36 +112,4 @@ func main() {
 	// (func())(x)      // x is converted to func()
 	// (func() int)(x)  // x is converted to func() int
 	// func() int(x)    // x is converted to func() int (unambiguous-不含糊的)
-
-	// 	Type switch与Type assertions
-	// 在Go语言中，我们可以使用type switch语句查询接口变量的真实数据类型，语法如下：
-
-	var x interface{} = "1" //x必须是接口类型
-	switch x.(type) {
-	// cases
-	case string:
-		fmt.Printf("x(%s) is string\n", x)
-	}
-
-	// var value interface{} = "aaa" // Value provided by caller.
-	vv := &val{}
-	var value = Stringer(vv)
-	switch str := value.(type) {
-	// case string:
-	// 	fmt.Printf("str(%v) is string\n", str) //type of str is string
-	case Stringer:
-		fmt.Printf("str(%v) is Stringer\n", str.String()) //type of str is Stringer
-	}
-}
-
-type val struct{}
-
-//Stringer test
-type Stringer interface {
-	String() string
-}
-
-func (v *val) String() string {
-	println(v.String() + "aaa")
-	return v.String()
 }
