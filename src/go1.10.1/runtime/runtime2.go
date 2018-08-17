@@ -146,8 +146,8 @@ type iface struct {
 }
 
 type eface struct {
-	_type *_type
-	data  unsafe.Pointer
+	_type *_type         //类型指针
+	data  unsafe.Pointer //数据区域指针
 }
 
 func efaceOf(ep *interface{}) *eface {
