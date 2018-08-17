@@ -19,24 +19,24 @@
 
 `(pprof) list algOne`
 
-> 15MB   335.03MB (flat, cum)   100% of Total
-> .          .     84:
-> .          .     85:// algOne is one way to solve the problem.
-> .          .     86:func algOne(data []byte, find []byte, repl []byte, output *bytes.Buffer) {
-> .          .     87:
-> .          .     88:   // Use a bytes Buffer to provide a stream to process.
-> .   320.03MB     89:   input := bytes.NewBuffer(data)
-> .          .     90:
-> .          .     91:   // The number of bytes we are looking for.
-> .          .     92:   size := len(find)
-> .          .     93:
-> .          .     94:   // Declare the buffers we need to process the stream.
-> 15MB       15MB     95:   buf := make([]byte, size)
-> .          .     96:   end := size - 1
-> .          .     97:
-> .          .     98:   // Read in an initial number of bytes we need to get started.
-> .          .     99:   if n, err := io.ReadFull(input, buf[:end]); err != nil {
-> .          .    100:           output.Write(buf[:n])
+>         15MB   335.03MB (flat, cum)   100% of Total
+>         .          .     84:
+>         .          .     85:// algOne is one way to solve the problem.
+>         .          .     86:func algOne(data []byte, find []byte, repl []byte, output *bytes.Buffer) {
+>         .          .     87:
+>         .          .     88:   // Use a bytes Buffer to provide a stream to process.
+>         .   320.03MB     89:   input := bytes.NewBuffer(data)
+>         .          .     90:
+>         .          .     91:   // The number of bytes we are looking for.
+>         .          .     92:   size := len(find)
+>         .          .     93:
+>         .          .     94:   // Declare the buffers we need to process the stream.
+>        15MB       15MB     95:   buf := make([]byte, size)
+>        .          .     96:   end := size - 1
+>        .          .     97:
+>        .          .     98:   // Read in an initial number of bytes we need to get started.
+>        .          .     99:   if n, err := io.ReadFull(input, buf[:end]); err != nil {
+>        .          .    100:           output.Write(buf[:n])
 
 >基于这次数据分析，我们知道了input/buf 数组在堆中的分配.
 >因为 input 是指针变量，分析数据表明 input 指针变量指定的 bytes.Buffer 值分配了。
@@ -47,7 +47,7 @@
 >我知道 flat 列代表在函数中的分配是因为 list 命令显示 Benchmark 函数中调用了 aglOne。
 
 `(pprof) list Benchmark`
- >         0   335.03MB (flat, cum)   100% of Total
+ >        0   335.03MB (flat, cum)   100% of Total
  >        .          .     20:
  >        .          .     21:   b.ResetTimer()
  >        .          .     22:
@@ -55,8 +55,8 @@
  >        .          .     24:           output.Reset()
  >        .   335.03MB     25:           algOne(in, find, repl, &output)
  >        .          .     26:   }
- >       .          .     27:}
- >         .          .     28:
+ >        .          .     27:}
+ >        .          .     28:
  >        .          .     29:// Capture the time it takes to execute algorithm two.
  >        .          .     30:func BenchmarkAlgorithmTwo(b *testing.B) {
 
@@ -147,7 +147,7 @@ func ReadFull(r Reader, buf []byte) (n int, err error) {
 
 `go tool pprof -alloc_space memcpu.test mem.out`
 
->Total: 5MB
+>       Total: 5MB
 >       5MB        5MB (flat, cum)   100% of Total
 >         .          .    140:
 >         .          .    141:   // The number of bytes we are looking for.
