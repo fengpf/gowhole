@@ -49,3 +49,11 @@ func main() {
 	//var x X=100
 	//x.B()
 }
+
+// go test -run none -bench B -benchtime 3s -benchmem -memprofile mem.out
+
+// go tool pprof -alloc_space memcpu.test mem.out
+
+// list B
+
+// go build -gcflags "-m -m"
