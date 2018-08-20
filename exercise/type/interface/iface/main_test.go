@@ -17,6 +17,16 @@ func BenchmarkIface(b *testing.B) {
 	}
 }
 
+// go test -run none -bench Call -benchtime 3s -benchmem
+
+// go test -run none -bench Call -benchtime 3s -benchmem -memprofile mem.out
+
+// go tool pprof -alloc_space iface.test mem.out
+
+// list B
+
+// go build -gcflags "-m -m"
+
 type I1 interface {
 	Method1()
 }
