@@ -5,6 +5,7 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
+	"unsafe"
 )
 
 var (
@@ -14,7 +15,34 @@ var (
 
 func main() {
 	// mmap()
-	regSingal()
+	// regSingal()
+
+	var (
+		p     []byte
+		_p0   unsafe.Pointer
+		n     int
+		_zero uintptr //Single-word zero for use when we need a valid pointer to 0 bytes.
+	)
+	if len(p) > 0 {
+		_p0 = unsafe.Pointer(&p[0])
+	} else {
+		_p0 = unsafe.Pointer(&_zero)
+	}
+
+	fd, err := syscall.Open("./t.txt", syscall.O_RDWR, 0666)
+	if err != nil {
+		fmt.Printf("syscall.Open error(%v)", err)
+		return
+	}
+
+	r0, _, e1 := syscall.Syscall(syscall.SYS_READ, uintptr(fd), uintptr(_p0), uintptr(len(p)))
+	n = int(r0)
+	if e1 != 0 {
+		println(e1.Error())
+	}
+
+	println(n, _zero, _p0, string(p[:]))
+
 }
 
 //mmap 操作共享内存

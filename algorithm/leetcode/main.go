@@ -104,6 +104,20 @@ func reverseList(head *ListNode) *ListNode {
 	return head
 }
 
+func swapList(head *ListNode) *ListNode {
+	var p, q, r *ListNode
+	p = head
+	q = head.Next
+	head.Next = nil
+	for q != nil {
+		r = q.Next
+		q.Next = p
+		p = q
+		q = r
+	}
+	return p
+}
+
 // convert *ListNode to []int
 func l2s(head *ListNode) []int {
 	res := []int{}
