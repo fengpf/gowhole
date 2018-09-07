@@ -2,7 +2,9 @@ package search
 
 import (
 	"fmt"
+	"strings"
 	"testing"
+	"time"
 )
 
 // 普通二分查找
@@ -135,4 +137,45 @@ func Test_binarySearch(t *testing.T) {
 
 	mmi := binMinMoreSearch(data, 8)
 	fmt.Printf("minmore index(%d) digit(%d)\n", mmi, data[mmi])
+}
+
+var mids = "268104,389088,1724598,4931952,8820267"
+
+func TestFindArr(t *testing.T) {
+	mid := "8820267"
+	midArr := strings.Split(mids, ",")
+	now := time.Now()
+	// res := orderSearch(midArr, mid)
+	res := binarySearch(midArr, mid)
+	println(res)
+	elapsed := time.Since(now)
+	fmt.Println(elapsed)
+}
+
+func orderSearch(s []string, e string) bool {
+	for _, v := range s {
+		if v == e {
+			return true
+		}
+	}
+	return false
+}
+
+func binarySearch(s []string, e string) bool {
+	var low, mid, high int
+	high = len(s) - 1
+	for low <= high {
+		mid = (low + high) / 2
+		if s[mid] == e {
+			return true
+		}
+		if s[mid] < e {
+			low = mid + 1
+		}
+		if s[mid] > e {
+			high = mid - 1
+		}
+		println("mid", mid, s[mid], "low", low, "high", high)
+	}
+	return false
 }
