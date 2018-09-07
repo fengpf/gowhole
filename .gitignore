@@ -8,4 +8,5 @@ debug
 
 *.o
 *.out
+*.test
 *.exe
