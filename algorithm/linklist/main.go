@@ -2,92 +2,50 @@ package main
 
 import (
 	"fmt"
-	"sync"
 )
 
-type message struct {
-	next *message
-	data int
-	done bool
+type Node struct {
+	Next  *Node
+	Value interface{}
 }
 
-var (
-	length     = 10
-	chanSize   = 1024
-	msgs       = make(chan *message)
-	doneChan   = make(chan []*message, chanSize)
-	mergeChan  = make([]chan *message, chanSize)
-	head, last *message
-)
-
 func main() {
-	var wg sync.WaitGroup
-	wg.Add(1)
-	go func() {
-		i := 1
-		defer wg.Done()
-		for {
-			msgs <- &message{data: i}
-			i++
-		}
-	}()
-	wg.Add(1)
-	go func() {
-		defer wg.Done()
-		for {
-			select {
-			case msg, ok := <-msgs:
-				if !ok {
-					return
-				}
-				m := &message{data: msg.data}
-				if head == nil {
-					head = m
-					last = m
-				} else {
-					last.next = m
-					last = m
-				}
-				mergeChan[msg.data%length] <- m
-			case done := <-doneChan:
-				commits := make(map[int]string)
-				for _, d := range done {
-					d.done = true
-				}
-				for ; head != nil && head.done; head = head.next {
-					fmt.Printf("commit  %d ================ is %v\n", head.data, head.done)
-					commits[head.data] = "commit"
-				}
-				// for k, v := range commits {
-				// 	fmt.Printf("%d is %s\n", k, v)
-				// }
-			}
-		}
-	}()
 
-	for i := 0; i < length; i++ {
-		c := make(chan *message, chanSize)
-		mergeChan[i] = c
-		wg.Add(1)
-		go func(c chan *message) {
-			defer wg.Done()
-			var marked = make([]*message, 0, chanSize)
-			for {
-				select {
-				case msg, ok := <-c:
-					if !ok {
-						return
-					}
-					fmt.Println("consume..................", msg)
-					marked = append(marked, msg)
-				}
-				if len(marked) > 0 {
-					doneChan <- marked
-					fmt.Println("marked --------", len(marked))
-					marked = make([]*message, 0, chanSize)
-				}
-			}
-		}(c)
+	nums := []int{1, 2, 3, 4, 5}
+
+	head := &Node{ //链表头指针
+		Value: nums[0],
 	}
-	wg.Wait()
+	tail := head                     //链表尾部和头部公用一个指针节点
+	for i := 1; i < len(nums); i++ { //构建指针链表
+		tail.Next = &Node{
+			Value: nums[i],
+		}
+		tail = tail.Next
+	}
+
+	tail.Next = head //尾部节点指向头节点，使得链表成环
+
+	i := 0
+	for n := head; n != nil; n = n.Next {
+		fmt.Println("cycle linklist print ", n.Value)
+		i++
+
+		if i == 15 {
+			break
+		}
+	}
+
+	visited := make(map[*Node]bool)
+	// visited[head.Next] = true
+	// visited[tail] = true
+
+	for n := head; n != nil; n = n.Next {
+		if visited[n] {
+			fmt.Println("cycle detected node", n.Value)
+			break
+		}
+		fmt.Println("not visited node print", n.Value)
+		visited[n] = true
+	}
 }
