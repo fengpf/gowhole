@@ -29,9 +29,9 @@ func TestWorker(t *testing.T) {
 	p := New(2)
 
 	var wg sync.WaitGroup
-	wg.Add(10 * len(names))
+	wg.Add(2 * len(names))
 
-	for i := 0; i < 10; i++ {
+	for i := 0; i < 2; i++ {
 		//迭代names 切片
 		for _, name := range names {
 			//创建一个 namPrinter 并且提供指定的名字
