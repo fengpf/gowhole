@@ -7,7 +7,7 @@ import (
 	"sync"
 	"time"
 
-	rand "gowhole/lib/xrand"
+	rand "gowhole/middleware/xrand"
 )
 
 //   56bits unix100ns + 12bits pid + 12bits sequence + 48bits node + 64bits hashsum

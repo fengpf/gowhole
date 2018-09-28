@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"net"
 
-	rand "gowhole/lib/xrand"
+	rand "gowhole/middleware/xrand"
 )
 
 var MAC [6]byte = getMAC() // One MAC of this machine; Particular case, it is a random bytes.

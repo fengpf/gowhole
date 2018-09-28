@@ -11,7 +11,7 @@ import (
 )
 
 var (
-	nums = generateRandomNumber(0, 50000, 20000)
+	nums = GenerateRandomNumber(0, 50000, 20000)
 )
 
 func Benchmark_quick(b *testing.B) {
@@ -40,7 +40,7 @@ func Test_quick(t *testing.T) {
 	spew.Dump(nums)
 }
 
-func generateRandomNumber(start int, end int, count int) []int {
+func GenerateRandomNumber(start int, end int, count int) []int {
 	if end < start || (end-start) < count {
 		return nil
 	}
@@ -60,4 +60,17 @@ func generateRandomNumber(start int, end int, count int) []int {
 		}
 	}
 	return nums
+}
+
+func TestRandomNum(t *testing.T) {
+	s := []int{11, 12, 13, 14, 15}
+	keys := GenerateRandomNumber(0, len(s), len(s))
+	spew.Dump(keys)
+	spew.Dump(s)
+
+	ns := make([]int, 0, len(s))
+	for _, k := range keys {
+		ns = append(ns, s[k])
+	}
+	spew.Dump(ns)
 }
