@@ -10,7 +10,9 @@ import (
 )
 
 var (
-	r   = gin.Default()
+	r = gin.New()
+	// r   = gin.Default()// use Logger(), Recovery()
+
 	err error
 )
 
