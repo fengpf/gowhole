@@ -5,16 +5,28 @@ import (
 
 	"gowhole/project/ginweb/model"
 
+	"github.com/gin-contrib/pprof"
 	"github.com/gin-gonic/gin"
 )
 
 var (
-	r   = gin.New()
+	r   = gin.Default()
 	err error
 )
 
 func main() {
-	// r.Use(middleware.Logger())
+
+	pprof.Register(r)
+
+	r.GET("/ping", func(c *gin.Context) {
+		c.JSON(200, gin.H{"message": "pong"})
+	})
+
+	r.Run(":9000")
+}
+
+func test() {
+
 	r.LoadHTMLGlob("../views/**/*")
 	r.GET("/", func(c *gin.Context) {
 		res := make(gin.H)
@@ -36,5 +48,4 @@ func main() {
 			}
 		}
 	})
-	r.Run(":8888")
 }
