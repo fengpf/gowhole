@@ -5,7 +5,7 @@ import (
 	"regexp"
 	"strconv"
 
-	"gowhole/exercise/actualdemo/concurrentspider/model"
+	"gowhole/demo/concurrentspider/model"
 )
 
 var (
