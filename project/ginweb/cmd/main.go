@@ -53,9 +53,7 @@ func myRender(c *gin.Context, code int, r render.Render) {
 
 	if err := r.Render(c.Writer); err != nil {
 		c.Error(err)
-		return
 	}
-
 }
 
 // JSONOutput def json output
