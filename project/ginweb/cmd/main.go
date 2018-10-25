@@ -2,7 +2,9 @@ package main
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
+	"time"
 
 	"gowhole/project/ginweb/model"
 
@@ -98,6 +100,25 @@ func main() {
 			"xxxxx",
 			errors.New("bad req"),
 		)
+	})
+
+	//1. 异步
+	r.GET("/long_async", func(c *gin.Context) {
+		// goroutine 中只能使用只读的上下文 c.Copy()
+		cCp := c.Copy()
+		go func() {
+			time.Sleep(5 * time.Second)
+
+			// 注意使用只读上下文
+			log.Println("Done! in path " + cCp.Request.URL.Path)
+		}()
+	})
+	//2. 同步
+	r.GET("/long_sync", func(c *gin.Context) {
+		time.Sleep(5 * time.Second)
+
+		// 注意可以使用原始上下文
+		log.Println("Done! in path " + c.Request.URL.Path)
 	})
 
 	r.Run(":9000")
