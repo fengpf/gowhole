@@ -1,0 +1,17 @@
+{
+	"ulid": "01CTMSG2B03TYG7VR9K9WK42MP",
+	"minTime": 1540432800000,
+	"maxTime": 1540440000000,
+	"stats": {
+		"numSamples": 247680,
+		"numSeries": 516,
+		"numChunks": 2064
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01CTMSG2B03TYG7VR9K9WK42MP"
+		]
+	},
+	"version": 1
+}

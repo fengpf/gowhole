@@ -1,0 +1,17 @@
+{
+	"ulid": "01CTMJMB32879DFCH9NH0N0M3B",
+	"minTime": 1540425600000,
+	"maxTime": 1540432800000,
+	"stats": {
+		"numSamples": 247680,
+		"numSeries": 516,
+		"numChunks": 2064
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01CTMJMB32879DFCH9NH0N0M3B"
+		]
+	},
+	"version": 1
+}
