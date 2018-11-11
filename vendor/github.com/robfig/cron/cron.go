@@ -5,6 +5,8 @@ import (
 	"runtime"
 	"sort"
 	"time"
+
+	"github.com/davecgh/go-spew/spew"
 )
 
 // Cron keeps track of any number of entries, invoking the associated func as
@@ -102,6 +104,7 @@ func (c *Cron) AddJob(spec string, cmd Job) error {
 	if err != nil {
 		return err
 	}
+	spew.Dump(schedule)
 	c.Schedule(schedule, cmd)
 	return nil
 }
