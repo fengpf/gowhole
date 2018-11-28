@@ -10,3 +10,5 @@ debug
 *.out
 *.test
 *.exe
+
+./project/prometheus/data
