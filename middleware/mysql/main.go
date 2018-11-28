@@ -21,8 +21,8 @@ func init() {
 	if gDB, err = sql.Open("mysql", dsn); err != nil {
 		panic(err)
 	}
-	// gDB.SetMaxOpenConns(256)
-	// gDB.SetMaxIdleConns(150)
+	gDB.SetMaxOpenConns(256)
+	gDB.SetMaxIdleConns(150)
 
 	err = gDB.Ping()
 	if err != nil {
@@ -41,8 +41,8 @@ func New(dsn string) (d *Dao) {
 	if err != nil {
 		panic(err)
 	}
-	db.SetMaxOpenConns(256)
-	db.SetMaxIdleConns(150)
+	// db.SetMaxOpenConns(256)
+	// db.SetMaxIdleConns(150)
 
 	err = db.Ping()
 	if err != nil {
@@ -79,9 +79,9 @@ type data struct {
 }
 
 func mysqlMaxConns(w http.ResponseWriter, r *http.Request) {
-	rows, err := New(dsn).db.Query("SELECT * FROM test limit 100") //每次创建db对象
+	// rows, err := New(dsn).db.Query("SELECT * FROM test limit 100") //每次创建db对象
 
-	// rows, err := gDB.Query("SELECT * FROM test limit 3")//使用全局db对象
+	rows, err := gDB.Query("SELECT * FROM test limit 3") //使用全局db对象
 	defer rows.Close()
 	if err != nil {
 		fmt.Println(err)
@@ -102,5 +102,6 @@ func mysqlMaxConns(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(err)
 		return
 	}
+	fmt.Println(string(str))
 	fmt.Fprintln(w, string(str))
 }
