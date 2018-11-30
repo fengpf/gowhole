@@ -16,10 +16,12 @@ package schedule
 
 import (
 	"context"
+	"fmt"
 	"testing"
 )
 
 func TestFIFOSchedule(t *testing.T) {
+	jobNum := 3
 	s := NewFIFOScheduler()
 	defer s.Stop()
 
@@ -30,20 +32,23 @@ func TestFIFOSchedule(t *testing.T) {
 				t.Fatalf("job#%d: got %d, want %d", i, next, i)
 			}
 			next = i + 1
+			// fmt.Println(next)
 		}
 	}
 
 	var jobs []Job
-	for i := 0; i < 100; i++ {
+	for i := 0; i < jobNum; i++ {
 		jobs = append(jobs, jobCreator(i))
 	}
 
 	for _, j := range jobs {
+		i := j
+		fmt.Println(i)
 		s.Schedule(j)
 	}
 
-	s.WaitFinish(100)
-	if s.Scheduled() != 100 {
-		t.Errorf("scheduled = %d, want %d", s.Scheduled(), 100)
+	s.WaitFinish(jobNum)
+	if s.Scheduled() != jobNum {
+		t.Errorf("scheduled = %d, want %d", s.Scheduled(), jobNum)
 	}
 }
