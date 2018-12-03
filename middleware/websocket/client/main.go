@@ -44,7 +44,7 @@ func getConn(id int) *websocket.Conn {
 	ws := websocket.Dialer{}
 	header := http.Header{}
 	header.Set("Host", "127.0.0.1")
-	imURL := fmt.Sprintf("ws://127.0.0.1:9000/echo?id=%d", id)
+	imURL := fmt.Sprintf("ws://127.0.0.1:8080/echo?id=%d", id)
 
 	conn, resp, err := ws.Dial(imURL, header)
 	if err != nil {
@@ -104,7 +104,7 @@ func readWrite(c *websocket.Conn) {
 	}
 }
 
-var addr = flag.String("addr", "127.0.0.1:9000", "http service address")
+var addr = flag.String("addr", "127.0.0.1:8080", "http service address")
 
 func test() {
 	flag.Parse()

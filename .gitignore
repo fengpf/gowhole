@@ -12,3 +12,5 @@ debug
 *.exe
 
 ./project/prometheus/data
+
+*.gdb_history
