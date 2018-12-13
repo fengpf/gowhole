@@ -9,6 +9,24 @@
       3>非阻塞IO
 
 >1.启动redis服务
+
+```shell
+docker run -d -ti \
+  -p 6380:6380 \
+  -v $PWD/conf/redis.conf:/data/app/go/src/gowhole/middleware/redis/conf/redis.conf \
+  -v $PWD/data:/data \
+  --restart always \
+  --name my_redis \
+  redis:latest \
+  redis-server /data/app/go/src/gowhole/middleware/redis/conf/redis.conf
+
+
+   redis-cli -p 6380
+
+   docker ps -a
+   docker stop  7930a3acb23d &&  docker rm  7930a3acb23d
+   
+```
 `./redis-server --loglevel debug`
 
 >2.启用10个conn
