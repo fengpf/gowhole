@@ -14,18 +14,17 @@
 
 docker run -d -ti \
   -p 6380:6380 \
-  -v $PWD/conf/redis.conf:/data/app/go/src/gowhole/middleware/redis/conf/redis.conf \
+  -v $PWD/conf/redis.conf:/conf/redis.conf \
   -v $PWD/data:/data \
   --restart always \
   --name my_redis \
   redis:latest \
-  redis-server /data/app/go/src/gowhole/middleware/redis/conf/redis.conf
+  redis-server /conf/redis.conf
 
-
-   docker exec -it b5b040fae860 redis-cli -p 6380
-
+   docker logs e9037df83dba
+   docker exec -it e9037df83dba redis-cli -p 6380
    docker ps -a
-   docker stop  14228958c7cb &&  docker rm  14228958c7cb
+   docker stop  e9037df83dba &&  docker rm  e9037df83dba
    
 ```
 `./redis-server --loglevel debug`
