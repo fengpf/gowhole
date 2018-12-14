@@ -11,6 +11,7 @@
 >1.启动redis服务
 
 ```shell
+
 docker run -d -ti \
   -p 6380:6380 \
   -v $PWD/conf/redis.conf:/data/app/go/src/gowhole/middleware/redis/conf/redis.conf \
@@ -21,10 +22,10 @@ docker run -d -ti \
   redis-server /data/app/go/src/gowhole/middleware/redis/conf/redis.conf
 
 
-   redis-cli -p 6380
+   docker exec -it b5b040fae860 redis-cli -p 6380
 
    docker ps -a
-   docker stop  7930a3acb23d &&  docker rm  7930a3acb23d
+   docker stop  14228958c7cb &&  docker rm  14228958c7cb
    
 ```
 `./redis-server --loglevel debug`
