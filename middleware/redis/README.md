@@ -27,7 +27,16 @@ docker run -d -ti \
    docker stop  e9037df83dba &&  docker rm  e9037df83dba
    
 ```
+`gdb ./redis-server ../redis.conf`
 `./redis-server --loglevel debug`
+
+ for((;;));do redis-cli -h 127.0.0.1 -p 6379 quit ;done
+
+ strace -T -tt -f -p 1356 -o 1356.txt
+
+ awk '{print $3}' 1356.txt | awk -F '(' '{print $1}' | sort | uniq -c
+ 
+ grep accept 1356.txt | grep 11:40:57 | grep -Po '127\.0\.\d{1,}\.\d{1,}' | sort | uniq -c
 
 >2.启用10个conn
 `tcpkali -c 10 127.0.0.1:6380'`
