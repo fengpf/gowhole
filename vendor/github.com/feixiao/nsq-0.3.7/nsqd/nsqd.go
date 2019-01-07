@@ -16,6 +16,7 @@ import (
 	"sync"
 	"sync/atomic"
 	"time"
+
 	simplejson "github.com/bitly/go-simplejson"
 
 	"github.com/feixiao/nsq-0.3.7/internal/clusterinfo"
