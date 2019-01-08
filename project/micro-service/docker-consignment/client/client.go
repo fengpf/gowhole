@@ -32,6 +32,8 @@ func parseFile(fileName string) (*pb.Consignment, error) {
 }
 
 func main() {
+	log.SetOutput(os.Stdout)
+
 	// 连接到 gRPC 服务器
 	client := pb.NewShippingServiceClient("go.micro.srv.proto", microclient.DefaultClient)
 

@@ -20,7 +20,7 @@ $ make run
 # 可添加 -d 参数将微服务放到后台运行
 ```shell docker run -p 50051:50051 \
          -e MICRO_SERVER_ADDRESS=:50051 \
-         -e MICRO_REGISTRY=mdns \
+         -e MICRO_REGISTRY=consul \
          consignment-service
 2019/01/08 08:32:44 Listening on [::]:50051
 2019/01/08 08:32:44 Broker Listening on [::]:35171
@@ -29,10 +29,12 @@ $ make run
 
 
 ```shell
-$ MICRO_REGISTRY=mdns  go run server.go
+$ MICRO_REGISTRY=consul  go run server.go
 2019/01/08 16:38:19 Listening on [::]:64680
 2019/01/08 16:38:19 Broker Listening on [::]:64681
 2019/01/08 16:38:19 Registering node: proto-bfe03a7a-1320-11e9-8482-a860b63b3121
 ```
 
-`$ go run server.go --registry=mdns --server_address=localhost:9090`
+`$ consul agent -dev`
+
+`$ go run server.go --registry=consul --server_address=localhost:9090`
