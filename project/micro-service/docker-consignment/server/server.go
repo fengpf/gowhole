@@ -67,7 +67,7 @@ func (s *service) GetConsignments(ctx context.Context, req *pb.GetRequest, resp 
 func main() {
 	server := micro.NewService(
 		// 必须和 consignment.proto 中的 package 一致
-		micro.Name("proto"),
+		micro.Name("go.micro.srv.proto"),
 		micro.Version("v1"),
 	)
 

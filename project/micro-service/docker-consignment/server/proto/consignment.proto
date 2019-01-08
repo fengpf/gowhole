@@ -1,5 +1,5 @@
 syntax = "proto3";
-package proto;
+package go.micro.srv.proto;
 //不再使用 grpc 插件
 //protoc -I. --go_out=plugins=micro:$GOPATH/src/gowhole/project/micro-service/docker-consignment/server ./proto/consignment.proto
 
