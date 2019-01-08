@@ -33,7 +33,7 @@ func parseFile(fileName string) (*pb.Consignment, error) {
 
 func main() {
 	// 连接到 gRPC 服务器
-	client := pb.NewShippingServiceClient("proto", microclient.DefaultClient)
+	client := pb.NewShippingServiceClient("go.micro.srv.proto", microclient.DefaultClient)
 
 	// 在命令行中指定新的货物信息 json 文件
 	infoFile := DEFAULT_INFO_FILE
