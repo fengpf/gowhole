@@ -11,6 +11,7 @@ import (
 	pb "gowhole/project/micro-service/docker-consignment/server/proto"
 
 	micro "github.com/micro/go-micro"
+	"github.com/micro/micro/cmd"
 )
 
 const (
@@ -34,9 +35,9 @@ func parseFile(fileName string) (*pb.Consignment, error) {
 func main() {
 	log.SetOutput(os.Stdout)
 
-	service := micro.NewService(
-		micro.Name("lp.srv.eg1"),
-	)
+	cmd.Init()
+
+	service := micro.NewService()
 	service.Init()
 
 	// 连接到 gRPC 服务器

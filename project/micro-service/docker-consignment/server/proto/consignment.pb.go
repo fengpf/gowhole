@@ -5,10 +5,11 @@ package go_micro_srv_proto
 
 import (
 	fmt "fmt"
-	math "math"
-
 	proto "github.com/golang/protobuf/proto"
+	math "math"
+)
 
+import (
 	client "github.com/micro/go-micro/client"
 	server "github.com/micro/go-micro/server"
 	context "golang.org/x/net/context"
@@ -324,7 +325,6 @@ func (c *shippingServiceClient) CreateConsignment(ctx context.Context, in *Consi
 	if err != nil {
 		return nil, err
 	}
-	// spew.Dump(222, out)
 	return out, nil
 }
 

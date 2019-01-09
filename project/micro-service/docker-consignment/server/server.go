@@ -7,7 +7,6 @@ import (
 
 	pb "gowhole/project/micro-service/docker-consignment/server/proto"
 
-	"github.com/davecgh/go-spew/spew"
 	"github.com/micro/go-micro"
 )
 
@@ -54,9 +53,8 @@ func (s *service) CreateConsignment(ctx context.Context, req *pb.Consignment, re
 	if err != nil {
 		return err
 	}
-	resp = &pb.Response{Created: true, Consignment: consignment}
-
-	spew.Dump(resp)
+	// resp = &pb.Response{Created: true, Consignment: consignment}
+	*resp = pb.Response{Created: true, Consignment: consignment}
 	return nil
 }
 
