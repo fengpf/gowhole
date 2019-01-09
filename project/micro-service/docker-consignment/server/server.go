@@ -7,6 +7,7 @@ import (
 
 	pb "gowhole/project/micro-service/docker-consignment/server/proto"
 
+	"github.com/davecgh/go-spew/spew"
 	"github.com/micro/go-micro"
 )
 
@@ -53,8 +54,9 @@ func (s *service) CreateConsignment(ctx context.Context, req *pb.Consignment, re
 	if err != nil {
 		return err
 	}
-	// fmt.Println(consignment)
 	resp = &pb.Response{Created: true, Consignment: consignment}
+
+	spew.Dump(resp)
 	return nil
 }
 
@@ -70,15 +72,13 @@ func main() {
 	log.SetOutput(os.Stdout)
 
 	server := micro.NewService(
-		// 必须和 consignment.proto 中的 package 一致
 		micro.Name("go.micro.srv.proto"),
 		micro.Version("v1"),
 	)
 
 	// 解析命令行参数
 	server.Init()
-	repo := Repository{}
-	pb.RegisterShippingServiceHandler(server.Server(), &service{repo})
+	pb.RegisterShippingServiceHandler(server.Server(), &service{Repository{}})
 
 	if err := server.Run(); err != nil {
 		log.Fatalf("failed to serve: %v", err)
