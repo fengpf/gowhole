@@ -61,8 +61,7 @@ func (s *service) CreateConsignment(ctx context.Context, req *pb.Consignment, re
 // 获取目前所有托运的货物
 // func (s *service) GetConsignments(ctx context.Context, req *pb.GetRequest) (*pb.Response, error) {
 func (s *service) GetConsignments(ctx context.Context, req *pb.GetRequest, resp *pb.Response) error {
-	allConsignments := s.repo.GetAll()
-	resp = &pb.Response{Consignments: allConsignments}
+	resp.Consignments = s.repo.GetAll()
 	return nil
 }
 
