@@ -10,9 +10,7 @@ import (
 	proto "github.com/golang/protobuf/proto"
 
 	client "github.com/micro/go-micro/client"
-
 	server "github.com/micro/go-micro/server"
-
 	context "golang.org/x/net/context"
 )
 
@@ -25,7 +23,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-// const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // 货轮承运的一批货物
 type Consignment struct {
