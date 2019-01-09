@@ -10,7 +10,7 @@ import (
 
 	pb "gowhole/project/micro-service/docker-consignment/server/proto"
 
-	microclient "github.com/micro/go-micro/client"
+	micro "github.com/micro/go-micro"
 )
 
 const (
@@ -34,8 +34,13 @@ func parseFile(fileName string) (*pb.Consignment, error) {
 func main() {
 	log.SetOutput(os.Stdout)
 
+	service := micro.NewService(
+		micro.Name("lp.srv.eg1"),
+	)
+	service.Init()
+
 	// 连接到 gRPC 服务器
-	client := pb.NewShippingServiceClient("go.micro.srv.proto", microclient.DefaultClient)
+	client := pb.NewShippingServiceClient("go.micro.srv.proto", service.Client())
 
 	// 在命令行中指定新的货物信息 json 文件
 	infoFile := DEFAULT_INFO_FILE
