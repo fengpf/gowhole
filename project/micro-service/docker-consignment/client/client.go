@@ -11,7 +11,6 @@ import (
 	pb "gowhole/project/micro-service/docker-consignment/server/proto"
 
 	micro "github.com/micro/go-micro"
-	"github.com/micro/micro/cmd"
 )
 
 const (
@@ -34,8 +33,6 @@ func parseFile(fileName string) (*pb.Consignment, error) {
 
 func main() {
 	log.SetOutput(os.Stdout)
-
-	cmd.Init()
 
 	service := micro.NewService()
 	service.Init()
