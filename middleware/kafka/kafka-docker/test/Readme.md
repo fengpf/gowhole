@@ -18,15 +18,11 @@ Run selected tests
 
 ### Kafka
 
-These tests can be run without Zookeeper or Kafka running.
-
 ```
 docker-compose run --rm kafkatest <testname pattern>
 ```
 
-### Kafkacat
-
-These tests require zookeeper and kafka to be running
+### Kafkacat
 
 ```
 BROKER_LIST=$(./internal-broker-list.sh) [KAFKA_VERSION=<version>] docker-compose run --rm kafkacattest <testname pattern>

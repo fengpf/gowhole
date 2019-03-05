@@ -16,10 +16,12 @@ Tags and releases
 
 All versions of the image are built from the same set of scripts with only minor variations (i.e. certain features are not supported on older versions). The version format mirrors the Kafka format, `<scala version>-<kafka version>`. Initially, all images are built with the recommended version of scala documented on [http://kafka.apache.org/downloads](http://kafka.apache.org/downloads). Available tags are:
 
-- `2.11-1.1.0`
-- `2.11-1.0.1`
-- `2.11-0.11.0.2`
-- `2.11-0.10.2.1`
+- `2.12-2.1.0`
+- `2.12-2.0.1`
+- `2.11-1.1.1`
+- `2.11-1.0.2`
+- `2.11-0.11.0.3`
+- `2.11-0.10.2.2`
 - `2.11-0.9.0.1`
 - `2.10-0.8.2.2`
 
@@ -29,9 +31,9 @@ Everytime the image is updated, all tags will be pushed with the latest updates.
 
 ## Announcements
 
+* **01-Feb-2019** - Update base image to openjdk 191 ([Release notes](https://www.oracle.com/technetwork/java/javase/8u191-relnotes-5032181.html)). Please force pull to get these latest updates - including security patches etc.
+* **11-Nov-2018** - Update base image to openjdk 181 ([Release notes](https://www.oracle.com/technetwork/java/javase/8u181-relnotes-4479407.html)). Please force pull to get these latest updates - including security patches etc.
 * **28-May-2018** - New docker image tag format - see Readme.
-* **03-Apr-2018** - *BREAKING* - `KAFKA_ADVERTISED_PROTOCOL_NAME` and `KAFKA_PROTOCOL_NAME` removed. Please update to canonical kafka settings.
-* **03-Apr-2018** - *BREAKING* - `KAFKA_ZOOKEEPER_CONNECT` is now a mandatory environment var.
 
 ---
 
@@ -85,7 +87,7 @@ Here is an example snippet from ```docker-compose.yml```:
         environment:
           KAFKA_CREATE_TOPICS: "Topic1:1:3,Topic2:1:1:compact"
 
-```Topic 1``` will have 1 partition and 3 replicas, ```Topic 2``` will have 1 partition, 1 replica and a `cleanup.policy` set to `compact`.
+```Topic 1``` will have 1 partition and 3 replicas, ```Topic 2``` will have 1 partition, 1 replica and a `cleanup.policy` set to `compact`. Also, see FAQ: [Topic compaction does not work](https://github.com/wurstmeister/kafka-docker/wiki#topic-compaction-does-not-work)
 
 If you wish to use multi-line YAML or some other delimiter between your topic definitions, override the default `,` separator by specifying the `KAFKA_CREATE_TOPICS_SEPARATOR` environment variable.
 
@@ -206,6 +208,10 @@ ports:
 Older compose files using the short-version of port mapping may encounter Kafka client issues if their connection to individual brokers cannot be guaranteed.
 
 See the included sample compose file ```docker-compose-swarm.yml```
+
+## Release process
+
+See the [wiki](https://github.com/wurstmeister/kafka-docker/wiki/ReleaseProcess) for information on adding or updating versions to release to Dockerhub.
 
 ## Tutorial
 

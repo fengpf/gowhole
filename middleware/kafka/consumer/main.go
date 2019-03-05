@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
-	"gowhole/lib/kafka/consumer/service"
 	"os"
 	"os/signal"
 	"syscall"
+
+	"gowhole/middleware/kafka/consumer/service"
 )
 
 func main() {
