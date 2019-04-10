@@ -9,9 +9,9 @@ import (
 
 	"google.golang.org/grpc"
 
-	pb "gowhole/lib/etcd/v3/cmd/hello"
+	pb "gowhole/middleware/etcd/v3/cmd/hello"
 
-	api "gowhole/lib/etcd/v3/api"
+	api "gowhole/middleware/etcd/v3/api"
 )
 
 var (
@@ -24,14 +24,14 @@ func main() {
 	r := api.NewResolver(*serv)
 	b := grpc.RoundRobin(r)
 
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
 	conn, err := grpc.DialContext(ctx, *reg, grpc.WithInsecure(), grpc.WithBalancer(b), grpc.WithBlock())
 	cancel()
 	if err != nil {
 		panic(err)
 	}
 
-	ticker := time.NewTicker(100 * time.Millisecond)
+	ticker := time.NewTicker(1000 * time.Millisecond)
 	for t := range ticker.C {
 		client := pb.NewGreeterClient(conn)
 		resp, err := client.SayHello(context.Background(), &pb.HelloRequest{Name: "world " + strconv.Itoa(t.Second())})

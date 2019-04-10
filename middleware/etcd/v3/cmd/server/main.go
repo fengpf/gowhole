@@ -13,9 +13,9 @@ import (
 
 	"google.golang.org/grpc"
 
-	api "gowhole/lib/etcd/v3/api"
+	api "gowhole/middleware/etcd/v3/api"
 
-	pb "gowhole/lib/etcd/v3/cmd/hello"
+	pb "gowhole/middleware/etcd/v3/cmd/hello"
 )
 
 var (
