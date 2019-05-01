@@ -6,7 +6,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	"gowhole/middleware/kafka/consumer/service"
+	"gowhole/middleware/kafka/worker-schedule/consumer/service"
 )
 
 func main() {
