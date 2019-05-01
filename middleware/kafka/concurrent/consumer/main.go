@@ -175,3 +175,7 @@ type BackendQueue interface {
 	Depth() int64
 	Empty() error
 }
+
+//参考：
+// https://www.jianshu.com/p/1a746f57cdd6
+// https://github.com/nsqio/go-diskqueue
