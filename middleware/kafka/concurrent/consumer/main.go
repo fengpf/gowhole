@@ -4,14 +4,17 @@ import (
 	"bytes"
 	"encoding/binary"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"os"
 	"os/signal"
 	"runtime"
+	"strconv"
 	"time"
 
 	"github.com/Shopify/sarama"
 	cluster "github.com/bsm/sarama-cluster"
+	diskqueue "github.com/nsqio/go-diskqueue"
 )
 
 var (
@@ -30,6 +33,9 @@ var (
 	groupID  = "group-1"
 
 	signals = make(chan os.Signal, 1)
+
+	//持久化
+	dq BackendQueue
 )
 
 func main() {
@@ -38,11 +44,30 @@ func main() {
 		return
 	}
 	go stasticGroutine()
+
+	dqLogf := func(lvl diskqueue.LogLevel, f string, args ...interface{}) {
+		log.Println((fmt.Sprintf(lvl.String()+": "+f, args...)))
+	}
+
+	dqName := "test_disk_queue" + strconv.Itoa(int(time.Now().Unix()))
+	tmpDir, err := ioutil.TempDir("", fmt.Sprintf("test-%d", time.Now().UnixNano()))
+	if err != nil {
+		panic(err)
+	}
+	dq = diskqueue.New(dqName, tmpDir, 1024, 4, 1<<10, 2500, 2*time.Second, dqLogf)
+	// msgOut := <-dq.ReadChan()
+
 	defer func() {
 		for i := 0; i < queueLen; i++ { //关闭队列中的所有chan
 			close(workerQueue[i])
+			// if v, ok := <-workerQueue[i]; ok && len(v) > 0 {
+			// dq.Put(v)//需要实现对应的存储接口
+			// }
 		}
+
 		consumer.Close()
+		// os.RemoveAll(tmpDir)
+		dq.Close()
 	}()
 
 	//定义chan队列并启动消费
@@ -52,7 +77,6 @@ func main() {
 		workerQueue[i] = ch
 		go func(m chan []byte) { //播放
 			for v := range m {
-
 				//todo 业务逻辑，耗时用sleep代替
 				println(string(v))
 				time.Sleep(time.Millisecond * 50)
@@ -140,4 +164,14 @@ func stasticGroutine() {
 		total := runtime.NumGoroutine()
 		fmt.Println("NumGoroutine:", total)
 	}
+}
+
+//BackendQueue for save disk
+type BackendQueue interface {
+	Put([]byte) error
+	ReadChan() chan []byte // this is expected to be an *unbuffered* channel
+	Close() error
+	Delete() error
+	Depth() int64
+	Empty() error
 }
