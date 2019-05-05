@@ -3127,6 +3127,12 @@
 			"revisionTime": "2015-04-11T23:30:54Z"
 		},
 		{
+			"checksumSHA1": "bE3cBUrDp3Otb0+LPwpYVo6gmsw=",
+			"path": "github.com/nsqio/go-diskqueue",
+			"revision": "74cfbc9de8399a7fa86d676b908b002120826fc0",
+			"revisionTime": "2018-03-06T15:29:00Z"
+		},
+		{
 			"checksumSHA1": "MZdppx6laedD1LcVomiZ/Sfa6rE=",
 			"path": "github.com/nsqio/go-nsq",
 			"revision": "be2eb35667954359e06a56f76dd629c54895b8b9",
@@ -7071,5 +7077,5 @@
 			"revision": ""
 		}
 	],
-	"rootPath": "gowhole"
+	"rootPath": "github.com/fengpf/gowhole"
 }
