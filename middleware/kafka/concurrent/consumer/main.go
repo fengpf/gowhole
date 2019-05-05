@@ -22,7 +22,7 @@ var (
 
 	//queue
 	chanSize    = 1024
-	queueLen    = 1000
+	queueLen    = 10
 	workerQueue []chan []byte
 
 	//kafak
@@ -35,7 +35,7 @@ var (
 	signals = make(chan os.Signal, 1)
 
 	//持久化
-	dq BackendQueue
+	dq diskqueue.Interface
 )
 
 func main() {
@@ -45,29 +45,29 @@ func main() {
 	}
 	go stasticGroutine()
 
-	dqLogf := func(lvl diskqueue.LogLevel, f string, args ...interface{}) {
-		log.Println((fmt.Sprintf(lvl.String()+": "+f, args...)))
-	}
-
-	dqName := "test_disk_queue" + strconv.Itoa(int(time.Now().Unix()))
-	tmpDir, err := ioutil.TempDir("", fmt.Sprintf("test-%d", time.Now().UnixNano()))
+	dqName := "mychan" + strconv.Itoa(int(time.Now().Unix()))
+	tmpDir, err := ioutil.TempDir("/data/app/go/src/gowhole/middleware/kafka/concurrent/consumer", fmt.Sprintf("test-%d", time.Now().Unix()))
 	if err != nil {
 		panic(err)
 	}
-	dq = diskqueue.New(dqName, tmpDir, 1024, 4, 1<<10, 2500, 2*time.Second, dqLogf)
-	// msgOut := <-dq.ReadChan()
+	dq = diskqueue.New(dqName, tmpDir, 1024, 4, 1<<10, 2500, 2*time.Second,
+		func(lvl diskqueue.LogLevel, f string, args ...interface{}) {
+			log.Println((fmt.Sprintf(lvl.String()+": "+f, args...)))
+		})
 
 	defer func() {
-		for i := 0; i < queueLen; i++ { //关闭队列中的所有chan
-			close(workerQueue[i])
-			// if v, ok := <-workerQueue[i]; ok && len(v) > 0 {
-			// dq.Put(v)//需要实现对应的存储接口
-			// }
-		}
-
 		consumer.Close()
-		// os.RemoveAll(tmpDir)
+		for i := 0; i < queueLen; i++ { //关闭队列中的所有chan
+			close(workerQueue[i]) //先关闭chan，防止关闭时清空阻塞chan阻塞
+
+			if v, ok := <-workerQueue[i]; ok && len(v) > 0 {
+				log.Println("chan关闭,保存数据", string(v))
+				dq.Put(v)
+			}
+		}
 		dq.Close()
+
+		os.RemoveAll(tmpDir)
 	}()
 
 	//定义chan队列并启动消费
@@ -75,16 +75,32 @@ func main() {
 	for i := 0; i < queueLen; i++ {
 		ch := make(chan []byte, chanSize)
 		workerQueue[i] = ch
-		go func(m chan []byte) { //播放
+		go func(m chan []byte) {
 			for v := range m {
 				//todo 业务逻辑，耗时用sleep代替
-				println(string(v))
-				time.Sleep(time.Millisecond * 50)
+				log.Println("业务逻辑处理", string(v))
+				time.Sleep(time.Second * 1)
 			}
 		}(ch)
 	}
 
 	signal.Notify(signals, os.Interrupt)
+	go func() {
+		for {
+			select {
+			case v, ok := <-dq.ReadChan():
+				if !ok {
+					log.Fatalf("dq.ReadChan: %+v \n", ok)
+					return
+				}
+				log.Println("读取本地磁盘数据", string(v))
+			case <-signals:
+				fmt.Fprintf(os.Stdout, "退出读取本地磁盘协程")
+				return
+			}
+		}
+	}()
+
 	consume() //消费kf
 }
 
@@ -112,6 +128,7 @@ func consume() {
 
 			workerQueue[bytesToInt(msg.Key)%queueLen] <- msg.Value //消费到数据放到chan队列
 
+			log.Println("commit offest:", msg.Offset)
 			consumer.MarkOffset(msg, "") // mark message as processed
 		case <-signals:
 			fmt.Fprintf(os.Stdout, "exit kafka consume...")
@@ -162,18 +179,8 @@ func stasticGroutine() {
 	for {
 		time.Sleep(time.Second)
 		total := runtime.NumGoroutine()
-		fmt.Println("NumGoroutine:", total)
+		log.Println("NumGoroutine:", total)
 	}
-}
-
-//BackendQueue for save disk
-type BackendQueue interface {
-	Put([]byte) error
-	ReadChan() chan []byte // this is expected to be an *unbuffered* channel
-	Close() error
-	Delete() error
-	Depth() int64
-	Empty() error
 }
 
 //参考：

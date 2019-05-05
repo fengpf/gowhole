@@ -19,7 +19,7 @@ var (
 	topic    = "topic001"
 	producer sarama.SyncProducer
 
-	mockNum = 10000 //模拟每秒并发数量
+	mockNum = 10 //模拟每秒并发数量
 )
 
 func main() {
