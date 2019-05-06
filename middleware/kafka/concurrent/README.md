@@ -1,72 +1,51 @@
   
+### 使用默认文件启动
+`docker-compose up -d`
+
+### borker总数从1个扩展到4个，新启动的broker端口号随机
+`docker-compose --scale kafka=4`
+
 ### 指定compose 文件启动和关闭
 `docker-compose -f docker-compose-multi.yml up -d`
+
 `docker-compose -f docker-compose-multi.yml stop`
 
-### 使用docker-compose 启动
-
-`docker-compose up -d --scale kafka=4`
-
-``` shell ➜  concurrent git:(master) ✗ docker-compose up -d
-Creating network "concurrent_default" with the default driver
-Pulling kafka (wurstmeister/kafka:2.11-0.11.0.3)...
-2.11-0.11.0.3: Pulling from wurstmeister/kafka
-bdf0201b3a05: Already exists
-9e12771959ad: Already exists
-ae272eb2814b: Already exists
-f059dafc9b73: Pull complete
-a6e2c9da29de: Pull complete
-396a7b97c1dc: Pull complete
-Digest: sha256:df6dbfde3828a7ec7b3ecfc73241d22fd3ba4f76f1b4c6417a9cf8d101ea14b0
-Status: Downloaded newer image for wurstmeister/kafka:2.11-0.11.0.3
-Creating concurrent_kafka_1     ... done
-Creating concurrent_zookeeper_1 ... done
-
-```
 
 ### 查看启动的一个zookeeper和一个kafka容器：
 
 `docker ps`
 
 ``` shell 
-➜  concurrent git:(master) ✗ docker ps
-CONTAINER ID        IMAGE                              COMMAND                  CREATED             STATUS              PORTS                                                NAMES
-6c4edb53b69f        wurstmeister/zookeeper             "/bin/sh -c '/usr/sb…"   9 seconds ago       Up 15 seconds       22/tcp, 2888/tcp, 3888/tcp, 0.0.0.0:2181->2181/tcp   concurrent_zookeeper_1
-194e3af8463a        wurstmeister/kafka:2.11-0.11.0.3   "start-kafka.sh"         9 seconds ago       Up 14 seconds       0.0.0.0:32768->9092/tcp                              concurrent_kafka_1
+➜  concurrent git:(master) ✗ docker ps -a
+CONTAINER ID        IMAGE                              COMMAND                  CREATED             STATUS                      PORTS                                                NAMES
+696024154ff0        wurstmeister/kafka:2.11-0.11.0.3   "start-kafka.sh"         5 days ago          Up 4 days                   0.0.0.0:9094->9092/tcp                               kafka3
+c35a5a8255c8        wurstmeister/kafka:2.11-0.11.0.3   "start-kafka.sh"         5 days ago          Up 4 days                   0.0.0.0:9093->9092/tcp                               kafka2
+87be44627f17        wurstmeister/kafka:2.11-0.11.0.3   "start-kafka.sh"         5 days ago          Up 4 days                   0.0.0.0:9092->9092/tcp                               kafka1
+9e0628d2b081        wurstmeister/zookeeper             "/bin/sh -c '/usr/sb…"   5 days ago          Up 4 days                   22/tcp, 2888/tcp, 3888/tcp, 0.0.0.0:2181->2181/tcp   zookeeper
+
 ```
 
 ### 查看容器中的kafka版本号
-`docker exec concurrent_kafka_1 find / -name \*kafka_\* | head -1 | grep -o '\kafka[^\n]*'`
+`docker exec kafka1 find / -name \*kafka_\* | head -1 | grep -o '\kafka[^\n]*'`
 ```shell 
-➜  concurrent git:(master) ✗ docker exec concurrent_kafka_1 find / -name \*kafka_\* | head -1 | grep -o '\kafka[^\n]*'
-  kafka_2.11-0.11.0.3
+➜  concurrent git:(master) ✗ docker exec kafka1 find / -name \*kafka_\* | head -1 | grep -o '\kafka[^\n]*'
+kafka_2.11-0.11.0.3
 ```
 
 ### 查看zookeeper版本：
-`docker exec concurrent_zookeeper_1 pwd`
+`docker exec zookeeper pwd`
 ```shell
-➜  concurrent git:(master) ✗ docker exec concurrent_zookeeper_1 pwd
+➜  concurrent git:(master) ✗ docker exec zookeeper pwd
 /opt/zookeeper-3.4.9
-```
 
-### borker总数从1个扩展到4个
-`docker-compose --scale kafka=4`
-
-```shell
-➜  concurrent git:(master) ✗ docker-compose scale kafka=4
-WARNING: The scale command is deprecated. Use the up command with the --scale flag instead.
-Starting concurrent_kafka_1 ... done
-Creating concurrent_kafka_2 ... done
-Creating concurrent_kafka_3 ... done
-Creating concurrent_kafka_4 ... done
 ```
 
 ### 创建一个topic，名为topic001，4个partition，副本因子2
 
 ```
-docker exec concurrent_kafka_1 \
+docker exec kafka1 \
       kafka-topics.sh \
-      --create --topic topic001 \
+      --create --topic topic002 \
       --partitions 4 \
       --zookeeper zookeeper:2181 \
       --replication-factor 2
@@ -75,39 +54,46 @@ docker exec concurrent_kafka_1 \
 
 ### 查看刚刚创建的topic
 ``` 
-docker exec concurrent_kafka_1 \
+docker exec kafka1 \
    kafka-topics.sh --list \
    --zookeeper zookeeper:2181 \
-   topic001
+   topic002
 
 ```
 
 ### 查看刚刚创建的topic的情况，borker和副本情况
 ```
-docker exec concurrent_kafka_1 \
+docker exec kafka1  \
    kafka-topics.sh \
    --describe \
-   --topic topic001 \
+   --topic topic002 \
    --zookeeper zookeeper:2181
+
+```
+
+### 生产消息
+-d :分离模式: 在后台运行
+-i :即使没有附加也保持STDIN 打开
+-t :分配一个伪终端
+
+```
+docker exec -it kafka1 \
+   kafka-console-producer.sh \
+   --topic topic002 \
+   --broker-list kafka1:9092,kafka2:9092,kafka3:9092
+
 ```
 
 ### 消费消息
 ```
-docker exec concurrent_kafka_1\
+docker exec kafka1 \
    kafka-console-consumer.sh \
-   --topic topic001 \
-   --bootstrap-server concurrent_kafka_1:9092,concurrent_kafka_2:9092,concurrent_kafka_3:9092,concurrent_kafka_4:9092
-```
-
-### 生产消息
+   --topic topic002 \
+   --bootstrap-server kafka1:9092,kafka2:9092,kafka3:9092
 
 ```
-docker exec -it concurrent_kafka_1 \
-   kafka-console-producer.sh \
-   --topic topic001 \
-   --broker-list concurrent_kafka_1:9092,concurrent_kafka_2:9092,concurrent_kafka_3:9092,concurrent_kafka_4:9092
 
-```
+
 
 #关闭kafka和zk集群
 `docker-compose stop`
