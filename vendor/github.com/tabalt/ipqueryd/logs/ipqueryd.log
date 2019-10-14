@@ -1,6 +1,0 @@
-2018/05/15 17:51:02 try to start ipqueryd server. 
-2018/05/15 17:51:40 try to start ipqueryd server. 
-2018/05/16 23:18:38 try to start ipqueryd server. 
-2018/05/16 23:19:11 transport: http2Server.HandleStreams received bogus greeting from client: "GET / HTTP/1.1\r\nHost: 12"
-2018/05/16 23:19:37 transport: http2Server.HandleStreams received bogus greeting from client: "GET /?ip=8.8.8.8 HTTP/1."
-2018/05/16 23:44:41 try to start ipqueryd server. 

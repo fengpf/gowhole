@@ -1,22 +1,43 @@
 package main
 
 import (
-	"fmt"
-	"time"
-
 	"github.com/robfig/cron"
 )
 
+var (
+	ch chan int
+)
+
+func initChan(){
+	ch = make(chan int)
+}
+
+func sendData(){
+	ch<-1
+}
+
+
 func main() {
 	cron := cron.New()
+
+
+	// 从右到左依次是：星期几-月-日-时-分-秒 每天x时x分x秒 执行
+	cron.AddFunc("0 04 12 * * *", initChan)
+	cron.AddFunc("0 04 12 * * *", sendData)
+	go func() {println(<-ch)}()
+
+	//cron.AddFunc("30 58 10 * * *", func() {
+	//	fmt.Println("并发2", time.Now())
+	//})
+
 
 	// cron.AddFunc("@every 1s", func() {
 	// 	fmt.Println("Every second")
 	// })
 
-	cron.AddFunc("@every 0h0m1s", func() {
-		fmt.Println("Every 1s after 0 hour, 0 minutes, 1 seconds")
-	})
+	//cron.AddFunc("@every 0h0m1s", func() {
+	//	fmt.Println("Every 1s after 0 hour, 0 minutes, 1 seconds")
+	//})
 
 	// cron.AddFunc("* 10 * * * 4", func() {
 	// 	fmt.Println("Every Thursday on ten Minutes")
@@ -28,8 +49,9 @@ func main() {
 
 	cron.Start()
 
-	time.Sleep(1000 * time.Second)
-	cron.Stop() // Stop the scheduler (does not stop any jobs already running).
+	defer  cron.Stop() // Stop the scheduler (does not stop any jobs already running).
+
+	select{}
 }
 
 // Second: (uint64) 1,

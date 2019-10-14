@@ -16,5 +16,4 @@ func main() {
 	}
 	defer db.Close()
 	fmt.Printf(db.Path())
-
 }
