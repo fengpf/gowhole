@@ -9,10 +9,9 @@ func Test_Lock(t *testing.T) {
 	var (
 		key    = "aaa"
 		expire = 20
-		dl     = New("EX")
+		dl     = New(RedisClient.Get(), "EX")
 	)
 
-	dl.SetConn(RedisClient.Get())
 	res, err := dl.Lock(key, expire)
 	defer dl.UnLock(key)
 	if err != nil {
