@@ -2,6 +2,8 @@ package main
 
 import (
 	"encoding/json"
+	ginSwagger "github.com/swaggo/gin-swagger"
+	"github.com/swaggo/gin-swagger/swaggerFiles"
 	"log"
 	"net/http"
 	"time"
@@ -74,10 +76,30 @@ func JSONOutput(c *gin.Context, data interface{}, err error) {
 	})
 }
 
-func main() {
 
+// @title Go-site Example API
+// @version 1.0
+// @description This is a sample server Petstore server.
+// @termsOfService http://swagger.io/terms/
+
+// @contact.name API Support
+// @contact.url http://www.swagger.io/support
+// @contact.email support@swagger.io
+
+// @license.name Apache 2.0
+// @license.url http://www.apache.org/licenses/LICENSE-2.0.html
+
+// @host 127.0.0.1
+// @BasePath ""
+func main() {
 	pprof.Register(r)
 
+	r.GET("/docs/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+
+	// @Summary ping
+	// @Produce  json
+	// @Success 200 {string} json "{"a":111,"b":"vvcvv"}"
+	// @Router /ping [get]
 	r.GET("/ping", func(c *gin.Context) {
 		JSONOutput(c,
 			map[string]interface{}{

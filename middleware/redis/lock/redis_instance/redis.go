@@ -81,6 +81,10 @@ func (d *DisLock) Lock(key string, expire int) (res bool, err error) {
 		return
 	}
 
+	println(reply) //0x1237a80,0x145c020
+
+	log.Printf("%v", reply)
+
 	if reply != nil {
 		res = true
 	}
