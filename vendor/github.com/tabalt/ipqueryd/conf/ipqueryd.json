@@ -1,6 +1,0 @@
-{
-    "pid_file": "./tmp/ipqueryd.pid",
-    "http_server_port": ":12101",
-    "grpc_server_port": ":12102",
-    "data_file": "./data/ip_data.txt"
-}

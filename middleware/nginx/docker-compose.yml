@@ -1,0 +1,12 @@
+nginx:
+  image: nginx
+  restart: always
+  ports:
+    - 80:80
+    - 443:443
+  volumes:
+    - /data/app/go/src/gowhole/middleware/nginx/conf.d:/etc/nginx/conf.d
+    - /data/app/go/src/gowhole/middleware/nginx/log:/var/log/nginx
+    - /data/app/go/src/gowhole/middleware/nginx/www:/var/www
+    - /data/app/go/src/gowhole/middleware/nginx/letsencrypt:/etc/letsencrypt
+  tty: true

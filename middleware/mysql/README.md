@@ -46,7 +46,46 @@ show full processlist;--查看正在执行的完整SQL语句，完整显示
   >>如果设置连接池的连接数 > 最大连接数，如果请求数量 >最大连接数，则会出现 Error 1040: Too many connections
   >>如果设置连接池的连接数 <= 最大连接数，请求数量的多少不会影响连接报错
 
+### docker 启动
 
+`docker pull mysql`
 
+`docker run --name first-mysql -p 3306:3306 -e MYSQL\_ROOT\_PASSWORD=123456 -d mysql`
 
+run            运行一个容器
+--name         后面是这个镜像的名称
+-p 3306:3306   表示在这个容器中使用3306端口(第二个)映射到本机的端口号也为3306(第一个)
+-d             表示使用守护进程运行，即服务挂在后台
 
+-p 3306:3306：将容器的 3306 端口映射到主机的 3306 端口。
+
+-v $PWD/conf:/etc/mysql/conf.d：将主机当前目录下的 conf/my.cnf 挂载到容器的 /etc/mysql/my.cnf。
+
+-v $PWD/logs:/logs：将主机当前目录下的 logs 目录挂载到容器的 /logs。
+
+-v $PWD/data:/var/lib/mysql ：将主机当前目录下的data目录挂载到容器的 /var/lib/mysql 。
+
+-e MYSQL_ROOT_PASSWORD=123456：初始化 root 用户的密码。
+
+`docker ps |grep mysql`
+
+`docker exec -it b3f54a60b3ce /bin/bash`
+
+docker 安装 mysql 8 版本
+
+# docker 中下载 mysql
+docker pull mysql
+
+#启动
+docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=Lzslov123! -d mysql
+
+#进入容器
+docker exec -it mysql bash
+
+#登录mysql
+mysql -u root -p
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'Lzslov123!';
+
+#添加远程登录用户
+CREATE USER 'liaozesong'@'%' IDENTIFIED WITH mysql_native_password BY 'Lzslov123!';
+GRANT ALL PRIVILEGES ON *.* TO 'liaozesong'@'%';
