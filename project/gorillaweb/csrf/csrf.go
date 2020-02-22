@@ -13,10 +13,18 @@ import (
 
 func main() {
 	r := mux.NewRouter()
+
 	api := r.PathPrefix("/api").Subrouter()
 	api.HandleFunc("/user/{id}", getUser).Methods("GET")
-	http.ListenAndServe(":8080",
+
+	err:=http.ListenAndServe(":8080",
 		csrf.Protect([]byte("32-byte-long-auth-key"))(r))
+
+	if err!=nil{
+		panic(err)
+	}
+
+	log.Println("server start")
 }
 
 func getUser(w http.ResponseWriter, r *http.Request) {
@@ -27,6 +35,7 @@ func getUser(w http.ResponseWriter, r *http.Request) {
 	// in its own "X-CSRF-Token" request header on the subsequent POST.
 	params := r.URL.Query()
 	fmt.Println(params["id"])
+
 	idStr := params["id"][0]
 	fmt.Println(idStr)
 	user := map[int]map[string]string{
@@ -47,6 +56,7 @@ func getUser(w http.ResponseWriter, r *http.Request) {
 		log.Println(err)
 		return
 	}
+
 	w.Header().Set("X-CSRF-Token", csrf.Token(r))
 	b, err := json.Marshal(u)
 	if err != nil {

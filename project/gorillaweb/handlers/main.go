@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"net/http"
 	"os"
 
@@ -23,5 +24,7 @@ func main() {
 	r.HandleFunc("/", showIndex)
 
 	// Wrap our server with our gzip handler to gzip compress all responses.
-	http.ListenAndServe(":8000", handlers.CompressHandler(r))
+	if err:=http.ListenAndServe(":8000", handlers.CompressHandler(r));err!=nil{
+		log.Println(err)
+	}
 }
