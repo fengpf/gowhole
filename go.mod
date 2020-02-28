@@ -68,6 +68,7 @@ require (
 	github.com/hashicorp/consul/api v1.3.0
 	github.com/henrylee2cn/cfgo v0.0.0-20180417024816-e6c3cc325b21 // indirect
 	github.com/henrylee2cn/pholcus v1.3.3
+	github.com/henrylee2cn/pholcus_lib v0.0.0-20190908022230-83abeae89cb5
 	github.com/henrylee2cn/teleport v5.0.0+incompatible
 	github.com/imkira/go-interpol v1.1.0 // indirect
 	github.com/iris-contrib/blackfriday v2.0.0+incompatible // indirect
@@ -96,6 +97,7 @@ require (
 	github.com/pkg/errors v0.8.1
 	github.com/psilva261/timsort v0.0.0-20190627160904-7d0a5d71371e // indirect
 	github.com/qiangxue/fasthttp-routing v0.0.0-20160225050629-6ccdc2a18d87
+	github.com/qiniu/log v0.0.0-20140728012331-e002bc2020b1
 	github.com/remyoudompheng/bigfft v0.0.0-20190728182440-6a916e37a237 // indirect
 	github.com/robfig/cron v1.2.0
 	github.com/saintfish/chardet v0.0.0-20120816061221-3af4cd4741ca // indirect
