@@ -27,11 +27,11 @@ func main() {
 	// 从右到左依次是：星期几-月-日-时-分-秒 每天x时x分x秒 执行
 	//cron.AddFunc("* 1/2 * * * *", sendData)
 
-	cron.AddFunc("*/5 * * * * *", func() {
+	cron.AddFunc("*/5 * * * * *", func() {//每隔5秒执行一次
 		fmt.Println("a: ", time.Now().Format("2006-01-02 15:04:05"))
 	})
 
-	cron.AddFunc("*/10 * * * * *", func() {
+	cron.AddFunc("0 */1 * * * ?", func() {//每隔1分钟执行一次
 		fmt.Println("b: ", time.Now().Format("2006-01-02 15:04:05"))
 	})
 
