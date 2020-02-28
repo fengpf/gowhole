@@ -14,15 +14,18 @@ var (
 	//db
 	gDB *sql.DB
 	err error
-	dsn = "root:fpf@tcp(127.0.0.1:3306)/test?parseTime=true"
+	dsn = "root:fpf123@tcp(127.0.0.1:3306)/test?timeout=5s&readTimeout=5s&writeTimeout=5s&parseTime=true&loc=Local&charset=utf8,utf8mb4"
 )
 
 func init() {
 	if gDB, err = sql.Open("mysql", dsn); err != nil {
 		panic(err)
 	}
-	gDB.SetMaxOpenConns(256)
-	gDB.SetMaxIdleConns(150)
+
+	fmt.Println("init", gDB.Stats().InUse)
+
+	gDB.SetMaxOpenConns(10)
+	gDB.SetMaxIdleConns(10)
 
 	err = gDB.Ping()
 	if err != nil {
@@ -41,8 +44,9 @@ func New(dsn string) (d *Dao) {
 	if err != nil {
 		panic(err)
 	}
-	// db.SetMaxOpenConns(256)
-	// db.SetMaxIdleConns(150)
+
+	db.SetMaxOpenConns(20)
+	db.SetMaxIdleConns(20)
 
 	err = db.Ping()
 	if err != nil {
@@ -65,7 +69,7 @@ func (d *Dao) Close() (err error) {
 
 func main() {
 	http.HandleFunc("/mysql_max_conns", mysqlMaxConns)
-	err := http.ListenAndServe(":9090", nil)
+	err := http.ListenAndServe(":9000", nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}
@@ -79,9 +83,9 @@ type data struct {
 }
 
 func mysqlMaxConns(w http.ResponseWriter, r *http.Request) {
-	// rows, err := New(dsn).db.Query("SELECT * FROM test limit 100") //每次创建db对象
+	//rows, err := New(dsn).db.Query("SELECT id, a, b, c  FROM test_index limit 100") //每次创建db对象
 
-	rows, err := gDB.Query("SELECT * FROM test limit 3") //使用全局db对象
+	rows, err := gDB.Query("SELECT id, a, b, c FROM test_index limit 3") //使用全局db对象
 	defer rows.Close()
 	if err != nil {
 		fmt.Println(err)

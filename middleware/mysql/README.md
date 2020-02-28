@@ -23,9 +23,23 @@ show full processlist;--查看正在执行的完整SQL语句，完整显示
 
 ```
 
-`ab -c 100 -n 100 'http://localhost:9090/mysql_max_conns'`
+`ab -c 100 -n 100 'http://localhost:9000/mysql_max_conns'`
 
 ### go设置mysql连接池
+
+关于连接池配置
+>1.db.SetMaxIdleConns(n int) 设置连接池中的保持连接的最大连接数。
+默认也是0，表示连接池不会保持释放连接池中的连接的连接状态：
+即当连接释放回到连接池的时候，连接将会被关闭。这会导致连接再连接池中频繁的关闭和创建  
+
+>2.db.SetMaxOpenConns(n int) 设置打开数据库的最大连接数。包含正在使用的连接和连接池的连接  
+如果你的函数调用需要申请一个连接，并且连接池已经没有了连接或者连接数达到了最大连接数。
+此时的函数调用将会被block，直到有可用的连接才会返回。
+设置这个值可以避免并发太高导致连接mysql出现too many connections的错误。
+该函数的默认设置是0，表示无限制   
+
+>3.db.SetConnMaxLifetime(d time.Duration) 
+设置连接可以被使用的最长有效时间，如果过期，连接将被拒绝   
 
 ``` go
     db.SetMaxOpenConns(256) //SetMaxOpenConns sets the maximum number of open connections to the database.
