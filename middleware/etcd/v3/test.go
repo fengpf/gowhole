@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/coreos/etcd/clientv3"
+	"go.etcd.io/etcd/clientv3"
 )
 
 var (
@@ -19,6 +19,7 @@ func main() {
 		Endpoints:   endpoints,
 		DialTimeout: dialTimeout,
 	})
+
 	if err != nil {
 		println(err)
 	}

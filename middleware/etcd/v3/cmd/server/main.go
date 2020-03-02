@@ -13,7 +13,7 @@ import (
 
 	"google.golang.org/grpc"
 
-	api "gowhole/middleware/etcd/v3/api"
+	"gowhole/middleware/etcd/v3/api"
 
 	pb "gowhole/middleware/etcd/v3/cmd/hello"
 )
@@ -48,6 +48,7 @@ func main() {
 	}()
 
 	log.Printf("starting hello service at %s", *port)
+
 	s := grpc.NewServer()
 	pb.RegisterGreeterServer(s, &server{})
 	s.Serve(lis)

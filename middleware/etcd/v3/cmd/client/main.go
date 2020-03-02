@@ -11,7 +11,7 @@ import (
 
 	pb "gowhole/middleware/etcd/v3/cmd/hello"
 
-	api "gowhole/middleware/etcd/v3/api"
+	"gowhole/middleware/etcd/v3/api"
 )
 
 var (
@@ -25,8 +25,9 @@ func main() {
 	b := grpc.RoundRobin(r)
 
 	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
+	defer cancel()
+
 	conn, err := grpc.DialContext(ctx, *reg, grpc.WithInsecure(), grpc.WithBalancer(b), grpc.WithBlock())
-	cancel()
 	if err != nil {
 		panic(err)
 	}
