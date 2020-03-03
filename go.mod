@@ -123,6 +123,7 @@ require (
 	github.com/yudai/gojsondiff v1.0.0 // indirect
 	github.com/yudai/golcs v0.0.0-20170316035057-ecda9a501e82 // indirect
 	github.com/yudai/pp v2.0.1+incompatible // indirect
+	go.etcd.io/etcd v3.3.13+incompatible
 	golang.org/x/image v0.0.0-20200119044424-58c23975cae1
 	golang.org/x/net v0.0.0-20191109021931-daa7c04131f5
 	golang.org/x/sync v0.0.0-20190911185100-cd5d95a43a6e // indirect

@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	etcd3 "github.com/coreos/etcd/clientv3"
+	etcd3 "go.etcd.io/etcd/clientv3"
 )
 
 // Prefix should start and end with no slash
