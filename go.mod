@@ -79,7 +79,7 @@ require (
 	github.com/labstack/echo v3.3.10+incompatible
 	github.com/labstack/gommon v0.3.0 // indirect
 	github.com/mailru/easyjson v0.7.0 // indirect
-	github.com/mattn/go-isatty v0.0.10 // indirect
+	github.com/mattn/goreman v0.3.5 // indirect
 	github.com/micro/examples v0.2.0
 	github.com/micro/go-micro v1.18.0
 	github.com/microcosm-cc/bluemonday v1.0.2 // indirect
@@ -132,5 +132,4 @@ require (
 	gopkg.in/mattn/go-isatty.v0 v0.0.4 // indirect
 	gopkg.in/mattn/go-runewidth.v0 v0.0.4 // indirect
 	gopkg.in/olivere/elastic.v5 v5.0.84
-	gopkg.in/yaml.v2 v2.2.4 // indirect
 )

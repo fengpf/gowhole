@@ -64,7 +64,7 @@ func NewLimiter(r float64, b int) *Limiter {
 func (l *Limiter) Take(now time.Time, n int, maxWaitDuration time.Duration) bool {
 	l.mu.Lock()
 
-	now, last, tokens := l.advance(now)
+	last, tokens := l.advance(now)
 
 	//看下取完之后，桶还能剩能下多少token
 	tokens -= float64(n)
@@ -92,7 +92,7 @@ func (l *Limiter) Take(now time.Time, n int, maxWaitDuration time.Duration) bool
 // @return newNow 似乎还是这个now，没变
 // @return newLast 如果 last > now, 则last为now
 // @return newTokens 当前桶中应有的数目
-func (l *Limiter) advance(now time.Time) (newNow time.Time, newLast time.Time, newTokens float64) {
+func (l *Limiter) advance(now time.Time) (newLast time.Time, newTokens float64) {
 	//last 代表上一个取token的时间
 	last := l.last
 	if now.Before(last) {
@@ -115,7 +115,7 @@ func (l *Limiter) advance(now time.Time) (newNow time.Time, newLast time.Time, n
 		tokens = bucket
 	}
 
-	return now, last, tokens
+	return last, tokens
 
 }
 

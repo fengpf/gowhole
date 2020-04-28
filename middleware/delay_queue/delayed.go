@@ -1,0 +1,107 @@
+package main
+
+import (
+	"container/heap"
+	"fmt"
+	"sync"
+	"time"
+)
+
+type SuperTimer struct {
+	lock        *sync.Mutex
+	PQ          PriorityQueue
+	UniTimer    *time.Timer
+	WorkerCount int
+	Wgp         *sync.WaitGroup
+	ExitChan    chan int
+	RunningFlag bool
+}
+
+func NewSuperTimer(workCount int) *SuperTimer {
+	timer := SuperTimer{}
+	timer.lock = &sync.Mutex{}
+	timer.UniTimer = time.NewTimer(time.Second * 10)
+	timer.PQ = make(PriorityQueue, 0, 100)
+	timer.WorkerCount = workCount
+	timer.Wgp = &sync.WaitGroup{}
+	timer.ExitChan = make(chan int, 100)
+	timer.RunningFlag = true
+
+	for i := 0; i < timer.WorkerCount; i++ {
+		go timer.Consume()
+	}
+	return &timer
+}
+
+func (timer *SuperTimer) Consume() {
+	timer.Wgp.Add(1)
+	defer timer.Wgp.Done()
+
+	for timer.RunningFlag {
+		select {
+		case <-timer.ExitChan:
+			break
+		case <-timer.UniTimer.C:
+			item := timer.Take()
+
+			if item != nil {
+				t := time.Unix(item.priority/1000000000, item.priority%1000000000)
+
+				fmt.Println(item.value)
+				item.OnTrigger(t, item.value)
+			}
+		}
+	}
+}
+
+func (st *SuperTimer) Add(pItem *Item) {
+	st.lock.Lock()
+	defer st.lock.Unlock()
+
+	heap.Push(&st.PQ, pItem)
+	peek := st.PQ.Peek().(*Item)
+	if peek == pItem {
+		st.UniTimer.Reset(pItem.GetDelay())
+	}
+}
+
+func (st *SuperTimer) Take() *Item {
+	st.lock.Lock()
+	defer st.lock.Unlock()
+
+	if len(st.PQ) <= 0 {
+		st.UniTimer.Reset(time.Second * 1)
+		return nil
+	}
+
+	item := st.PQ.Peek()
+	target := item.(*Item)
+	if target.GetDelay() > 0 {
+		st.UniTimer.Reset(target.GetDelay())
+		return nil
+	}
+
+	res := heap.Pop(&st.PQ).(*Item)
+	// 重置定时器，立刻唤醒其它消费者
+	st.UniTimer.Reset(0)
+	return res
+}
+
+func (st *SuperTimer) Stop() {
+	st.lock.Lock()
+	defer st.lock.Unlock()
+
+	// 强制工作线程退出
+	st.PQ.Clear()
+	st.RunningFlag = false
+	close(st.ExitChan)
+	st.UniTimer.Stop()
+}
+
+func (st *SuperTimer) Wait() {
+	st.Wgp.Wait()
+}
+
+func (st *SuperTimer) Size() int {
+	return len(st.PQ)
+}
