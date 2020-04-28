@@ -26,7 +26,6 @@ require (
 	github.com/containerd/cgroups v0.0.0-20200116170754-a8908713319d
 	github.com/coreos/bbolt v1.3.3
 	github.com/coreos/etcd v3.3.18+incompatible
-	github.com/coreos/go-systemd v0.0.0-20190719114852-fd7a80b32e1f // indirect
 	github.com/cznic/b v0.0.0-20181122101859-a26611c4d92d // indirect
 	github.com/cznic/mathutil v0.0.0-20181122101859-297441e03548 // indirect
 	github.com/cznic/strutil v0.0.0-20181122101858-275e90344537 // indirect
@@ -55,7 +54,6 @@ require (
 	github.com/gogo/protobuf v1.3.1
 	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0
 	github.com/golang/gddo v0.0.0-20200127195332-7365cb292b8b // indirect
-	github.com/golang/groupcache v0.0.0-20191002201903-404acd9df4cc // indirect
 	github.com/golang/protobuf v1.3.2
 	github.com/gorilla/context v1.1.1
 	github.com/gorilla/csrf v1.6.2
@@ -64,7 +62,6 @@ require (
 	github.com/gorilla/schema v1.1.0
 	github.com/gorilla/sessions v1.2.0
 	github.com/gorilla/websocket v1.4.1
-	github.com/grpc-ecosystem/go-grpc-middleware v1.1.0 // indirect
 	github.com/hashicorp/consul/api v1.3.0
 	github.com/henrylee2cn/cfgo v0.0.0-20180417024816-e6c3cc325b21 // indirect
 	github.com/henrylee2cn/pholcus v1.3.3
@@ -88,7 +85,6 @@ require (
 	github.com/microcosm-cc/bluemonday v1.0.2 // indirect
 	github.com/minio/minio-go/v6 v6.0.39
 	github.com/moul/http2curl v1.0.0 // indirect
-	github.com/nats-io/nats-server/v2 v2.1.0 // indirect
 	github.com/nsqio/go-diskqueue v1.0.0
 	github.com/nsqio/go-nsq v1.0.8
 	github.com/opencontainers/runtime-spec v1.0.1
