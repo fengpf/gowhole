@@ -15,15 +15,15 @@ import (
 var (
 	db  *sql.DB
 	err error
-	dsn = "root:fpf@tcp(127.0.0.1:3306)/test?parseTime=true"
+	dsn = "root:fpf123@tcp(127.0.0.1:3306)/test?parseTime=true"
 )
 
 func init() {
 	if db, err = sql.Open("mysql", dsn); err != nil {
 		panic(err)
 	}
-	db.SetMaxOpenConns(256)
-	db.SetMaxIdleConns(150)
+	db.SetMaxOpenConns(5)
+	db.SetMaxIdleConns(3)
 
 	err = db.Ping()
 	if err != nil {
@@ -35,15 +35,15 @@ func main() {
 	place := make([]string, 0)
 	args := make([]interface{}, 0)
 
-	for i := 1; i <= 10000; i++ {
-		pwd := _md5(fmt.Sprint(i, time.Now().Unix()))
-		uname := _md5(fmt.Sprint(i, time.Now().UnixNano()))
-
+	for i := 1; i <= 1000; i++ {
+		uname := fmt.Sprint(i)
+		//addr := _md5(fmt.Sprint(i, time.Now().Unix()))
+		addr := "addr_" + fmt.Sprint(i)
 		place = append(place, "(?, ?)")
-		args = append(args, pwd, uname)
+		args = append(args, uname, addr)
 	}
 	placeStr := strings.Join(place, ",")
-	sqlStr := fmt.Sprintf("INSERT INTO user_01(username, password)  VALUES %s", placeStr)
+	sqlStr := fmt.Sprintf("INSERT INTO t1(name, addr)  VALUES %s", placeStr)
 
 	// result, err := db.Exec(sqlStr, args...)
 	// if err != nil {
@@ -58,7 +58,7 @@ func main() {
 	log.Println("cost", time.Now().Sub(start))
 
 	if err != nil {
-		log.Errorf("db.Query sqlStr(%s) args(%+v) error(%v)", sqlStr, args, err)
+		log.Errorf("db.Query sqlStr(%s) args(%+v)\n error(%v) \n", sqlStr, args, err)
 		return
 	}
 	rows.Close()

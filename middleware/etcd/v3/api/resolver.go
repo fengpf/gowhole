@@ -9,6 +9,8 @@ import (
 	"google.golang.org/grpc/naming"
 )
 
+// Deprecated: please use package resolver.
+
 // resolver is the implementaion of grpc.naming.Resolver
 type Resolver struct {
 	serviceName string // service name to resolve
