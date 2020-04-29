@@ -7,6 +7,8 @@ import (
 	"time"
 )
 
+//https://www.cnblogs.com/yaowen/p/10705256.html
+
 type SuperTimer struct {
 	lock        *sync.Mutex
 	PQ          PriorityQueue
