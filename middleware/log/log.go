@@ -172,16 +172,21 @@ func Debugf(format string, a ...interface{}) {
 }
 
 // Info output the info.
-func Info(a ...interface{}) {
-	output("[INFO]", fmt.Sprint(a...))
-}
+//func Info(a ...interface{}) {
+//	output("[INFO]", fmt.Sprint(a...))
+//}
 
-// Infof output the formated info.
-func Infof(format string, a ...interface{}) {
+// Info output the formated info.
+func Info(format string, a ...interface{}) {
 	output("[INFO]", fmt.Sprintf(format, a...))
 }
 
+// Warn output the formated info.
+func Warn(format string, a ...interface{}) {
+	output("[Warn]", fmt.Sprintf(format, a...))
+}
+
 // Errorf output the formated error.
-func Errorf(format string, a ...interface{}) {
+func Error(format string, a ...interface{}) {
 	output("[ERROR]", fmt.Sprintf(format, a...))
 }

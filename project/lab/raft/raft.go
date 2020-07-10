@@ -56,6 +56,35 @@ type Raft struct {
 	// Look at the paper's Figure 2 for a description of what
 	// state a Raft server must maintain.
 
+	//2A
+	//*** persistent state on all serves ***
+	//**** updated on stable storage before responding to rpcs ****
+
+	//State: the log, the current index, &c) which must be updated in response to events arising in concurrent goroutines.
+	//latest term server has seen (initialized to 0 on first boot，increases monotonically-单调地)
+	currentTerm int
+	//candidateID that recieved vote in current term(or null if none)
+	votedFor int
+	//log entries; each entry containes command for state machine,
+	// and term when entry was received by leader(first index is 1)
+	//[]log
+
+	//*** volatile state on all servers ***
+
+	//index of highest log entry known to be committed(initialized to 0, increases monotonically)
+	commitIndex int
+	// index of highest log entry applied to state machine(initialized to 0, increases monotonically)
+	lastApplied int
+
+	//*** volatile state on leaders ***
+	//**** reinitialized after election ****
+
+	// for each server, index of the next log entry to send to
+	// that server (initialized to leader last log index+1)
+	nextIndex []int
+	//for each server, index of highest log entry known
+	// to be replicated on server (initialized to 0, increases monotonically)
+	matchIndex []int
 }
 
 // return currentTerm and whether this server
@@ -112,6 +141,14 @@ func (rf *Raft) readPersist(data []byte) {
 //
 type RequestVoteArgs struct {
 	// Your data here (2A, 2B).
+
+	//2A
+	// *** invoked by candidates to gather votes ***
+	//
+	term         int //candidates's term
+	candidateId  int //candidate requesting vote
+	lastLogIndex int //index of candidate's last log entry
+	lastLogTerm  int //term of canidate's last log entry
 }
 
 //
@@ -120,6 +157,11 @@ type RequestVoteArgs struct {
 //
 type RequestVoteReply struct {
 	// Your data here (2A).
+
+	//2A
+	//results:
+	term        int  //currentTerm，for candidate to update itself
+	voteGranted bool //true means candidate received vote
 }
 
 //
@@ -127,6 +169,13 @@ type RequestVoteReply struct {
 //
 func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 	// Your code here (2A, 2B).
+
+	//2A
+	// **** receiver implementtation: ****
+	//1、reply false if term < currentTerm
+	//2、if votedFor is null or candidateId,
+	// and candidate's log is at least
+	// as up-to-date as receiver's log, grant vote.
 }
 
 //
@@ -216,6 +265,9 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	rf.me = me
 
 	// Your initialization code here (2A, 2B, 2C).
+
+	//2A
+	//rf.currentTerm
 
 	// initialize from state persisted before a crash
 	rf.readPersist(persister.ReadRaftState())
