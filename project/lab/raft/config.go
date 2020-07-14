@@ -324,9 +324,11 @@ func (cfg *config) checkOneLeader() int {
 		}
 
 		if len(leaders) != 0 {
+			//DPrintf("checkOneLeader leaders(%+v)", leaders)
 			return leaders[lastTermWithLeader][0]
 		}
 	}
+
 	cfg.t.Fatalf("expected one leader, got none")
 	return -1
 }
