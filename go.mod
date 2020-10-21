@@ -86,6 +86,7 @@ require (
 	github.com/micro/go-micro v1.18.0
 	github.com/microcosm-cc/bluemonday v1.0.2 // indirect
 	github.com/minio/minio-go/v6 v6.0.39
+	github.com/minio/minio-go/v7 v7.0.5 // indirect
 	github.com/moul/http2curl v1.0.0 // indirect
 	github.com/nsqio/go-diskqueue v1.0.0
 	github.com/nsqio/go-nsq v1.0.8
@@ -124,10 +125,10 @@ require (
 	go.etcd.io/etcd v3.3.13+incompatible
 	go.uber.org/zap v1.12.0
 	golang.org/x/image v0.0.0-20200119044424-58c23975cae1
-	golang.org/x/net v0.0.0-20191109021931-daa7c04131f5
+	golang.org/x/net v0.0.0-20200707034311-ab3426394381
 	golang.org/x/oauth2 v0.0.0-20190604053449-0f29369cfe45
 	golang.org/x/sync v0.0.0-20190911185100-cd5d95a43a6e // indirect
-	golang.org/x/text v0.3.2
+	golang.org/x/text v0.3.3
 	google.golang.org/genproto v0.0.0-20191108220845-16a3f7862a1a
 	google.golang.org/grpc v1.27.0
 	gopkg.in/VividCortex/ewma.v1 v1.1.1 // indirect
@@ -136,6 +137,6 @@ require (
 	gopkg.in/mattn/go-colorable.v0 v0.1.0 // indirect
 	gopkg.in/mattn/go-isatty.v0 v0.0.4 // indirect
 	gopkg.in/mattn/go-runewidth.v0 v0.0.4 // indirect
-	gopkg.in/natefinch/lumberjack.v2 v2.0.0
+	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
 	gopkg.in/olivere/elastic.v5 v5.0.84
 )

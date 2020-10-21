@@ -1,10 +1,12 @@
 package raft
 
-import "fmt"
+import (
+	"gowhole/middleware/log"
+)
 
 // Debugging
 const Debug = 1
 
 func DPrintf(format string, a ...interface{}) {
-	fmt.Printf(format, a...)
+	log.Info(format, a...)
 }
