@@ -1,8 +1,9 @@
 package routers
 
 import (
+	"gowhole/project/beeweb/controllers"
+
 	"github.com/astaxie/beego"
-	"gostudy/webproject/controllers"
 )
 
 func init() {

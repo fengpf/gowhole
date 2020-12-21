@@ -14,6 +14,7 @@ require (
 	github.com/antchfx/xmlquery v1.2.3 // indirect
 	github.com/antchfx/xpath v1.1.4 // indirect
 	github.com/apache/thrift v0.13.0 // indirect
+	github.com/apex/log v1.9.0
 	github.com/aristanetworks/goarista v0.0.0-20200131140622-c6473e3ed183
 	github.com/astaxie/beego v1.12.0
 	github.com/aymerick/raymond v2.0.2+incompatible // indirect
@@ -44,8 +45,6 @@ require (
 	github.com/gin-gonic/gin v1.4.0
 	github.com/globalsign/mgo v0.0.0-20181015135952-eeefdecb41b8
 	github.com/go-kit/kit v0.9.0
-	github.com/go-openapi/jsonreference v0.19.3 // indirect
-	github.com/go-openapi/spec v0.19.3 // indirect
 	github.com/go-ozzo/ozzo-routing v2.1.4+incompatible // indirect
 	github.com/go-sql-driver/mysql v1.5.0
 	github.com/goadesign/goa v2.0.8+incompatible
@@ -55,15 +54,15 @@ require (
 	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0
 	github.com/golang/gddo v0.0.0-20200127195332-7365cb292b8b // indirect
 	github.com/golang/mock v1.3.1
-	github.com/golang/protobuf v1.3.2
-	github.com/google/uuid v1.1.1
+	github.com/golang/protobuf v1.4.3
+	github.com/google/uuid v1.1.2
 	github.com/gorilla/context v1.1.1
 	github.com/gorilla/csrf v1.6.2
 	github.com/gorilla/handlers v1.4.2
 	github.com/gorilla/mux v1.7.3
 	github.com/gorilla/schema v1.1.0
 	github.com/gorilla/sessions v1.2.0
-	github.com/gorilla/websocket v1.4.1
+	github.com/gorilla/websocket v1.4.2
 	github.com/hashicorp/consul/api v1.3.0
 	github.com/henrylee2cn/cfgo v0.0.0-20180417024816-e6c3cc325b21 // indirect
 	github.com/henrylee2cn/pholcus v1.3.3
@@ -80,20 +79,19 @@ require (
 	github.com/kennygrant/sanitize v1.2.4 // indirect
 	github.com/labstack/echo v3.3.10+incompatible
 	github.com/labstack/gommon v0.3.0 // indirect
-	github.com/mailru/easyjson v0.7.0 // indirect
 	github.com/mattn/goreman v0.3.5 // indirect
 	github.com/micro/examples v0.2.0
 	github.com/micro/go-micro v1.18.0
-	github.com/microcosm-cc/bluemonday v1.0.2 // indirect
+	github.com/microcosm-cc/bluemonday v1.0.2
 	github.com/minio/minio-go/v6 v6.0.39
-	github.com/minio/minio-go/v7 v7.0.5 // indirect
+	github.com/minio/minio-go/v7 v7.0.5
 	github.com/moul/http2curl v1.0.0 // indirect
 	github.com/nsqio/go-diskqueue v1.0.0
 	github.com/nsqio/go-nsq v1.0.8
 	github.com/opencontainers/runtime-spec v1.0.1
 	github.com/opentracing/opentracing-go v1.1.0
 	github.com/openzipkin/zipkin-go v0.2.2 // indirect
-	github.com/pkg/errors v0.8.1
+	github.com/pkg/errors v0.9.1
 	github.com/psilva261/timsort v0.0.0-20190627160904-7d0a5d71371e // indirect
 	github.com/qiangxue/fasthttp-routing v0.0.0-20160225050629-6ccdc2a18d87
 	github.com/qiniu/log v0.0.0-20140728012331-e002bc2020b1
@@ -104,7 +102,7 @@ require (
 	github.com/satori/go.uuid v1.2.0
 	github.com/shiena/ansicolor v0.0.0-20151119151921-a422bbe96644 // indirect
 	github.com/sirupsen/logrus v1.4.2
-	github.com/smartystreets/goconvey v0.0.0-20190330032615-68dc04aab96a
+	github.com/smartystreets/goconvey v1.6.4
 	github.com/streadway/handy v0.0.0-20200128134331-0f66f006fb2e // indirect
 	github.com/swaggo/gin-swagger v1.2.0
 	github.com/swaggo/swag v1.6.3
@@ -124,13 +122,17 @@ require (
 	github.com/yudai/pp v2.0.1+incompatible // indirect
 	go.etcd.io/etcd v3.3.13+incompatible
 	go.uber.org/zap v1.12.0
+	goa.design/goa/v3 v3.2.6 // indirect
 	golang.org/x/image v0.0.0-20200119044424-58c23975cae1
-	golang.org/x/net v0.0.0-20200707034311-ab3426394381
-	golang.org/x/oauth2 v0.0.0-20190604053449-0f29369cfe45
-	golang.org/x/sync v0.0.0-20190911185100-cd5d95a43a6e // indirect
-	golang.org/x/text v0.3.3
-	google.golang.org/genproto v0.0.0-20191108220845-16a3f7862a1a
-	google.golang.org/grpc v1.27.0
+	golang.org/x/mod v0.4.0 // indirect
+	golang.org/x/net v0.0.0-20201216054612-986b41b23924
+	golang.org/x/oauth2 v0.0.0-20200107190931-bf48bf16ab8d
+	golang.org/x/sys v0.0.0-20201218084310-7d0127a74742 // indirect
+	golang.org/x/text v0.3.4
+	golang.org/x/tools v0.0.0-20201218024724-ae774e9781d2 // indirect
+	google.golang.org/genproto v0.0.0-20201214200347-8c77b98c765d
+	google.golang.org/grpc v1.34.0
+	google.golang.org/grpc/examples v0.0.0-20201218190559-666aea1fb34c
 	gopkg.in/VividCortex/ewma.v1 v1.1.1 // indirect
 	gopkg.in/cheggaaa/pb.v2 v2.0.7 // indirect
 	gopkg.in/fatih/color.v1 v1.7.0 // indirect
@@ -139,4 +141,10 @@ require (
 	gopkg.in/mattn/go-runewidth.v0 v0.0.4 // indirect
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
 	gopkg.in/olivere/elastic.v5 v5.0.84
+	gopkg.in/yaml.v2 v2.4.0 // indirect
+)
+
+replace (
+	google.golang.org/grpc v1.30.0 => google.golang.org/grpc v1.26.0
+	go.etcd.io/etcd/v3 => github.com/ozonru/etcd/v3 v3.3.0-rc.0-grpc1.30.0
 )

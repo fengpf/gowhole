@@ -5,11 +5,11 @@ import (
 	"os"
 	"path/filepath"
 
-	"gowhole/lib/cgroup/mock"
-
 	"github.com/containerd/cgroups"
 	specs "github.com/opencontainers/runtime-spec/specs-go"
 	"github.com/qiniu/log"
+
+	"gowhole/middleware/cgroup/mock"
 )
 
 func main() {

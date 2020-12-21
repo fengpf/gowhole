@@ -7,7 +7,6 @@ import (
 	"sync"
 	"time"
 
-	"github.com/goadesign/examples/upload/app"
 	"github.com/goadesign/goa"
 )
 

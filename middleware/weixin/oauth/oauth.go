@@ -1,14 +1,13 @@
 package oauth
 
 import (
+	"context"
 	"fmt"
+	"gowhole/middleware/weixin/model"
+	"gowhole/middleware/weixin/util"
 
 	"net/http"
 	"net/url"
-
-	"gowhole/module/weixin/context"
-	"gowhole/module/weixin/model"
-	"gowhole/module/weixin/util"
 )
 
 const (

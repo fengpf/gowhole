@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 	"os"
 
-	"gowhole/lib/protobuf/test"
+	"gowhole/middleware/protobuf/test"
 
 	"github.com/golang/protobuf/proto"
 )

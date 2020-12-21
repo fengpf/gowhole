@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"encoding/json"
-	"gostudy/apiproject/models"
+	"gowhole/project/beeapi/models"
 
 	"github.com/astaxie/beego"
 )

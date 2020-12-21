@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"time"
 
-	"gowhole/module/weixin/config"
-	"gowhole/module/weixin/context"
-	"gowhole/module/weixin/oauth"
+	"gowhole/middleware/weixin/config"
+	"gowhole/middleware/weixin/context"
+	"gowhole/middleware/weixin/oauth"
 
 	"github.com/davecgh/go-spew/spew"
 )

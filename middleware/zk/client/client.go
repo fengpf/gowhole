@@ -8,7 +8,7 @@ import (
 	"net"
 	"time"
 
-	"gowhole/lib/zk/util"
+	"gowhole/middleware/zk/util"
 )
 
 func main() {
