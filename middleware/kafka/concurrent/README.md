@@ -32,6 +32,11 @@ c35a5a8255c8        wurstmeister/kafka:2.11-0.11.0.3   "start-kafka.sh"         
 kafka_2.11-0.11.0.3
 ```
 
+### 查看kafka log
+`/opt/kafka_2.11-0.11.0.3/bin/kafka-run-class.sh kafka.tools.DumpLogSegments --files ./00000000000000000000.log   --print-data-log`
+
+### 进入容器
+`docker exec -it de3dc9d04fe0 /bin/bash`
 ### 查看zookeeper版本：
 `docker exec zookeeper pwd`
 ```shell
@@ -100,10 +105,10 @@ docker exec kafka1 \
 
 ### 增加kafkacat 命令，主机里面发消息，接收消息，多个broker逗号隔开
 
-注意：10.23.39.129 为本地ip {ipconfig getifaddr en0指令的结果}
+注意：10.23.9.38 为本地ip {ipconfig getifaddr en0指令的结果}
 
-`kafkacat -b 10.23.39.129:9092,10.23.39.129:9093,10.23.39.129:9094  -P -t topic001`
-`kafkacat -b 10.23.39.129:9092,10.23.39.129:9093,10.23.39.129:9094  -C -t topic001`
+`kafkacat -b 10.23.9.38:9092,10.23.9.38:9093,10.23.9.38:9094  -P -t topic001`
+`kafkacat -b 10.23.9.38:9092,10.23.9.38:9093,10.23.9.38:9094  -C -t topic001`
 
 
 ###参考：

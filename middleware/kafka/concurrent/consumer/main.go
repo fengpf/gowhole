@@ -28,7 +28,7 @@ var (
 	//kafak
 	config   *cluster.Config
 	consumer *cluster.Consumer
-	brokers  = []string{"10.23.39.129:9092", "10.23.39.129:9093", "10.23.39.129:9094"}
+	brokers  = []string{"10.23.9.38:9092", "10.23.9.38:9093", "10.23.9.38:9094"}
 	topics   = []string{"topic001"}
 	groupID  = "group-1"
 

@@ -145,6 +145,6 @@ require (
 )
 
 replace (
-	google.golang.org/grpc v1.30.0 => google.golang.org/grpc v1.26.0
 	go.etcd.io/etcd/v3 => github.com/ozonru/etcd/v3 v3.3.0-rc.0-grpc1.30.0
+	google.golang.org/grpc v1.30.0 => google.golang.org/grpc v1.26.0
 )
