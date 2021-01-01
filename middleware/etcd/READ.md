@@ -74,3 +74,13 @@ etcdctl --endpoints=$ENDPOINTS lock mutex1
 # 在另一个终端输入
 etcdctl --endpoints=$ENDPOINTS lock mutex1
 ```
+
+
+▾ store/
+  ▸ etcd1/data/
+  ▸ etcd2/data/
+  ▸ etcd3/data/
+  docker-compose.yml
+store/目录下的etcd1/data/, etcd2/data/和etcd1/data/用于存放存储数据, 避免docker重启之后数据丢失.
+
+docker-compose-2.yml的内容如下:
