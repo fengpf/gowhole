@@ -6,7 +6,7 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-func init()  {
+func init() {
 
 	logrus.SetOutput(os.Stdout)
 	//设置日志等级
@@ -28,4 +28,3 @@ func Warn(template string, args ...interface{}) {
 func Error(template string, args ...interface{}) {
 	logrus.Errorf(template, args)
 }
-
