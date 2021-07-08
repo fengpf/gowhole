@@ -1,7 +1,6 @@
 package test
 
 import (
-	_ "gostudy/apiproject/routers"
 	"net/http"
 	"net/http/httptest"
 	"path/filepath"

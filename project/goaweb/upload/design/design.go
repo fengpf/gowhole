@@ -1,10 +1,5 @@
 package design
 
-import (
-	. "github.com/goadesign/goa/design"
-	. "github.com/goadesign/goa/design/apidsl"
-)
-
 var _ = API("upload", func() {
 	Description("This API exposes an image resource that allows uploading and downloading images")
 	BasePath("/api")

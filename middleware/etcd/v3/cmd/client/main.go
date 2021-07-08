@@ -10,8 +10,6 @@ import (
 	"google.golang.org/grpc"
 
 	pb "gowhole/middleware/etcd/v3/cmd/hello"
-
-	"gowhole/middleware/etcd/v3/api"
 )
 
 var (

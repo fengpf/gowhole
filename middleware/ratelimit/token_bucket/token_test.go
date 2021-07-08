@@ -55,12 +55,12 @@ func TestLongRunningQPS(t *testing.T) {
 	// The test runs for a few seconds executing many requests and then checks
 	// that overall number of requests is reasonable.
 	const (
-		limit  = 100
+		rate   = 100
 		bucket = 100
 	)
 	var numOK = int32(0)
 
-	lim := NewLimiter(limit, bucket)
+	lim := NewLimiter(rate, bucket)
 
 	var wg sync.WaitGroup
 	f := func() {
@@ -72,22 +72,26 @@ func TestLongRunningQPS(t *testing.T) {
 
 	start := time.Now()
 	end := start.Add(5 * time.Second)
+
+	var count int
 	for time.Now().Before(end) {
 		wg.Add(1)
 		go f()
 
 		// This will still offer ~500 requests per second, but won't consume
 		// outrageous amount of CPU.
+		count++
+		fmt.Println("count:", count)
 		time.Sleep(2 * time.Millisecond)
 	}
 	wg.Wait()
 
 	elapsed := time.Since(start)
-	ideal := bucket + (limit * float64(elapsed) / float64(time.Second))
+	ideal := bucket + (rate * float64(elapsed) / float64(time.Second))
 
 	want1, want2 := int32(ideal+1), int32(0.999*ideal)
 
-	fmt.Println(numOK, ideal, want1, want2)
+	fmt.Println(numOK, "elapsed:", elapsed, "ideal:", ideal, "want1:", want1, "want2:", want2)
 
 	// We should never get more requests than allowed.
 	if numOK > want1 {

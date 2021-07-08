@@ -32,6 +32,79 @@ c35a5a8255c8        wurstmeister/kafka:2.11-0.11.0.3   "start-kafka.sh"         
 kafka_2.11-0.11.0.3
 ```
 
+### 进去容器操作kafka 命令
+
+``` 1.进入docker：docker exec -it kakfa /bin/bash
+
+2.进入docker中kafka的文件目录：cd opt/kafka_2.12-2.2.1
+
+3.查看当前主题的信息：bin/kafka-topics.sh --zookeeper IP:2181 --describe --topic mykafka2
+  bin/kafka-topics.sh --zookeeper zookeeper.concurrent_default:2181 --describe --topic test1
+
+4.修改主题分区：bin/kafka-topics.sh --zookeeper IP:2181 -alter --partitions 4 --topic mykafka2
+
+5.查看修改后的分区信息：bin/kafka-topics.sh --zookeeper IP:2181 --describe --topic mykafka2
+ bin/kafka-topics.sh --zookeeper zookeeper.concurrent_default:2181 --describe --topic test1
+ 
+6.退出虚拟环境：exit
+```
+
+### kafka查看topic和消息内容命令
+```
+ /opt/kafka_2.11-0.11.0.3/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning
+```
+### 创建topic 1个副本 3个分区
+```
+/opt/kafka_2.11-0.11.0.3/bin/kafka-topics.sh --create --zookeeper zoo1:2181 --replication-factor 1 --partitions 3 --topic test
+```
+
+### 查看topic 信息
+```
+/opt/kafka_2.11-0.11.0.3/bin/kafka-topics.sh --describe --zookeeper localhost:2181 --topic test 
+```
+
+### 查看kafka data log 文件
+```
+/opt/kafka_2.11-0.11.0.3/bin/kafka-run-class.sh kafka.tools.DumpLogSegments --files ./00000000000000000000.log   --print-data-log
+```
+### 查看kafka index 文件
+
+# /kafka/kafka-logs-e0af89e74b5b/test2-1 这个路径就是log.dirs，test2-1 是topic-partitionId
+
+/opt/kafka_2.11-0.11.0.3/bin/kafka-run-class.sh kafka.tools.DumpLogSegments --files  ./00000000000000000000.index
+
+### 删除topic
+```
+/opt/kafka_2.11-0.11.0.3/bin/kafka-topics.sh --zookeeper zoo1:2181 --topic test --delete 
+```
+### 查看topic 列表
+```
+/opt/kafka_2.11-0.11.0.3/bin/kafka-topics.sh --list --zookeeper zoo1:2181
+```
+### 增加topic的partition数 
+/opt/kafka_2.11-0.11.0.3/bin/kafka-topics.sh --zookeeper localhost:2181 --alter --topic test --partitions 5 
+
+### 生产消息 
+/opt/kafka_2.11-0.11.0.3/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test 
+
+### 消费消息 
+ 	1) 从头开始 
+   /opt/kafka_2.11-0.11.0.3/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning 
+ 	2) 从尾部开始 
+ 	/opt/kafka_2.11-0.11.0.3/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --offset latest 
+ 	3) 指定分区 
+ 	/opt/kafka_2.11-0.11.0.3/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --offset latest --partition 1 
+ 	4) 取指定个数 
+ 	/opt/kafka_2.11-0.11.0.3/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --offset latest --partition 1 --max-messages 1 
+ 	5) 新消费者（ver>=0.9） 
+ 	/opt/kafka_2.11-0.11.0.3/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --new-consumer --from-beginning --consumer.config config/consumer.properties 
+### 查看有哪些消费者Group 
+```
+/opt/kafka_2.11-0.11.0.3/bin/kafka-consumer-groups.sh --new-consumer --bootstrap-server 127.0.0.1:9092 --list 
+```
+
+### 进入容器
+`docker exec -it de3dc9d04fe0 /bin/bash`
 ### 查看zookeeper版本：
 `docker exec zookeeper pwd`
 ```shell
@@ -93,17 +166,15 @@ docker exec kafka1 \
 
 ```
 
-
-
 #关闭kafka和zk集群
 `docker-compose stop`
 
 ### 增加kafkacat 命令，主机里面发消息，接收消息，多个broker逗号隔开
 
-注意：10.23.39.129 为本地ip {ipconfig getifaddr en0指令的结果}
+注意：10.23.9.38 为本地ip {ipconfig getifaddr en0指令的结果}
 
-`kafkacat -b 10.23.39.129:9092,10.23.39.129:9093,10.23.39.129:9094  -P -t topic001`
-`kafkacat -b 10.23.39.129:9092,10.23.39.129:9093,10.23.39.129:9094  -C -t topic001`
+`kafkacat -b 10.23.9.38:9092,10.23.9.38:9093,10.23.9.38:9094  -P -t topic001`
+`kafkacat -b 10.23.9.38:9092,10.23.9.38:9093,10.23.9.38:9094  -C -t topic001`
 
 
 ###参考：

@@ -6,7 +6,7 @@ import (
 	"os"
 	"time"
 
-	"gowhole/lib/zk/util"
+	"gowhole/middleware/zk/util"
 
 	"github.com/samuel/go-zookeeper/zk"
 )

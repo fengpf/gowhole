@@ -324,9 +324,11 @@ func (cfg *config) checkOneLeader() int {
 		}
 
 		if len(leaders) != 0 {
+			//DPrintf("checkOneLeader leaders(%+v)", leaders)
 			return leaders[lastTermWithLeader][0]
 		}
 	}
+
 	cfg.t.Fatalf("expected one leader, got none")
 	return -1
 }
@@ -337,6 +339,7 @@ func (cfg *config) checkTerms() int {
 	for i := 0; i < cfg.n; i++ {
 		if cfg.connected[i] {
 			xterm, _ := cfg.rafts[i].GetState()
+			fmt.Println("checkTerms", term, xterm)
 			if term == -1 {
 				term = xterm
 			} else if term != xterm {

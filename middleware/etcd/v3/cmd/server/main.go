@@ -13,8 +13,6 @@ import (
 
 	"google.golang.org/grpc"
 
-	"gowhole/middleware/etcd/v3/api"
-
 	pb "gowhole/middleware/etcd/v3/cmd/hello"
 )
 

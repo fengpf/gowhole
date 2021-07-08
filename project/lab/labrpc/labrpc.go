@@ -51,7 +51,6 @@ package labrpc
 
 import (
 	"bytes"
-	"fmt"
 	"log"
 	"math/rand"
 	"reflect"
@@ -105,7 +104,7 @@ func (e *ClientEnd) Call(svcMeth string, args interface{}, reply interface{}) bo
 	}
 
 	rep := <-req.replyCh
-	fmt.Println(string(rep.reply))
+	//fmt.Println(string(rep.reply))
 	if rep.ok {
 		rb := bytes.NewBuffer(rep.reply)
 		rd := labgob.NewDecoder(rb)

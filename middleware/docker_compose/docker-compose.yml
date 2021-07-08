@@ -1,0 +1,135 @@
+version: '3'
+services:
+  mysql:
+    hostname: mysql
+    image: mysql:5.7.26
+    # network_mode: "host" # 如果需要容器使用宿主机IP(内网IP)，则可以配置此项
+    container_name: mysql # 指定容器名称，如果不设置此参数，则由系统自动生成
+    restart: always # 设置容器自启模式
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci # 设置utf8字符集
+    environment:
+      - TZ=Asia/Shanghai # 设置容器时区与宿主机保持一致
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} # 设置root密码
+    volumes:
+       - /etc/localtime:/etc/localtime:ro # 设置容器时区与宿主机保持一致
+       - ${MYSQL_DIR}/conf:/etc/mysql/conf.d # 映射数据库配置文件
+       - ${MYSQL_DIR}/logs:/logs
+       - ${MYSQL_DIR}/data:/var/lib/mysql # 映射数据库保存目录到宿主机，防止数据丢失
+    ports:
+        - "3306:3306"
+    privileged: true
+  
+  redis:  
+    hostname: redis
+    image: redis:5.0.4
+    container_name: redis
+    restart: always
+    command: redis-server /etc/redis/redis.conf # 启动redis命令
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - /etc/localtime:/etc/localtime:ro # 设置容器时区与宿主机保持一致
+      - ${REDIS_DIR}/data:/data
+      - ${REDIS_DIR}/redis.conf:/etc/redis/redis.conf
+    ports:
+        - "6379:6379"
+    privileged: true
+
+  nginx:
+    hostname: nginx
+    image: nginx
+    container_name: nginx
+    restart: always
+    volumes:
+      - /etc/localtime:/etc/localtime:ro # 设置容器时区与宿主机保持一致
+      - ${NGINX_DIR}/data:/data
+      - ${NGINX_DIR}/conf.d:/etc/nginx/conf.d
+      - ${NGINX_DIR}/log:/var/log/nginx
+      - ${NGINX_DIR}/www:/var/www
+    ports:
+      - 80:80
+      - 443:443
+    privileged: true
+
+  etcd1:
+    hostname: etcd1
+    image: "quay.io/coreos/etcd:v3.4.7"
+    container_name: etcd1
+    restart: always
+    entrypoint: /usr/local/bin/etcd
+    command:
+      - '--name=etcd1'
+      - '--data-dir=/etcd_data'
+      - '--initial-advertise-peer-urls=http://etcd1:2380'
+      - '--listen-peer-urls=http://0.0.0.0:2380'
+      - '--listen-client-urls=http://0.0.0.0:2379'
+      - '--advertise-client-urls=http://etcd1:2379'
+      - '--initial-cluster-token=mys1cr2tt1k7n'
+      - '--heartbeat-interval=250'
+      - '--election-timeout=1250'
+      - '--initial-cluster=etcd1=http://etcd1:2380,etcd2=http://etcd2:2380,etcd3=http://etcd3:2380'
+      - '--initial-cluster-state=new'
+    ports:
+      - 2379
+    volumes:
+      - ${ETCD_DIR}/store1/data:/etcd_data
+  etcd2:
+    hostname: etcd2
+    image: "quay.io/coreos/etcd:v3.4.7"
+    container_name: etcd2
+    restart: always
+    entrypoint: /usr/local/bin/etcd
+    command:
+      - '--name=etcd2'
+      - '--data-dir=/etcd_data'
+      - '--initial-advertise-peer-urls=http://etcd2:2380'
+      - '--listen-peer-urls=http://0.0.0.0:2380'
+      - '--listen-client-urls=http://0.0.0.0:2379'
+      - '--advertise-client-urls=http://etcd2:2379'
+      - '--initial-cluster-token=mys1cr2tt1k7n'
+      - '--heartbeat-interval=250'
+      - '--election-timeout=1250'
+      - '--initial-cluster=etcd1=http://etcd1:2380,etcd2=http://etcd2:2380,etcd3=http://etcd3:2380'
+      - '--initial-cluster-state=new'
+    ports:
+      - 2379
+    volumes:
+      - ${ETCD_DIR}/store2/data:/etcd_data
+  etcd3:
+    hostname: etcd3
+    image: "quay.io/coreos/etcd:v3.4.7"
+    container_name: etcd3
+    restart: always
+    entrypoint: /usr/local/bin/etcd
+    command:
+      - '--name=etcd3'
+      - '--data-dir=/etcd_data'
+      - '--initial-advertise-peer-urls=http://etcd3:2380'
+      - '--listen-peer-urls=http://0.0.0.0:2380'
+      - '--listen-client-urls=http://0.0.0.0:2379'
+      - '--advertise-client-urls=http://etcd3:2379'
+      - '--initial-cluster-token=mys1cr2tt1k7n'
+      - '--heartbeat-interval=250'
+      - '--election-timeout=1250'
+      - '--initial-cluster=etcd1=http://etcd1:2380,etcd2=http://etcd2:2380,etcd3=http://etcd3:2380'
+      - '--initial-cluster-state=new'
+    ports:
+      - 2379
+    volumes:
+      - ${ETCD_DIR}/store3/data:/etcd_data
+
+  consul:
+    hostname: consul
+    image: consul:latest
+    container_name: consul
+    restart: always
+    command: agent -server -data-dir=/consul/data -config-dir=/consul/config -bootstrap -node=consul1140_0 -client=0.0.0.0
+    ports:
+      - 8300:8300
+      - 8301:8301
+      - 8301:8301/udp
+      - 8302:8302
+      - 8302:8302/udp
+      - 8500:8500
+      - 8600:8600
+      - 8600:8600/udp

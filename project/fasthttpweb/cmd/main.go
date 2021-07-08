@@ -4,8 +4,7 @@ import (
 	"flag"
 	"fmt"
 
-	"gowhole/lib/log"
-
+	"github.com/apex/log"
 	"github.com/valyala/fasthttp"
 )
 

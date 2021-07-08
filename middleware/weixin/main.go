@@ -1,8 +1,8 @@
 package main
 
 import (
-	"gowhole/module/weixin/config"
-	"gowhole/module/weixin/server"
+	"gowhole/middleware/weixin/config"
+	"gowhole/middleware/weixin/server"
 )
 
 func main() {
