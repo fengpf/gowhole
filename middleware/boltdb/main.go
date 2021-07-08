@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	bolt "github.com/coreos/bbolt"
+	bolt "go.etcd.io/bbolt"
 )
 
 func main() {
