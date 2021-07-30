@@ -16,7 +16,7 @@ import (
 )
 
 var (
-	endpoint   = flag.String("endpoint", "localhost:9090", "endpoint of the gRPC service")
+	endpoint   = flag.String("endpoint", "localhost:9999", "endpoint of the gRPC service")
 	network    = flag.String("network", "tcp", `one of "tcp" or "unix". Must be consistent to -endpoint`)
 	swaggerDir = flag.String("swagger_dir", "examples/internal/proto/examplepb", "path to the directory which contains swagger definitions")
 )

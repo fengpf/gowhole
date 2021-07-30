@@ -2,6 +2,7 @@ package server
 
 import (
 	"context"
+	"fmt"
 	"net"
 	"net/http"
 
@@ -14,6 +15,7 @@ import (
 // Run starts the example gRPC service.
 // "network" and "address" are passed to net.Listen.
 func Run(ctx context.Context, network, address string) error {
+
 	l, err := net.Listen(network, address)
 	if err != nil {
 		return err
@@ -31,6 +33,8 @@ func Run(ctx context.Context, network, address string) error {
 		defer s.GracefulStop()
 		<-ctx.Done()
 	}()
+
+	fmt.Printf("server start %s %s\n", network, address)
 	return s.Serve(l)
 }
 
