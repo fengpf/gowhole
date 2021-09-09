@@ -2,28 +2,36 @@ package main
 
 import (
 	"context"
-	"gowhole/project/gee/rpc"
-	"gowhole/project/gee/rpc/balance_discovery"
 	"log"
 	"net"
+	"net/http"
 	"sync"
 	"time"
+
+	"gowhole/project/gee/rpc"
+	"gowhole/project/gee/rpc/balance_discovery"
+	"gowhole/project/gee/rpc/registry"
 )
 
 func main() {
 	log.SetFlags(0)
-	ch1 := make(chan string)
-	ch2 := make(chan string)
-	// start two servers
-	go startServer(ch1)
-	go startServer(ch2)
+	registryAddr := "http://localhost:9999/_geerpc_/registry"
 
-	addr1 := <-ch1
-	addr2 := <-ch2
+	var wg sync.WaitGroup
+	wg.Add(1)
+	go startRegistry(&wg)
+	wg.Wait()
 
 	time.Sleep(time.Second)
-	call(addr1, addr2)
-	broadcast(addr1, addr2)
+
+	wg.Add(2)
+	go startServer(registryAddr, &wg)
+	go startServer(registryAddr, &wg)
+	wg.Wait()
+
+	time.Sleep(time.Second)
+	call(registryAddr)
+	broadcast(registryAddr)
 }
 
 type Foo int
@@ -41,25 +49,18 @@ func (f Foo) Sleep(args Args, reply *int) error {
 	return nil
 }
 
-func startServer(addrCh chan string) {
-	var foo Foo
-	l, _ := net.Listen("tcp", ":0")
-	server := rpc.NewServer()
-	_ = server.Register(&foo)
-	addrCh <- l.Addr().String()
-	server.Accept(l)
-}
-
 //封装一个方法 foo，便于在 Call 或 Broadcast 之后统一打印成功或失败的日志。
 func foo(xc *balance_discovery.XClient, ctx context.Context, typ, serviceMethod string, args *Args) {
 	var reply int
 	var err error
+
 	switch typ {
 	case "call":
 		err = xc.Call(ctx, serviceMethod, args, &reply)
 	case "broadcast":
 		err = xc.Broadcast(ctx, serviceMethod, args, &reply)
 	}
+
 	if err != nil {
 		log.Printf("%s %s error: %v", typ, serviceMethod, err)
 	} else {
@@ -67,11 +68,32 @@ func foo(xc *balance_discovery.XClient, ctx context.Context, typ, serviceMethod 
 	}
 }
 
-//call 调用单个服务实例，broadcast 调用所有服务实例
-func call(addr1, addr2 string) {
-	d := balance_discovery.NewMultiServerDiscovery([]string{"tcp@" + addr1, "tcp@" + addr2})
+func startRegistry(wg *sync.WaitGroup) {
+	l, _ := net.Listen("tcp", ":9999")
+	registry.HandleHTTP()
+	wg.Done()
+
+	_ = http.Serve(l, nil)
+}
+
+func startServer(registryAddr string, wg *sync.WaitGroup) {
+	var foo Foo
+
+	l, _ := net.Listen("tcp", ":0")
+
+	server := rpc.NewServer()
+	_ = server.Register(&foo)
+
+	registry.Heartbeat(registryAddr, "tcp@"+l.Addr().String(), 0)
+	wg.Done()
+	server.Accept(l)
+}
+
+func call(registry string) {
+	d := balance_discovery.NewGeeRegistryDiscovery(registry, 0)
 	xc := balance_discovery.NewXClient(d, balance_discovery.RandomSelect, nil)
 	defer func() { _ = xc.Close() }()
+
 	// send request & receive response
 	var wg sync.WaitGroup
 	for i := 0; i < 5; i++ {
@@ -84,10 +106,9 @@ func call(addr1, addr2 string) {
 	wg.Wait()
 }
 
-func broadcast(addr1, addr2 string) {
-	d := balance_discovery.NewMultiServerDiscovery([]string{"tcp@" + addr1, "tcp@" + addr2})
+func broadcast(registry string) {
+	d := balance_discovery.NewGeeRegistryDiscovery(registry, 0)
 	xc := balance_discovery.NewXClient(d, balance_discovery.RandomSelect, nil)
-
 	defer func() { _ = xc.Close() }()
 
 	var wg sync.WaitGroup

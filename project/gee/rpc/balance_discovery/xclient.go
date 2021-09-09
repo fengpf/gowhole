@@ -1,4 +1,4 @@
-package discovery
+package balance_discovery
 
 import (
 	"context"
