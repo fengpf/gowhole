@@ -1,6 +1,7 @@
 package rpc
 
 import (
+	"bufio"
 	"context"
 	"encoding/json"
 	"errors"
@@ -9,6 +10,8 @@ import (
 	"io"
 	"log"
 	"net"
+	"net/http"
+	"strings"
 	"sync"
 	"time"
 )
@@ -18,16 +21,16 @@ import (
 //}
 
 type Call struct {
-	Seq uint64
+	Seq           uint64
 	ServiceMethod string
-	Args interface{}
-	Reply interface{}
-	Error error
-	Done chan *Call
+	Args          interface{}
+	Reply         interface{}
+	Error         error
+	Done          chan *Call
 }
 
-func (call *Call) done()  {
-	call.Done<-call
+func (call *Call) done() {
+	call.Done <- call
 }
 
 // Client represents an RPC Client.
@@ -36,14 +39,14 @@ func (call *Call) done()  {
 // multiple goroutines simultaneously.
 
 type Client struct {
-	cc codec.Codec
-	opt *Option
-	sending sync.Mutex
-	header codec.Header
-	mux sync.Mutex
-	seq uint64
-	pending map[uint64]*Call
-	closing bool
+	cc       codec.Codec
+	opt      *Option
+	sending  sync.Mutex
+	header   codec.Header
+	mux      sync.Mutex
+	seq      uint64
+	pending  map[uint64]*Call
+	closing  bool
 	shutdown bool
 }
 
@@ -55,7 +58,7 @@ func (c Client) Close() error {
 	c.mux.Lock()
 	defer c.mux.Unlock()
 
-	if c.closing{
+	if c.closing {
 		return ErrShutdown
 	}
 
@@ -73,14 +76,14 @@ func (c *Client) IsAvailable() bool {
 func (c *Client) registerCall(call *Call) (uint64, error) {
 	c.mux.Lock()
 	defer c.mux.Unlock()
-	if c.closing||c.shutdown{
-		return 0,ErrShutdown
+	if c.closing || c.shutdown {
+		return 0, ErrShutdown
 	}
 
-	call.Seq =  c.seq
+	call.Seq = c.seq
 	c.pending[call.Seq] = call
 	c.seq++
-	return call.Seq,nil
+	return call.Seq, nil
 }
 
 func (c *Client) removeCall(seq uint64) *Call {
@@ -107,18 +110,18 @@ func (c *Client) terminateCalls(err error) {
 	}
 }
 
-func (c *Client) receive()  {
+func (c *Client) receive() {
 	var err error
-	for  {
-	   var h codec.Header
-	   if err=c.cc.ReadHeader(&h);err!=nil{
-	   	 break
-	   }
-	   
-	   call:=c.removeCall(h.Seq)
+	for {
+		var h codec.Header
+		if err = c.cc.ReadHeader(&h); err != nil {
+			break
+		}
 
-		switch  {
-		case call==nil:
+		call := c.removeCall(h.Seq)
+
+		switch {
+		case call == nil:
 			// it usually means that Write partially failed
 			// and call was already removed.
 			err = c.cc.ReadBody(nil)
@@ -139,8 +142,8 @@ func (c *Client) receive()  {
 }
 
 func NewClient(conn net.Conn, opt *Option) (*Client, error) {
-	f:=codec.NewCodecFuncMap[opt.CodecType]
-	if f==nil{
+	f := codec.NewCodecFuncMap[opt.CodecType]
+	if f == nil {
 		err := fmt.Errorf("invalid codec type %s", opt.CodecType)
 		log.Println("rpc client: codec error:", err)
 		return nil, err
@@ -204,20 +207,20 @@ func parseOptions(opts ...*Option) (*Option, error) {
 //	return NewClient(conn, opt)
 //}Client) Call
 
-
 // Dial connects to an RPC server at the specified network address
 func Dial(network, address string, opts ...*Option) (*Client, error) {
 	return dialTimeout(NewClient, network, address, opts...)
 }
 
 func (c *Client) send(call *Call) {
+	fmt.Println(111, c)
 	// make sure that the client will send a complete request
-   c.sending.Lock()
-   defer c.sending.Unlock()
+	c.sending.Lock()
+	defer c.sending.Unlock()
 
 	// register this call.
-	seq,err:=c.registerCall(call)
-	if err!=nil{
+	seq, err := c.registerCall(call)
+	if err != nil {
 		call.Error = err
 		call.done()
 		return
@@ -229,8 +232,8 @@ func (c *Client) send(call *Call) {
 	c.header.Error = ""
 
 	// encode and send the request
-	if err:=c.cc.Write(&c.header, call.Args);err!=nil{
-		call:=c.removeCall(seq)
+	if err := c.cc.Write(&c.header, call.Args); err != nil {
+		call := c.removeCall(seq)
 		// call may be nil, it usually means that Write partially failed,
 		// client has received the response and handled
 		if call != nil {
@@ -243,17 +246,17 @@ func (c *Client) send(call *Call) {
 // Go invokes the function asynchronously.
 // It returns the Call structure representing the invocation.
 func (c *Client) Go(serviceMethod string, args, reply interface{}, done chan *Call) *Call {
-	if done==nil{
-		done =make(chan *Call, 10)
-	}else if cap(done) ==0 {
+	if done == nil {
+		done = make(chan *Call, 10)
+	} else if cap(done) == 0 {
 		log.Panic("rpc client: done channel is unbuffered")
 	}
 
-	call:=&Call{
+	call := &Call{
 		ServiceMethod: serviceMethod,
-		Args: args,
-		Reply: reply,
-		Done: done,
+		Args:          args,
+		Reply:         reply,
+		Done:          done,
 	}
 	c.send(call)
 	return call
@@ -287,7 +290,6 @@ func (client *Client) Call(ctx context.Context, serviceMethod string, args, repl
 //Go 和 Call 是客户端暴露给用户的两个 RPC 服务调用接口，Go 是一个异步接口，返回 call 实例。
 //Call 是对 Go 的封装，阻塞 call.Done，等待响应返回，是一个同步接口。
 
-
 type clientResult struct {
 	client *Client
 	err    error
@@ -296,13 +298,17 @@ type clientResult struct {
 type newClientFunc func(conn net.Conn, opt *Option) (client *Client, err error)
 
 func dialTimeout(f newClientFunc, network, address string, opts ...*Option) (client *Client, err error) {
-    opt,err:=parseOptions(opts...)
-    if err!=nil{
-    	return nil, err
+	opt, err := parseOptions(opts...)
+	if err != nil {
+		fmt.Errorf("dialTimeout parseOptions error(%v)", err)
+		return nil, err
 	}
 
-	conn,err:=net.DialTimeout(network, address, opt.ConnectTimeout)
-	if err!=nil{
+	conn, err := net.DialTimeout(network, address, opt.ConnectTimeout)
+	if err != nil {
+		fmt.Errorf("dialTimeout DialTimeout network(%v) address(%v) connectTimeout(%v) error(%v)",
+			network, address, opt.ConnectTimeout, err)
+
 		return nil, err
 	}
 	// close the connection if client is nil
@@ -312,11 +318,12 @@ func dialTimeout(f newClientFunc, network, address string, opts ...*Option) (cli
 		}
 	}()
 
-	ch:=make(chan clientResult)
-	go func() {
-		client,err:=f(conn, opt)
-		ch<-clientResult{client: client,err: err}
-	}()
+	ch := make(chan clientResult, 1)
+	//go func() {
+	client, err = f(conn, opt)
+	fmt.Println(4444, client, err)
+	ch <- clientResult{client: client, err: err}
+	//}()
 
 	if opt.ConnectTimeout == 0 {
 		result := <-ch
@@ -324,9 +331,54 @@ func dialTimeout(f newClientFunc, network, address string, opts ...*Option) (cli
 	}
 
 	select {
-	  case <-time.After(opt.ConnectTimeout):
-		  return nil, fmt.Errorf("rpc client: connect timeout: expect within %s", opt.ConnectTimeout)
-      case result:=<-ch:
-		 return result.client, result.err
+	case <-time.After(opt.ConnectTimeout):
+		return nil, fmt.Errorf("rpc client: connect timeout: expect within %s", opt.ConnectTimeout)
+	case result := <-ch:
+		fmt.Println(333, result.client)
+		return result.client, result.err
+	}
+}
+
+// NewHTTPClient new a Client instance via HTTP as transport protocol
+func NewHTTPClient(conn net.Conn, opt *Option) (*Client, error) {
+	_, _ = io.WriteString(conn, fmt.Sprintf("CONNECT %s HTTP/1.0\n\n", defaultRPCPath))
+
+	// Require successful HTTP response
+	// before switching to RPC protocol.
+	resp, err := http.ReadResponse(bufio.NewReader(conn), &http.Request{Method: "CONNECT"})
+
+	fmt.Println(555, resp, err)
+	if err == nil && resp.Status == connected {
+		return NewClient(conn, opt)
+	}
+
+	if err == nil {
+		err = errors.New("unexpected HTTP response: " + resp.Status)
+	}
+	return nil, err
+}
+
+// DialHTTP connects to an HTTP RPC server at the specified network address
+// listening on the default HTTP RPC path.
+func DialHTTP(network, address string, opts ...*Option) (*Client, error) {
+	return dialTimeout(NewHTTPClient, network, address, opts...)
+}
+
+// XDial calls different functions to connect to a RPC server
+// according the first parameter rpcAddr.
+// rpcAddr is a general format (protocol@addr) to represent a rpc server
+// eg, http@10.0.0.1:7001, tcp@10.0.0.1:9999, unix@/tmp/geerpc.sock
+func XDial(rpcAddr string, opts ...*Option) (*Client, error) {
+	parts := strings.Split(rpcAddr, "@")
+	if len(parts) != 2 {
+		return nil, fmt.Errorf("rpc client err: wrong format '%s', expect protocol@addr", rpcAddr)
+	}
+	protocol, addr := parts[0], parts[1]
+	switch protocol {
+	case "http":
+		return DialHTTP("tcp", addr, opts...)
+	default:
+		// tcp, unix or other transport protocol
+		return Dial(protocol, addr, opts...)
 	}
 }
