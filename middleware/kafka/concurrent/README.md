@@ -1,4 +1,11 @@
-  
+### 服务端与客户端版本对应关系：
+#### 老版本
+wurstmeister/kafka:2.11-0.11.0.3
+github.com/Shopify/sarama v1.22.0
+#### 新版本
+wurstmeister/kafka:2.12-2.0.1
+github.com/Shopify/sarama v1.29.1
+
 ### 使用默认文件启动
 `docker-compose up -d`
 
